@@ -401,6 +401,292 @@ service SyncService {
 }
 
 // ============================================================================
+// 安全与加密
+// ============================================================================
+
+/**
+ * 加密算法类型
+ */
+enum EncryptionAlgorithm {
+    ENCRYPTION_UNSPECIFIED = 0;
+    ENCRYPTION_AES_256_GCM = 1;         // AES-256-GCM
+    ENCRYPTION_CHACHA20_POLY1305 = 2;   // ChaCha20-Poly1305
+    ENCRYPTION_RSA_OAEP = 3;            // RSA-OAEP (用于密钥交换)
+}
+
+/**
+ * 密钥交换请求
+ */
+message KeyExchangeRequest {
+    string device_id = 1;
+    bytes public_key = 2;               // ECDH公钥
+    EncryptionAlgorithm preferred_algorithm = 3;
+    uint64 timestamp = 4;
+}
+
+/**
+ * 密钥交换响应
+ */
+message KeyExchangeResponse {
+    bool success = 1;
+    bytes public_key = 2;               // 服务端ECDH公钥
+    bytes encrypted_session_key = 3;    // 加密的会话密钥
+    EncryptionAlgorithm algorithm = 4;
+    uint64 expires_time = 5;            // 会话过期时间
+}
+
+/**
+ * 安全级别
+ */
+enum SecurityLevel {
+    SECURITY_LEVEL_UNSPECIFIED = 0;
+    SECURITY_LEVEL_SOFTWARE = 1;        // 软件加密
+    SECURITY_LEVEL_HARDWARE = 2;        // 硬件安全模块
+    SECURITY_LEVEL_TEE = 3;             // 可信执行环境
+    SECURITY_LEVEL_SECURE_ELEMENT = 4;  // 安全芯片
+}
+
+/**
+ * 安全状态报告
+ */
+message SecurityStatus {
+    string device_id = 1;
+    SecurityLevel level = 2;
+    bool biometric_available = 3;       // 生物认证是否可用
+    bool secure_display = 4;            // 安全显示是否可用
+    string security_chip = 5;           // 安全芯片型号（如有）
+    map<string, string> details = 6;    // 详细信息
+}
+
+/**
+ * 生物认证请求
+ */
+message BiometricAuthRequest {
+    string request_id = 1;
+    string reason = 2;                  // 认证原因（显示给用户）
+    uint32 timeout_seconds = 3;
+}
+
+/**
+ * 生物认证响应
+ */
+message BiometricAuthResponse {
+    string request_id = 1;
+    bool success = 2;
+    string error_message = 3;
+    uint64 timestamp = 4;
+}
+
+// ============================================================================
+// Native Messaging (浏览器扩展 <-> Agent)
+// ============================================================================
+
+/**
+ * Native Messaging消息类型
+ */
+enum NativeMessageType {
+    NATIVE_MSG_UNSPECIFIED = 0;
+    NATIVE_MSG_CREDENTIAL_REQUEST = 1;      // 请求凭证
+    NATIVE_MSG_CREDENTIAL_RESPONSE = 2;     // 凭证响应
+    NATIVE_MSG_COOKIE_STORE = 3;            // 存储Cookie
+    NATIVE_MSG_COOKIE_RETRIEVE = 4;         // 获取Cookie
+    NATIVE_MSG_STATUS = 5;                  // 状态查询
+    NATIVE_MSG_ERROR = 6;                   // 错误
+    NATIVE_MSG_PING = 7;                    // 心跳
+    NATIVE_MSG_PONG = 8;                    // 心跳响应
+}
+
+/**
+ * Native Messaging请求
+ */
+message NativeMessageRequest {
+    NativeMessageType type = 1;
+    string request_id = 2;
+    uint32 tab_id = 3;                      // 浏览器标签页ID
+    string url = 4;                         // 当前页面URL
+    map<string, string> data = 5;           // 请求数据
+    uint64 timestamp = 6;
+}
+
+/**
+ * Native Messaging响应
+ */
+message NativeMessageResponse {
+    NativeMessageType type = 1;
+    string request_id = 2;
+    bool success = 3;
+    map<string, string> data = 4;           // 响应数据
+    string error_message = 5;
+    uint64 timestamp = 6;
+}
+
+// ============================================================================
+// 自动授权规则
+// ============================================================================
+
+/**
+ * 自动授权规则
+ */
+message AutoAuthRule {
+    string rule_id = 1;
+    string service_url_pattern = 2;         // URL匹配模式（支持通配符）
+    bool auto_approve = 3;                  // 是否自动批准
+    uint32 max_auto_approvals = 4;          // 最大自动批准次数（0=无限）
+    uint32 auto_approvals_used = 5;         // 已使用次数
+    uint64 created_time = 6;
+    uint64 expires_time = 7;                // 规则过期时间（0=永不过期）
+    bool require_biometric = 8;             // 是否需要生物认证
+    map<string, string> conditions = 9;     // 附加条件
+}
+
+/**
+ * 规则添加请求
+ */
+message AddAutoAuthRuleRequest {
+    AutoAuthRule rule = 1;
+}
+
+/**
+ * 规则添加响应
+ */
+message AddAutoAuthRuleResponse {
+    bool success = 1;
+    string error_message = 2;
+    string rule_id = 3;
+}
+
+/**
+ * 规则删除请求
+ */
+message RemoveAutoAuthRuleRequest {
+    string rule_id = 1;
+}
+
+/**
+ * 规则删除响应
+ */
+message RemoveAutoAuthRuleResponse {
+    bool success = 1;
+    string error_message = 2;
+}
+
+/**
+ * 规则列表请求
+ */
+message ListAutoAuthRulesRequest {
+    string service_url = 1;                 // 可选，筛选特定服务
+}
+
+/**
+ * 规则列表响应
+ */
+message ListAutoAuthRulesResponse {
+    repeated AutoAuthRule rules = 1;
+}
+
+// ============================================================================
+// 事件与通知
+// ============================================================================
+
+/**
+ * 事件类型
+ */
+enum EventType {
+    EVENT_UNSPECIFIED = 0;
+    EVENT_DEVICE_CONNECTED = 1;            // 设备连接
+    EVENT_DEVICE_DISCONNECTED = 2;         // 设备断开
+    EVENT_CREDENTIAL_REQUESTED = 3;         // 凭证请求
+    EVENT_CREDENTIAL_GRANTED = 4;           // 凭证授权
+    EVENT_CREDENTIAL_DENIED = 5;            // 凭证拒绝
+    EVENT_SECURITY_ALERT = 6;               // 安全告警
+    EVENT_SYNC_COMPLETED = 7;               // 同步完成
+    EVENT_SYNC_FAILED = 8;                  // 同步失败
+}
+
+/**
+ * 事件消息
+ */
+message Event {
+    string event_id = 1;
+    EventType type = 2;
+    string device_id = 3;                   // 来源设备
+    uint64 timestamp = 4;
+    map<string, string> data = 5;           // 事件数据
+    string message = 6;                     // 人类可读消息
+}
+
+/**
+ * 事件订阅请求
+ */
+message SubscribeEventsRequest {
+    repeated EventType event_types = 1;     // 订阅的事件类型
+    string subscriber_id = 2;
+}
+
+/**
+ * 事件订阅响应
+ */
+message SubscribeEventsResponse {
+    bool success = 1;
+    string error_message = 2;
+    string subscription_id = 3;
+}
+
+// ============================================================================
+// 服务定义扩展
+// ============================================================================
+
+/**
+ * 安全服务 - 客户端提供
+ */
+service SecurityService {
+    // 密钥交换
+    rpc KeyExchange(KeyExchangeRequest) returns (KeyExchangeResponse);
+    
+    // 获取安全状态
+    rpc GetSecurityStatus(google.protobuf.Empty) returns (SecurityStatus);
+    
+    // 生物认证
+    rpc BiometricAuth(BiometricAuthRequest) returns (BiometricAuthResponse);
+}
+
+/**
+ * Native Messaging服务 - Agent提供
+ */
+service NativeMessagingService {
+    // 处理请求
+    rpc HandleMessage(NativeMessageRequest) returns (NativeMessageResponse);
+    
+    // 心跳
+    rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
+}
+
+/**
+ * 自动授权规则服务
+ */
+service AutoAuthRuleService {
+    // 添加规则
+    rpc AddRule(AddAutoAuthRuleRequest) returns (AddAutoAuthRuleResponse);
+    
+    // 删除规则
+    rpc RemoveRule(RemoveAutoAuthRuleRequest) returns (RemoveAutoAuthRuleResponse);
+    
+    // 列出规则
+    rpc ListRules(ListAutoAuthRulesRequest) returns (ListAutoAuthRulesResponse);
+}
+
+/**
+ * 事件服务
+ */
+service EventService {
+    // 订阅事件
+    rpc Subscribe(SubscribeEventsRequest) returns (SubscribeEventsResponse);
+    
+    // 推送事件（服务端流式）
+    rpc StreamEvents(SubscribeEventsRequest) returns (stream Event);
+}
+
+// ============================================================================
 // 导入Google Protobuf
 // ============================================================================
 

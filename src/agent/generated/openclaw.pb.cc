@@ -100,6 +100,300 @@ struct SyncDataDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SyncDataDefaultTypeInternal _SyncData_default_instance_;
 
+inline constexpr SubscribeEventsResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        error_message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        subscription_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        success_{false} {}
+
+template <typename>
+constexpr SubscribeEventsResponse::SubscribeEventsResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(SubscribeEventsResponse_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct SubscribeEventsResponseDefaultTypeInternal {
+  constexpr SubscribeEventsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeEventsResponseDefaultTypeInternal() {}
+  union {
+    SubscribeEventsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeEventsResponseDefaultTypeInternal _SubscribeEventsResponse_default_instance_;
+
+inline constexpr SubscribeEventsRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_FIELD
+        event_types_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::SubscribeEventsRequest,
+            PROTOBUF_FIELD_OFFSET(::openclaw::SubscribeEventsRequest, _impl_.event_types_)>()
+        }
+        #else
+        event_types_ {}
+        #endif
+        ,
+        _event_types_cached_byte_size_{0},
+        subscriber_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()) {}
+
+template <typename>
+constexpr SubscribeEventsRequest::SubscribeEventsRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(SubscribeEventsRequest_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct SubscribeEventsRequestDefaultTypeInternal {
+  constexpr SubscribeEventsRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeEventsRequestDefaultTypeInternal() {}
+  union {
+    SubscribeEventsRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeEventsRequestDefaultTypeInternal _SubscribeEventsRequest_default_instance_;
+template <typename>
+constexpr SecurityStatus_DetailsEntry_DoNotUse::SecurityStatus_DetailsEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : SecurityStatus_DetailsEntry_DoNotUse::MapEntry(SecurityStatus_DetailsEntry_DoNotUse_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : SecurityStatus_DetailsEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct SecurityStatus_DetailsEntry_DoNotUseDefaultTypeInternal {
+  constexpr SecurityStatus_DetailsEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SecurityStatus_DetailsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    SecurityStatus_DetailsEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SecurityStatus_DetailsEntry_DoNotUseDefaultTypeInternal _SecurityStatus_DetailsEntry_DoNotUse_default_instance_;
+
+inline constexpr RemoveAutoAuthRuleResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        error_message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        success_{false} {}
+
+template <typename>
+constexpr RemoveAutoAuthRuleResponse::RemoveAutoAuthRuleResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(RemoveAutoAuthRuleResponse_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct RemoveAutoAuthRuleResponseDefaultTypeInternal {
+  constexpr RemoveAutoAuthRuleResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RemoveAutoAuthRuleResponseDefaultTypeInternal() {}
+  union {
+    RemoveAutoAuthRuleResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RemoveAutoAuthRuleResponseDefaultTypeInternal _RemoveAutoAuthRuleResponse_default_instance_;
+
+inline constexpr RemoveAutoAuthRuleRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        rule_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()) {}
+
+template <typename>
+constexpr RemoveAutoAuthRuleRequest::RemoveAutoAuthRuleRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(RemoveAutoAuthRuleRequest_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct RemoveAutoAuthRuleRequestDefaultTypeInternal {
+  constexpr RemoveAutoAuthRuleRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RemoveAutoAuthRuleRequestDefaultTypeInternal() {}
+  union {
+    RemoveAutoAuthRuleRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RemoveAutoAuthRuleRequestDefaultTypeInternal _RemoveAutoAuthRuleRequest_default_instance_;
+template <typename>
+constexpr NativeMessageResponse_DataEntry_DoNotUse::NativeMessageResponse_DataEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : NativeMessageResponse_DataEntry_DoNotUse::MapEntry(NativeMessageResponse_DataEntry_DoNotUse_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : NativeMessageResponse_DataEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct NativeMessageResponse_DataEntry_DoNotUseDefaultTypeInternal {
+  constexpr NativeMessageResponse_DataEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NativeMessageResponse_DataEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    NativeMessageResponse_DataEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NativeMessageResponse_DataEntry_DoNotUseDefaultTypeInternal _NativeMessageResponse_DataEntry_DoNotUse_default_instance_;
+template <typename>
+constexpr NativeMessageRequest_DataEntry_DoNotUse::NativeMessageRequest_DataEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : NativeMessageRequest_DataEntry_DoNotUse::MapEntry(NativeMessageRequest_DataEntry_DoNotUse_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : NativeMessageRequest_DataEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct NativeMessageRequest_DataEntry_DoNotUseDefaultTypeInternal {
+  constexpr NativeMessageRequest_DataEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NativeMessageRequest_DataEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    NativeMessageRequest_DataEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NativeMessageRequest_DataEntry_DoNotUseDefaultTypeInternal _NativeMessageRequest_DataEntry_DoNotUse_default_instance_;
+
+inline constexpr ListAutoAuthRulesRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        service_url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()) {}
+
+template <typename>
+constexpr ListAutoAuthRulesRequest::ListAutoAuthRulesRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(ListAutoAuthRulesRequest_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct ListAutoAuthRulesRequestDefaultTypeInternal {
+  constexpr ListAutoAuthRulesRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ListAutoAuthRulesRequestDefaultTypeInternal() {}
+  union {
+    ListAutoAuthRulesRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListAutoAuthRulesRequestDefaultTypeInternal _ListAutoAuthRulesRequest_default_instance_;
+
+inline constexpr KeyExchangeResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        public_key_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        encrypted_session_key_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        success_{false},
+        algorithm_{static_cast< ::openclaw::EncryptionAlgorithm >(0)},
+        expires_time_{::uint64_t{0u}} {}
+
+template <typename>
+constexpr KeyExchangeResponse::KeyExchangeResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(KeyExchangeResponse_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct KeyExchangeResponseDefaultTypeInternal {
+  constexpr KeyExchangeResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~KeyExchangeResponseDefaultTypeInternal() {}
+  union {
+    KeyExchangeResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 KeyExchangeResponseDefaultTypeInternal _KeyExchangeResponse_default_instance_;
+
+inline constexpr KeyExchangeRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        device_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        public_key_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        timestamp_{::uint64_t{0u}},
+        preferred_algorithm_{static_cast< ::openclaw::EncryptionAlgorithm >(0)} {}
+
+template <typename>
+constexpr KeyExchangeRequest::KeyExchangeRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(KeyExchangeRequest_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct KeyExchangeRequestDefaultTypeInternal {
+  constexpr KeyExchangeRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~KeyExchangeRequestDefaultTypeInternal() {}
+  union {
+    KeyExchangeRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 KeyExchangeRequestDefaultTypeInternal _KeyExchangeRequest_default_instance_;
+template <typename>
+constexpr Event_DataEntry_DoNotUse::Event_DataEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : Event_DataEntry_DoNotUse::MapEntry(Event_DataEntry_DoNotUse_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : Event_DataEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct Event_DataEntry_DoNotUseDefaultTypeInternal {
+  constexpr Event_DataEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Event_DataEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    Event_DataEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Event_DataEntry_DoNotUseDefaultTypeInternal _Event_DataEntry_DoNotUse_default_instance_;
+
 inline constexpr DeviceRegisterResponse::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     ::_pbi::ConstantInitialized) noexcept
@@ -542,6 +836,89 @@ struct Capability_PropertiesEntry_DoNotUseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Capability_PropertiesEntry_DoNotUseDefaultTypeInternal _Capability_PropertiesEntry_DoNotUse_default_instance_;
 
+inline constexpr BiometricAuthResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        request_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        error_message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        timestamp_{::uint64_t{0u}},
+        success_{false} {}
+
+template <typename>
+constexpr BiometricAuthResponse::BiometricAuthResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(BiometricAuthResponse_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct BiometricAuthResponseDefaultTypeInternal {
+  constexpr BiometricAuthResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~BiometricAuthResponseDefaultTypeInternal() {}
+  union {
+    BiometricAuthResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BiometricAuthResponseDefaultTypeInternal _BiometricAuthResponse_default_instance_;
+
+inline constexpr BiometricAuthRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        request_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        reason_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        timeout_seconds_{0u} {}
+
+template <typename>
+constexpr BiometricAuthRequest::BiometricAuthRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(BiometricAuthRequest_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct BiometricAuthRequestDefaultTypeInternal {
+  constexpr BiometricAuthRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~BiometricAuthRequestDefaultTypeInternal() {}
+  union {
+    BiometricAuthRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BiometricAuthRequestDefaultTypeInternal _BiometricAuthRequest_default_instance_;
+template <typename>
+constexpr AutoAuthRule_ConditionsEntry_DoNotUse::AutoAuthRule_ConditionsEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : AutoAuthRule_ConditionsEntry_DoNotUse::MapEntry(AutoAuthRule_ConditionsEntry_DoNotUse_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : AutoAuthRule_ConditionsEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct AutoAuthRule_ConditionsEntry_DoNotUseDefaultTypeInternal {
+  constexpr AutoAuthRule_ConditionsEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AutoAuthRule_ConditionsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    AutoAuthRule_ConditionsEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AutoAuthRule_ConditionsEntry_DoNotUseDefaultTypeInternal _AutoAuthRule_ConditionsEntry_DoNotUse_default_instance_;
+
 inline constexpr AuthorizationCancelResponse::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     ::_pbi::ConstantInitialized) noexcept
@@ -602,6 +979,38 @@ struct AuthorizationCancelRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AuthorizationCancelRequestDefaultTypeInternal _AuthorizationCancelRequest_default_instance_;
 
+inline constexpr AddAutoAuthRuleResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        error_message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        rule_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        success_{false} {}
+
+template <typename>
+constexpr AddAutoAuthRuleResponse::AddAutoAuthRuleResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(AddAutoAuthRuleResponse_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct AddAutoAuthRuleResponseDefaultTypeInternal {
+  constexpr AddAutoAuthRuleResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AddAutoAuthRuleResponseDefaultTypeInternal() {}
+  union {
+    AddAutoAuthRuleResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AddAutoAuthRuleResponseDefaultTypeInternal _AddAutoAuthRuleResponse_default_instance_;
+
 inline constexpr SyncResponse::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     ::_pbi::ConstantInitialized) noexcept
@@ -640,6 +1049,180 @@ struct SyncResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SyncResponseDefaultTypeInternal _SyncResponse_default_instance_;
+
+inline constexpr SecurityStatus::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        device_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        security_chip_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        level_{static_cast< ::openclaw::SecurityLevel >(0)},
+        biometric_available_{false},
+        secure_display_{false},
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        details_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::SecurityStatus,
+            PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus, _impl_.details_)>()
+        }
+        #else
+        details_ {}
+        #endif
+     {}
+
+template <typename>
+constexpr SecurityStatus::SecurityStatus(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(SecurityStatus_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct SecurityStatusDefaultTypeInternal {
+  constexpr SecurityStatusDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SecurityStatusDefaultTypeInternal() {}
+  union {
+    SecurityStatus _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SecurityStatusDefaultTypeInternal _SecurityStatus_default_instance_;
+
+inline constexpr NativeMessageResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        request_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        error_message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        type_{static_cast< ::openclaw::NativeMessageType >(0)},
+        success_{false},
+        timestamp_{::uint64_t{0u}},
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        data_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::NativeMessageResponse,
+            PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse, _impl_.data_)>()
+        }
+        #else
+        data_ {}
+        #endif
+     {}
+
+template <typename>
+constexpr NativeMessageResponse::NativeMessageResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(NativeMessageResponse_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct NativeMessageResponseDefaultTypeInternal {
+  constexpr NativeMessageResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NativeMessageResponseDefaultTypeInternal() {}
+  union {
+    NativeMessageResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NativeMessageResponseDefaultTypeInternal _NativeMessageResponse_default_instance_;
+
+inline constexpr NativeMessageRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        request_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        type_{static_cast< ::openclaw::NativeMessageType >(0)},
+        tab_id_{0u},
+        timestamp_{::uint64_t{0u}},
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        data_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::NativeMessageRequest,
+            PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest, _impl_.data_)>()
+        }
+        #else
+        data_ {}
+        #endif
+     {}
+
+template <typename>
+constexpr NativeMessageRequest::NativeMessageRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(NativeMessageRequest_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct NativeMessageRequestDefaultTypeInternal {
+  constexpr NativeMessageRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NativeMessageRequestDefaultTypeInternal() {}
+  union {
+    NativeMessageRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NativeMessageRequestDefaultTypeInternal _NativeMessageRequest_default_instance_;
+
+inline constexpr Event::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        event_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        device_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        timestamp_{::uint64_t{0u}},
+        type_{static_cast< ::openclaw::EventType >(0)},
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        data_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::Event,
+            PROTOBUF_FIELD_OFFSET(::openclaw::Event, _impl_.data_)>()
+        }
+        #else
+        data_ {}
+        #endif
+     {}
+
+template <typename>
+constexpr Event::Event(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(Event_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct EventDefaultTypeInternal {
+  constexpr EventDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~EventDefaultTypeInternal() {}
+  union {
+    Event _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EventDefaultTypeInternal _Event_default_instance_;
 
 inline constexpr DeviceRegisterRequest::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
@@ -964,6 +1547,52 @@ struct CapabilityDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CapabilityDefaultTypeInternal _Capability_default_instance_;
 
+inline constexpr AutoAuthRule::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        rule_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        service_url_pattern_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        max_auto_approvals_{0u},
+        auto_approvals_used_{0u},
+        created_time_{::uint64_t{0u}},
+        expires_time_{::uint64_t{0u}},
+        auto_approve_{false},
+        require_biometric_{false},
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        conditions_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::AutoAuthRule,
+            PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_.conditions_)>()
+        }
+        #else
+        conditions_ {}
+        #endif
+     {}
+
+template <typename>
+constexpr AutoAuthRule::AutoAuthRule(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(AutoAuthRule_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct AutoAuthRuleDefaultTypeInternal {
+  constexpr AutoAuthRuleDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AutoAuthRuleDefaultTypeInternal() {}
+  union {
+    AutoAuthRule _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AutoAuthRuleDefaultTypeInternal _AutoAuthRule_default_instance_;
+
 inline constexpr AuthorizationResponse::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     ::_pbi::ConstantInitialized) noexcept
@@ -996,6 +1625,40 @@ struct AuthorizationResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AuthorizationResponseDefaultTypeInternal _AuthorizationResponse_default_instance_;
+
+inline constexpr ListAutoAuthRulesResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+        rules_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::ListAutoAuthRulesResponse,
+            PROTOBUF_FIELD_OFFSET(::openclaw::ListAutoAuthRulesResponse, _impl_.rules_)>()
+        }
+        #else  // !PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+        rules_ {}
+        #endif
+     {}
+
+template <typename>
+constexpr ListAutoAuthRulesResponse::ListAutoAuthRulesResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(ListAutoAuthRulesResponse_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct ListAutoAuthRulesResponseDefaultTypeInternal {
+  constexpr ListAutoAuthRulesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ListAutoAuthRulesResponseDefaultTypeInternal() {}
+  union {
+    ListAutoAuthRulesResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListAutoAuthRulesResponseDefaultTypeInternal _ListAutoAuthRulesResponse_default_instance_;
 
 inline constexpr CapabilityDiscoveryResponse::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
@@ -1062,9 +1725,35 @@ struct AuthorizationRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AuthorizationRequestDefaultTypeInternal _AuthorizationRequest_default_instance_;
+
+inline constexpr AddAutoAuthRuleRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        rule_{nullptr} {}
+
+template <typename>
+constexpr AddAutoAuthRuleRequest::AddAutoAuthRuleRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(AddAutoAuthRuleRequest_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+struct AddAutoAuthRuleRequestDefaultTypeInternal {
+  constexpr AddAutoAuthRuleRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AddAutoAuthRuleRequestDefaultTypeInternal() {}
+  union {
+    AddAutoAuthRuleRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AddAutoAuthRuleRequestDefaultTypeInternal _AddAutoAuthRuleRequest_default_instance_;
 }  // namespace openclaw
 static const ::_pb::EnumDescriptor* PROTOBUF_NONNULL
-    file_level_enum_descriptors_openclaw_2eproto[4];
+    file_level_enum_descriptors_openclaw_2eproto[8];
 static constexpr const ::_pb::ServiceDescriptor* PROTOBUF_NONNULL* PROTOBUF_NULLABLE
     file_level_service_descriptors_openclaw_2eproto = nullptr;
 const ::uint32_t
@@ -1373,6 +2062,218 @@ const ::uint32_t
         1,
         0,
         2,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::KeyExchangeRequest, _impl_._has_bits_),
+        7, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::KeyExchangeRequest, _impl_.device_id_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::KeyExchangeRequest, _impl_.public_key_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::KeyExchangeRequest, _impl_.preferred_algorithm_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::KeyExchangeRequest, _impl_.timestamp_),
+        0,
+        1,
+        3,
+        2,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::KeyExchangeResponse, _impl_._has_bits_),
+        8, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::KeyExchangeResponse, _impl_.success_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::KeyExchangeResponse, _impl_.public_key_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::KeyExchangeResponse, _impl_.encrypted_session_key_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::KeyExchangeResponse, _impl_.algorithm_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::KeyExchangeResponse, _impl_.expires_time_),
+        2,
+        0,
+        1,
+        3,
+        4,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus_DetailsEntry_DoNotUse, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus_DetailsEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus_DetailsEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus, _impl_._has_bits_),
+        9, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus, _impl_.device_id_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus, _impl_.level_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus, _impl_.biometric_available_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus, _impl_.secure_display_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus, _impl_.security_chip_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus, _impl_.details_),
+        0,
+        2,
+        3,
+        4,
+        1,
+        5,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::BiometricAuthRequest, _impl_._has_bits_),
+        6, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::BiometricAuthRequest, _impl_.request_id_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::BiometricAuthRequest, _impl_.reason_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::BiometricAuthRequest, _impl_.timeout_seconds_),
+        0,
+        1,
+        2,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::BiometricAuthResponse, _impl_._has_bits_),
+        7, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::BiometricAuthResponse, _impl_.request_id_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::BiometricAuthResponse, _impl_.success_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::BiometricAuthResponse, _impl_.error_message_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::BiometricAuthResponse, _impl_.timestamp_),
+        0,
+        3,
+        1,
+        2,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest_DataEntry_DoNotUse, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest_DataEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest_DataEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest, _impl_._has_bits_),
+        9, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest, _impl_.type_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest, _impl_.request_id_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest, _impl_.tab_id_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest, _impl_.url_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest, _impl_.data_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest, _impl_.timestamp_),
+        2,
+        0,
+        3,
+        1,
+        5,
+        4,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse_DataEntry_DoNotUse, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse_DataEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse_DataEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse, _impl_._has_bits_),
+        9, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse, _impl_.type_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse, _impl_.request_id_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse, _impl_.success_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse, _impl_.data_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse, _impl_.error_message_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse, _impl_.timestamp_),
+        2,
+        0,
+        3,
+        5,
+        1,
+        4,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule_ConditionsEntry_DoNotUse, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule_ConditionsEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule_ConditionsEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_._has_bits_),
+        12, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_.rule_id_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_.service_url_pattern_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_.auto_approve_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_.max_auto_approvals_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_.auto_approvals_used_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_.created_time_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_.expires_time_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_.require_biometric_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_.conditions_),
+        0,
+        1,
+        6,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::AddAutoAuthRuleRequest, _impl_._has_bits_),
+        4, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::AddAutoAuthRuleRequest, _impl_.rule_),
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::AddAutoAuthRuleResponse, _impl_._has_bits_),
+        6, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::AddAutoAuthRuleResponse, _impl_.success_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::AddAutoAuthRuleResponse, _impl_.error_message_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::AddAutoAuthRuleResponse, _impl_.rule_id_),
+        2,
+        0,
+        1,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::RemoveAutoAuthRuleRequest, _impl_._has_bits_),
+        4, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::RemoveAutoAuthRuleRequest, _impl_.rule_id_),
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::RemoveAutoAuthRuleResponse, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::RemoveAutoAuthRuleResponse, _impl_.success_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::RemoveAutoAuthRuleResponse, _impl_.error_message_),
+        1,
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::ListAutoAuthRulesRequest, _impl_._has_bits_),
+        4, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::ListAutoAuthRulesRequest, _impl_.service_url_),
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::ListAutoAuthRulesResponse, _impl_._has_bits_),
+        4, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::ListAutoAuthRulesResponse, _impl_.rules_),
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::Event_DataEntry_DoNotUse, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::Event_DataEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::Event_DataEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::Event, _impl_._has_bits_),
+        9, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::Event, _impl_.event_id_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::Event, _impl_.type_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::Event, _impl_.device_id_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::Event, _impl_.timestamp_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::Event, _impl_.data_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::Event, _impl_.message_),
+        0,
+        4,
+        1,
+        3,
+        5,
+        2,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::SubscribeEventsRequest, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::SubscribeEventsRequest, _impl_.event_types_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::SubscribeEventsRequest, _impl_.subscriber_id_),
+        0,
+        1,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::openclaw::SubscribeEventsResponse, _impl_._has_bits_),
+        6, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::openclaw::SubscribeEventsResponse, _impl_.success_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::SubscribeEventsResponse, _impl_.error_message_),
+        PROTOBUF_FIELD_OFFSET(::openclaw::SubscribeEventsResponse, _impl_.subscription_id_),
+        2,
+        0,
+        1,
 };
 
 static const ::_pbi::MigrationSchema
@@ -1408,6 +2309,28 @@ static const ::_pbi::MigrationSchema
         {272, sizeof(::openclaw::SyncRequest)},
         {281, sizeof(::openclaw::SyncData)},
         {292, sizeof(::openclaw::SyncResponse)},
+        {303, sizeof(::openclaw::KeyExchangeRequest)},
+        {314, sizeof(::openclaw::KeyExchangeResponse)},
+        {327, sizeof(::openclaw::SecurityStatus_DetailsEntry_DoNotUse)},
+        {334, sizeof(::openclaw::SecurityStatus)},
+        {349, sizeof(::openclaw::BiometricAuthRequest)},
+        {358, sizeof(::openclaw::BiometricAuthResponse)},
+        {369, sizeof(::openclaw::NativeMessageRequest_DataEntry_DoNotUse)},
+        {376, sizeof(::openclaw::NativeMessageRequest)},
+        {391, sizeof(::openclaw::NativeMessageResponse_DataEntry_DoNotUse)},
+        {398, sizeof(::openclaw::NativeMessageResponse)},
+        {413, sizeof(::openclaw::AutoAuthRule_ConditionsEntry_DoNotUse)},
+        {420, sizeof(::openclaw::AutoAuthRule)},
+        {441, sizeof(::openclaw::AddAutoAuthRuleRequest)},
+        {446, sizeof(::openclaw::AddAutoAuthRuleResponse)},
+        {455, sizeof(::openclaw::RemoveAutoAuthRuleRequest)},
+        {460, sizeof(::openclaw::RemoveAutoAuthRuleResponse)},
+        {467, sizeof(::openclaw::ListAutoAuthRulesRequest)},
+        {472, sizeof(::openclaw::ListAutoAuthRulesResponse)},
+        {477, sizeof(::openclaw::Event_DataEntry_DoNotUse)},
+        {484, sizeof(::openclaw::Event)},
+        {499, sizeof(::openclaw::SubscribeEventsRequest)},
+        {506, sizeof(::openclaw::SubscribeEventsResponse)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::openclaw::_DeviceInfo_default_instance_._instance,
@@ -1441,6 +2364,28 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::openclaw::_SyncRequest_default_instance_._instance,
     &::openclaw::_SyncData_default_instance_._instance,
     &::openclaw::_SyncResponse_default_instance_._instance,
+    &::openclaw::_KeyExchangeRequest_default_instance_._instance,
+    &::openclaw::_KeyExchangeResponse_default_instance_._instance,
+    &::openclaw::_SecurityStatus_DetailsEntry_DoNotUse_default_instance_._instance,
+    &::openclaw::_SecurityStatus_default_instance_._instance,
+    &::openclaw::_BiometricAuthRequest_default_instance_._instance,
+    &::openclaw::_BiometricAuthResponse_default_instance_._instance,
+    &::openclaw::_NativeMessageRequest_DataEntry_DoNotUse_default_instance_._instance,
+    &::openclaw::_NativeMessageRequest_default_instance_._instance,
+    &::openclaw::_NativeMessageResponse_DataEntry_DoNotUse_default_instance_._instance,
+    &::openclaw::_NativeMessageResponse_default_instance_._instance,
+    &::openclaw::_AutoAuthRule_ConditionsEntry_DoNotUse_default_instance_._instance,
+    &::openclaw::_AutoAuthRule_default_instance_._instance,
+    &::openclaw::_AddAutoAuthRuleRequest_default_instance_._instance,
+    &::openclaw::_AddAutoAuthRuleResponse_default_instance_._instance,
+    &::openclaw::_RemoveAutoAuthRuleRequest_default_instance_._instance,
+    &::openclaw::_RemoveAutoAuthRuleResponse_default_instance_._instance,
+    &::openclaw::_ListAutoAuthRulesRequest_default_instance_._instance,
+    &::openclaw::_ListAutoAuthRulesResponse_default_instance_._instance,
+    &::openclaw::_Event_DataEntry_DoNotUse_default_instance_._instance,
+    &::openclaw::_Event_default_instance_._instance,
+    &::openclaw::_SubscribeEventsRequest_default_instance_._instance,
+    &::openclaw::_SubscribeEventsResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_openclaw_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -1529,54 +2474,155 @@ const char descriptor_table_protodef_openclaw_2eproto[] ABSL_ATTRIBUTE_SECTION_V
     " \001(\004\022\020\n\010checksum\030\004 \001(\t\"k\n\014SyncResponse\022\017"
     "\n\007success\030\001 \001(\010\022\025\n\rerror_message\030\002 \001(\t\022 "
     "\n\004data\030\003 \003(\0132\022.openclaw.SyncData\022\021\n\tsync"
-    "_time\030\004 \001(\004*\321\001\n\nDeviceType\022\033\n\027DEVICE_TYP"
-    "E_UNSPECIFIED\020\000\022\027\n\023DEVICE_TYPE_ANDROID\020\001"
-    "\022\023\n\017DEVICE_TYPE_IOS\020\002\022\027\n\023DEVICE_TYPE_WIN"
-    "DOWS\020\003\022\025\n\021DEVICE_TYPE_MACOS\020\004\022\025\n\021DEVICE_"
-    "TYPE_LINUX\020\005\022\027\n\023DEVICE_TYPE_HARMONY\020\006\022\030\n"
-    "\024DEVICE_TYPE_EMBEDDED\020\007*\304\001\n\016CredentialTy"
-    "pe\022\037\n\033CREDENTIAL_TYPE_UNSPECIFIED\020\000\022\034\n\030C"
-    "REDENTIAL_TYPE_PASSWORD\020\001\022\031\n\025CREDENTIAL_"
-    "TYPE_OAUTH\020\002\022\033\n\027CREDENTIAL_TYPE_API_KEY\020"
-    "\003\022\037\n\033CREDENTIAL_TYPE_CERTIFICATE\020\004\022\032\n\026CR"
-    "EDENTIAL_TYPE_COOKIE\020\005*\260\001\n\023Authorization"
-    "Status\022\033\n\027AUTH_STATUS_UNSPECIFIED\020\000\022\027\n\023A"
-    "UTH_STATUS_PENDING\020\001\022\030\n\024AUTH_STATUS_APPR"
-    "OVED\020\002\022\026\n\022AUTH_STATUS_DENIED\020\003\022\027\n\023AUTH_S"
-    "TATUS_TIMEOUT\020\004\022\030\n\024AUTH_STATUS_CANCELED\020"
-    "\005*\342\001\n\016CapabilityType\022\032\n\026CAPABILITY_UNSPE"
-    "CIFIED\020\000\022\"\n\036CAPABILITY_CREDENTIAL_PROVID"
-    "ER\020\001\022\035\n\031CAPABILITY_COOKIE_STORAGE\020\002\022\035\n\031C"
-    "APABILITY_BIOMETRIC_AUTH\020\003\022\035\n\031CAPABILITY"
-    "_SECURE_DISPLAY\020\004\022\032\n\026CAPABILITY_SENSOR_D"
-    "ATA\020\005\022\027\n\023CAPABILITY_LOCATION\020\0062\266\003\n\021Crede"
-    "ntialService\022J\n\rGetCredential\022\033.openclaw"
-    ".CredentialRequest\032\034.openclaw.Credential"
-    "Response\022V\n\017StoreCredential\022 .openclaw.C"
-    "redentialStoreRequest\032!.openclaw.Credent"
-    "ialStoreResponse\022Y\n\020DeleteCredential\022!.o"
-    "penclaw.CredentialDeleteRequest\032\".opencl"
-    "aw.CredentialDeleteResponse\022M\n\014UploadCoo"
-    "kie\022\035.openclaw.CookieUploadRequest\032\036.ope"
-    "nclaw.CookieUploadResponse\022S\n\016DownloadCo"
-    "okie\022\037.openclaw.CookieDownloadRequest\032 ."
-    "openclaw.CookieDownloadResponse2\323\002\n\rDevi"
-    "ceService\022S\n\016RegisterDevice\022\037.openclaw.D"
-    "eviceRegisterRequest\032 .openclaw.DeviceRe"
-    "gisterResponse\022>\n\tHeartbeat\022\031.openclaw.D"
-    "eviceHeartbeat\032\026.google.protobuf.Empty\022H"
-    "\n\013ListDevices\022\033.openclaw.DeviceListReque"
-    "st\032\034.openclaw.DeviceListResponse\022c\n\024Disc"
-    "overCapabilities\022$.openclaw.CapabilityDi"
-    "scoveryRequest\032%.openclaw.CapabilityDisc"
-    "overyResponse2\323\001\n\024AuthorizationService\022W"
-    "\n\024RequestAuthorization\022\036.openclaw.Author"
-    "izationRequest\032\037.openclaw.AuthorizationR"
-    "esponse\022b\n\023CancelAuthorization\022$.opencla"
-    "w.AuthorizationCancelRequest\032%.openclaw."
-    "AuthorizationCancelResponse2D\n\013SyncServi"
-    "ce\0225\n\004Sync\022\025.openclaw.SyncRequest\032\026.open"
-    "claw.SyncResponseb\006proto3"
+    "_time\030\004 \001(\004\"\212\001\n\022KeyExchangeRequest\022\021\n\tde"
+    "vice_id\030\001 \001(\t\022\022\n\npublic_key\030\002 \001(\014\022:\n\023pre"
+    "ferred_algorithm\030\003 \001(\0162\035.openclaw.Encryp"
+    "tionAlgorithm\022\021\n\ttimestamp\030\004 \001(\004\"\241\001\n\023Key"
+    "ExchangeResponse\022\017\n\007success\030\001 \001(\010\022\022\n\npub"
+    "lic_key\030\002 \001(\014\022\035\n\025encrypted_session_key\030\003"
+    " \001(\014\0220\n\talgorithm\030\004 \001(\0162\035.openclaw.Encry"
+    "ptionAlgorithm\022\024\n\014expires_time\030\005 \001(\004\"\377\001\n"
+    "\016SecurityStatus\022\021\n\tdevice_id\030\001 \001(\t\022&\n\005le"
+    "vel\030\002 \001(\0162\027.openclaw.SecurityLevel\022\033\n\023bi"
+    "ometric_available\030\003 \001(\010\022\026\n\016secure_displa"
+    "y\030\004 \001(\010\022\025\n\rsecurity_chip\030\005 \001(\t\0226\n\007detail"
+    "s\030\006 \003(\0132%.openclaw.SecurityStatus.Detail"
+    "sEntry\032.\n\014DetailsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v"
+    "alue\030\002 \001(\t:\0028\001\"S\n\024BiometricAuthRequest\022\022"
+    "\n\nrequest_id\030\001 \001(\t\022\016\n\006reason\030\002 \001(\t\022\027\n\017ti"
+    "meout_seconds\030\003 \001(\r\"f\n\025BiometricAuthResp"
+    "onse\022\022\n\nrequest_id\030\001 \001(\t\022\017\n\007success\030\002 \001("
+    "\010\022\025\n\rerror_message\030\003 \001(\t\022\021\n\ttimestamp\030\004 "
+    "\001(\004\"\352\001\n\024NativeMessageRequest\022)\n\004type\030\001 \001"
+    "(\0162\033.openclaw.NativeMessageType\022\022\n\nreque"
+    "st_id\030\002 \001(\t\022\016\n\006tab_id\030\003 \001(\r\022\013\n\003url\030\004 \001(\t"
+    "\0226\n\004data\030\005 \003(\0132(.openclaw.NativeMessageR"
+    "equest.DataEntry\022\021\n\ttimestamp\030\006 \001(\004\032+\n\tD"
+    "ataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001"
+    "\"\367\001\n\025NativeMessageResponse\022)\n\004type\030\001 \001(\016"
+    "2\033.openclaw.NativeMessageType\022\022\n\nrequest"
+    "_id\030\002 \001(\t\022\017\n\007success\030\003 \001(\010\0227\n\004data\030\004 \003(\013"
+    "2).openclaw.NativeMessageResponse.DataEn"
+    "try\022\025\n\rerror_message\030\005 \001(\t\022\021\n\ttimestamp\030"
+    "\006 \001(\004\032+\n\tDataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value"
+    "\030\002 \001(\t:\0028\001\"\301\002\n\014AutoAuthRule\022\017\n\007rule_id\030\001"
+    " \001(\t\022\033\n\023service_url_pattern\030\002 \001(\t\022\024\n\014aut"
+    "o_approve\030\003 \001(\010\022\032\n\022max_auto_approvals\030\004 "
+    "\001(\r\022\033\n\023auto_approvals_used\030\005 \001(\r\022\024\n\014crea"
+    "ted_time\030\006 \001(\004\022\024\n\014expires_time\030\007 \001(\004\022\031\n\021"
+    "require_biometric\030\010 \001(\010\022:\n\nconditions\030\t "
+    "\003(\0132&.openclaw.AutoAuthRule.ConditionsEn"
+    "try\0321\n\017ConditionsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v"
+    "alue\030\002 \001(\t:\0028\001\">\n\026AddAutoAuthRuleRequest"
+    "\022$\n\004rule\030\001 \001(\0132\026.openclaw.AutoAuthRule\"R"
+    "\n\027AddAutoAuthRuleResponse\022\017\n\007success\030\001 \001"
+    "(\010\022\025\n\rerror_message\030\002 \001(\t\022\017\n\007rule_id\030\003 \001"
+    "(\t\",\n\031RemoveAutoAuthRuleRequest\022\017\n\007rule_"
+    "id\030\001 \001(\t\"D\n\032RemoveAutoAuthRuleResponse\022\017"
+    "\n\007success\030\001 \001(\010\022\025\n\rerror_message\030\002 \001(\t\"/"
+    "\n\030ListAutoAuthRulesRequest\022\023\n\013service_ur"
+    "l\030\001 \001(\t\"B\n\031ListAutoAuthRulesResponse\022%\n\005"
+    "rules\030\001 \003(\0132\026.openclaw.AutoAuthRule\"\311\001\n\005"
+    "Event\022\020\n\010event_id\030\001 \001(\t\022!\n\004type\030\002 \001(\0162\023."
+    "openclaw.EventType\022\021\n\tdevice_id\030\003 \001(\t\022\021\n"
+    "\ttimestamp\030\004 \001(\004\022\'\n\004data\030\005 \003(\0132\031.opencla"
+    "w.Event.DataEntry\022\017\n\007message\030\006 \001(\t\032+\n\tDa"
+    "taEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\""
+    "Y\n\026SubscribeEventsRequest\022(\n\013event_types"
+    "\030\001 \003(\0162\023.openclaw.EventType\022\025\n\rsubscribe"
+    "r_id\030\002 \001(\t\"Z\n\027SubscribeEventsResponse\022\017\n"
+    "\007success\030\001 \001(\010\022\025\n\rerror_message\030\002 \001(\t\022\027\n"
+    "\017subscription_id\030\003 \001(\t*\321\001\n\nDeviceType\022\033\n"
+    "\027DEVICE_TYPE_UNSPECIFIED\020\000\022\027\n\023DEVICE_TYP"
+    "E_ANDROID\020\001\022\023\n\017DEVICE_TYPE_IOS\020\002\022\027\n\023DEVI"
+    "CE_TYPE_WINDOWS\020\003\022\025\n\021DEVICE_TYPE_MACOS\020\004"
+    "\022\025\n\021DEVICE_TYPE_LINUX\020\005\022\027\n\023DEVICE_TYPE_H"
+    "ARMONY\020\006\022\030\n\024DEVICE_TYPE_EMBEDDED\020\007*\304\001\n\016C"
+    "redentialType\022\037\n\033CREDENTIAL_TYPE_UNSPECI"
+    "FIED\020\000\022\034\n\030CREDENTIAL_TYPE_PASSWORD\020\001\022\031\n\025"
+    "CREDENTIAL_TYPE_OAUTH\020\002\022\033\n\027CREDENTIAL_TY"
+    "PE_API_KEY\020\003\022\037\n\033CREDENTIAL_TYPE_CERTIFIC"
+    "ATE\020\004\022\032\n\026CREDENTIAL_TYPE_COOKIE\020\005*\260\001\n\023Au"
+    "thorizationStatus\022\033\n\027AUTH_STATUS_UNSPECI"
+    "FIED\020\000\022\027\n\023AUTH_STATUS_PENDING\020\001\022\030\n\024AUTH_"
+    "STATUS_APPROVED\020\002\022\026\n\022AUTH_STATUS_DENIED\020"
+    "\003\022\027\n\023AUTH_STATUS_TIMEOUT\020\004\022\030\n\024AUTH_STATU"
+    "S_CANCELED\020\005*\342\001\n\016CapabilityType\022\032\n\026CAPAB"
+    "ILITY_UNSPECIFIED\020\000\022\"\n\036CAPABILITY_CREDEN"
+    "TIAL_PROVIDER\020\001\022\035\n\031CAPABILITY_COOKIE_STO"
+    "RAGE\020\002\022\035\n\031CAPABILITY_BIOMETRIC_AUTH\020\003\022\035\n"
+    "\031CAPABILITY_SECURE_DISPLAY\020\004\022\032\n\026CAPABILI"
+    "TY_SENSOR_DATA\020\005\022\027\n\023CAPABILITY_LOCATION\020"
+    "\006*\210\001\n\023EncryptionAlgorithm\022\032\n\026ENCRYPTION_"
+    "UNSPECIFIED\020\000\022\032\n\026ENCRYPTION_AES_256_GCM\020"
+    "\001\022 \n\034ENCRYPTION_CHACHA20_POLY1305\020\002\022\027\n\023E"
+    "NCRYPTION_RSA_OAEP\020\003*\244\001\n\rSecurityLevel\022\036"
+    "\n\032SECURITY_LEVEL_UNSPECIFIED\020\000\022\033\n\027SECURI"
+    "TY_LEVEL_SOFTWARE\020\001\022\033\n\027SECURITY_LEVEL_HA"
+    "RDWARE\020\002\022\026\n\022SECURITY_LEVEL_TEE\020\003\022!\n\035SECU"
+    "RITY_LEVEL_SECURE_ELEMENT\020\004*\212\002\n\021NativeMe"
+    "ssageType\022\032\n\026NATIVE_MSG_UNSPECIFIED\020\000\022!\n"
+    "\035NATIVE_MSG_CREDENTIAL_REQUEST\020\001\022\"\n\036NATI"
+    "VE_MSG_CREDENTIAL_RESPONSE\020\002\022\033\n\027NATIVE_M"
+    "SG_COOKIE_STORE\020\003\022\036\n\032NATIVE_MSG_COOKIE_R"
+    "ETRIEVE\020\004\022\025\n\021NATIVE_MSG_STATUS\020\005\022\024\n\020NATI"
+    "VE_MSG_ERROR\020\006\022\023\n\017NATIVE_MSG_PING\020\007\022\023\n\017N"
+    "ATIVE_MSG_PONG\020\010*\203\002\n\tEventType\022\025\n\021EVENT_"
+    "UNSPECIFIED\020\000\022\032\n\026EVENT_DEVICE_CONNECTED\020"
+    "\001\022\035\n\031EVENT_DEVICE_DISCONNECTED\020\002\022\036\n\032EVEN"
+    "T_CREDENTIAL_REQUESTED\020\003\022\034\n\030EVENT_CREDEN"
+    "TIAL_GRANTED\020\004\022\033\n\027EVENT_CREDENTIAL_DENIE"
+    "D\020\005\022\030\n\024EVENT_SECURITY_ALERT\020\006\022\030\n\024EVENT_S"
+    "YNC_COMPLETED\020\007\022\025\n\021EVENT_SYNC_FAILED\020\0102\266"
+    "\003\n\021CredentialService\022J\n\rGetCredential\022\033."
+    "openclaw.CredentialRequest\032\034.openclaw.Cr"
+    "edentialResponse\022V\n\017StoreCredential\022 .op"
+    "enclaw.CredentialStoreRequest\032!.openclaw"
+    ".CredentialStoreResponse\022Y\n\020DeleteCreden"
+    "tial\022!.openclaw.CredentialDeleteRequest\032"
+    "\".openclaw.CredentialDeleteResponse\022M\n\014U"
+    "ploadCookie\022\035.openclaw.CookieUploadReque"
+    "st\032\036.openclaw.CookieUploadResponse\022S\n\016Do"
+    "wnloadCookie\022\037.openclaw.CookieDownloadRe"
+    "quest\032 .openclaw.CookieDownloadResponse2"
+    "\323\002\n\rDeviceService\022S\n\016RegisterDevice\022\037.op"
+    "enclaw.DeviceRegisterRequest\032 .openclaw."
+    "DeviceRegisterResponse\022>\n\tHeartbeat\022\031.op"
+    "enclaw.DeviceHeartbeat\032\026.google.protobuf"
+    ".Empty\022H\n\013ListDevices\022\033.openclaw.DeviceL"
+    "istRequest\032\034.openclaw.DeviceListResponse"
+    "\022c\n\024DiscoverCapabilities\022$.openclaw.Capa"
+    "bilityDiscoveryRequest\032%.openclaw.Capabi"
+    "lityDiscoveryResponse2\323\001\n\024AuthorizationS"
+    "ervice\022W\n\024RequestAuthorization\022\036.opencla"
+    "w.AuthorizationRequest\032\037.openclaw.Author"
+    "izationResponse\022b\n\023CancelAuthorization\022$"
+    ".openclaw.AuthorizationCancelRequest\032%.o"
+    "penclaw.AuthorizationCancelResponse2D\n\013S"
+    "yncService\0225\n\004Sync\022\025.openclaw.SyncReques"
+    "t\032\026.openclaw.SyncResponse2\366\001\n\017SecuritySe"
+    "rvice\022J\n\013KeyExchange\022\034.openclaw.KeyExcha"
+    "ngeRequest\032\035.openclaw.KeyExchangeRespons"
+    "e\022E\n\021GetSecurityStatus\022\026.google.protobuf"
+    ".Empty\032\030.openclaw.SecurityStatus\022P\n\rBiom"
+    "etricAuth\022\036.openclaw.BiometricAuthReques"
+    "t\032\037.openclaw.BiometricAuthResponse2\242\001\n\026N"
+    "ativeMessagingService\022P\n\rHandleMessage\022\036"
+    ".openclaw.NativeMessageRequest\032\037.opencla"
+    "w.NativeMessageResponse\0226\n\004Ping\022\026.google"
+    ".protobuf.Empty\032\026.google.protobuf.Empty2"
+    "\224\002\n\023AutoAuthRuleService\022N\n\007AddRule\022 .ope"
+    "nclaw.AddAutoAuthRuleRequest\032!.openclaw."
+    "AddAutoAuthRuleResponse\022W\n\nRemoveRule\022#."
+    "openclaw.RemoveAutoAuthRuleRequest\032$.ope"
+    "nclaw.RemoveAutoAuthRuleResponse\022T\n\tList"
+    "Rules\022\".openclaw.ListAutoAuthRulesReques"
+    "t\032#.openclaw.ListAutoAuthRulesResponse2\245"
+    "\001\n\014EventService\022P\n\tSubscribe\022 .openclaw."
+    "SubscribeEventsRequest\032!.openclaw.Subscr"
+    "ibeEventsResponse\022C\n\014StreamEvents\022 .open"
+    "claw.SubscribeEventsRequest\032\017.openclaw.E"
+    "vent0\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_openclaw_2eproto_deps[1] = {
@@ -1586,13 +2632,13 @@ static ::absl::once_flag descriptor_table_openclaw_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_openclaw_2eproto = {
     false,
     false,
-    5305,
+    9334,
     descriptor_table_protodef_openclaw_2eproto,
     "openclaw.proto",
     &descriptor_table_openclaw_2eproto_once,
     descriptor_table_openclaw_2eproto_deps,
     1,
-    31,
+    53,
     schemas,
     file_default_instances,
     TableStruct_openclaw_2eproto::offsets,
@@ -1628,6 +2674,34 @@ CapabilityType_descriptor() {
 }
 PROTOBUF_CONSTINIT const uint32_t CapabilityType_internal_data_[] = {
     458752u, 0u, };
+[[nodiscard]] const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL
+EncryptionAlgorithm_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_openclaw_2eproto);
+  return file_level_enum_descriptors_openclaw_2eproto[4];
+}
+PROTOBUF_CONSTINIT const uint32_t EncryptionAlgorithm_internal_data_[] = {
+    262144u, 0u, };
+[[nodiscard]] const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL
+SecurityLevel_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_openclaw_2eproto);
+  return file_level_enum_descriptors_openclaw_2eproto[5];
+}
+PROTOBUF_CONSTINIT const uint32_t SecurityLevel_internal_data_[] = {
+    327680u, 0u, };
+[[nodiscard]] const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL
+NativeMessageType_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_openclaw_2eproto);
+  return file_level_enum_descriptors_openclaw_2eproto[6];
+}
+PROTOBUF_CONSTINIT const uint32_t NativeMessageType_internal_data_[] = {
+    589824u, 0u, };
+[[nodiscard]] const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL
+EventType_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_openclaw_2eproto);
+  return file_level_enum_descriptors_openclaw_2eproto[7];
+}
+PROTOBUF_CONSTINIT const uint32_t EventType_internal_data_[] = {
+    589824u, 0u, };
 // ===================================================================
 
 class DeviceInfo::_Internal {
@@ -12613,6 +13687,7226 @@ void SyncResponse::InternalSwap(SyncResponse* PROTOBUF_RESTRICT PROTOBUF_NONNULL
 }
 
 ::google::protobuf::Metadata SyncResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class KeyExchangeRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<KeyExchangeRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_._has_bits_);
+};
+
+KeyExchangeRequest::KeyExchangeRequest(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, KeyExchangeRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.KeyExchangeRequest)
+}
+PROTOBUF_NDEBUG_INLINE KeyExchangeRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::KeyExchangeRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        device_id_(arena, from.device_id_),
+        public_key_(arena, from.public_key_) {}
+
+KeyExchangeRequest::KeyExchangeRequest(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const KeyExchangeRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, KeyExchangeRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  KeyExchangeRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, timestamp_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, timestamp_),
+           offsetof(Impl_, preferred_algorithm_) -
+               offsetof(Impl_, timestamp_) +
+               sizeof(Impl_::preferred_algorithm_));
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.KeyExchangeRequest)
+}
+PROTOBUF_NDEBUG_INLINE KeyExchangeRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        device_id_(arena),
+        public_key_(arena) {}
+
+inline void KeyExchangeRequest::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, timestamp_),
+           0,
+           offsetof(Impl_, preferred_algorithm_) -
+               offsetof(Impl_, timestamp_) +
+               sizeof(Impl_::preferred_algorithm_));
+}
+KeyExchangeRequest::~KeyExchangeRequest() {
+  // @@protoc_insertion_point(destructor:openclaw.KeyExchangeRequest)
+  SharedDtor(*this);
+}
+inline void KeyExchangeRequest::SharedDtor(MessageLite& self) {
+  KeyExchangeRequest& this_ = static_cast<KeyExchangeRequest&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.device_id_.Destroy();
+  this_._impl_.public_key_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL KeyExchangeRequest::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) KeyExchangeRequest(arena);
+}
+constexpr auto KeyExchangeRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(KeyExchangeRequest),
+                                            alignof(KeyExchangeRequest));
+}
+constexpr auto KeyExchangeRequest::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_KeyExchangeRequest_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &KeyExchangeRequest::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<KeyExchangeRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &KeyExchangeRequest::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<KeyExchangeRequest>(), &KeyExchangeRequest::ByteSizeLong,
+              &KeyExchangeRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_._cached_size_),
+          false,
+      },
+      &KeyExchangeRequest::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull KeyExchangeRequest_class_data_ =
+        KeyExchangeRequest::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+KeyExchangeRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&KeyExchangeRequest_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(KeyExchangeRequest_class_data_.tc_table);
+  return KeyExchangeRequest_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 0, 45, 2>
+KeyExchangeRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    KeyExchangeRequest_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::KeyExchangeRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // uint64 timestamp = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(KeyExchangeRequest, _impl_.timestamp_), 2>(),
+     {32, 2, 0,
+      PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_.timestamp_)}},
+    // string device_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_.device_id_)}},
+    // bytes public_key = 2;
+    {::_pbi::TcParser::FastBS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_.public_key_)}},
+    // .openclaw.EncryptionAlgorithm preferred_algorithm = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(KeyExchangeRequest, _impl_.preferred_algorithm_), 3>(),
+     {24, 3, 0,
+      PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_.preferred_algorithm_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string device_id = 1;
+    {PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_.device_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bytes public_key = 2;
+    {PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_.public_key_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kBytes | ::_fl::kRepAString)},
+    // .openclaw.EncryptionAlgorithm preferred_algorithm = 3;
+    {PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_.preferred_algorithm_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
+    // uint64 timestamp = 4;
+    {PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_.timestamp_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+  }},
+  // no aux_entries
+  {{
+    "\33\11\0\0\0\0\0\0"
+    "openclaw.KeyExchangeRequest"
+    "device_id"
+  }},
+};
+PROTOBUF_NOINLINE void KeyExchangeRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.KeyExchangeRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.device_id_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.public_key_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000000cU)) {
+    ::memset(&_impl_.timestamp_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.preferred_algorithm_) -
+        reinterpret_cast<char*>(&_impl_.timestamp_)) + sizeof(_impl_.preferred_algorithm_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL KeyExchangeRequest::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const KeyExchangeRequest& this_ = static_cast<const KeyExchangeRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL KeyExchangeRequest::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const KeyExchangeRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.KeyExchangeRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string device_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_device_id().empty()) {
+      const ::std::string& _s = this_._internal_device_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.KeyExchangeRequest.device_id");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // bytes public_key = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_public_key().empty()) {
+      const ::std::string& _s = this_._internal_public_key();
+      target = stream->WriteBytesMaybeAliased(2, _s, target);
+    }
+  }
+
+  // .openclaw.EncryptionAlgorithm preferred_algorithm = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_preferred_algorithm() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteEnumToArray(
+          3, this_._internal_preferred_algorithm(), target);
+    }
+  }
+
+  // uint64 timestamp = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_timestamp() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          4, this_._internal_timestamp(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.KeyExchangeRequest)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t KeyExchangeRequest::ByteSizeLong(const MessageLite& base) {
+  const KeyExchangeRequest& this_ = static_cast<const KeyExchangeRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t KeyExchangeRequest::ByteSizeLong() const {
+  const KeyExchangeRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.KeyExchangeRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000000fU)) {
+    // string device_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_device_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_device_id());
+      }
+    }
+    // bytes public_key = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_public_key().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                        this_._internal_public_key());
+      }
+    }
+    // uint64 timestamp = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_timestamp() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_timestamp());
+      }
+    }
+    // .openclaw.EncryptionAlgorithm preferred_algorithm = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_preferred_algorithm() != 0) {
+        total_size += 1 +
+                      ::_pbi::WireFormatLite::EnumSize(this_._internal_preferred_algorithm());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void KeyExchangeRequest::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<KeyExchangeRequest*>(&to_msg);
+  auto& from = static_cast<const KeyExchangeRequest&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.KeyExchangeRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000000fU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_device_id().empty()) {
+        _this->_internal_set_device_id(from._internal_device_id());
+      } else {
+        if (_this->_impl_.device_id_.IsDefault()) {
+          _this->_internal_set_device_id("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_public_key().empty()) {
+        _this->_internal_set_public_key(from._internal_public_key());
+      } else {
+        if (_this->_impl_.public_key_.IsDefault()) {
+          _this->_internal_set_public_key("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_timestamp() != 0) {
+        _this->_impl_.timestamp_ = from._impl_.timestamp_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_preferred_algorithm() != 0) {
+        _this->_impl_.preferred_algorithm_ = from._impl_.preferred_algorithm_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void KeyExchangeRequest::CopyFrom(const KeyExchangeRequest& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.KeyExchangeRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void KeyExchangeRequest::InternalSwap(KeyExchangeRequest* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.public_key_, &other->_impl_.public_key_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_.preferred_algorithm_)
+      + sizeof(KeyExchangeRequest::_impl_.preferred_algorithm_)
+      - PROTOBUF_FIELD_OFFSET(KeyExchangeRequest, _impl_.timestamp_)>(
+          reinterpret_cast<char*>(&_impl_.timestamp_),
+          reinterpret_cast<char*>(&other->_impl_.timestamp_));
+}
+
+::google::protobuf::Metadata KeyExchangeRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class KeyExchangeResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<KeyExchangeResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_._has_bits_);
+};
+
+KeyExchangeResponse::KeyExchangeResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, KeyExchangeResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.KeyExchangeResponse)
+}
+PROTOBUF_NDEBUG_INLINE KeyExchangeResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::KeyExchangeResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        public_key_(arena, from.public_key_),
+        encrypted_session_key_(arena, from.encrypted_session_key_) {}
+
+KeyExchangeResponse::KeyExchangeResponse(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const KeyExchangeResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, KeyExchangeResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  KeyExchangeResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, success_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, success_),
+           offsetof(Impl_, expires_time_) -
+               offsetof(Impl_, success_) +
+               sizeof(Impl_::expires_time_));
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.KeyExchangeResponse)
+}
+PROTOBUF_NDEBUG_INLINE KeyExchangeResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        public_key_(arena),
+        encrypted_session_key_(arena) {}
+
+inline void KeyExchangeResponse::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, success_),
+           0,
+           offsetof(Impl_, expires_time_) -
+               offsetof(Impl_, success_) +
+               sizeof(Impl_::expires_time_));
+}
+KeyExchangeResponse::~KeyExchangeResponse() {
+  // @@protoc_insertion_point(destructor:openclaw.KeyExchangeResponse)
+  SharedDtor(*this);
+}
+inline void KeyExchangeResponse::SharedDtor(MessageLite& self) {
+  KeyExchangeResponse& this_ = static_cast<KeyExchangeResponse&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.public_key_.Destroy();
+  this_._impl_.encrypted_session_key_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL KeyExchangeResponse::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) KeyExchangeResponse(arena);
+}
+constexpr auto KeyExchangeResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(KeyExchangeResponse),
+                                            alignof(KeyExchangeResponse));
+}
+constexpr auto KeyExchangeResponse::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_KeyExchangeResponse_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &KeyExchangeResponse::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<KeyExchangeResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &KeyExchangeResponse::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<KeyExchangeResponse>(), &KeyExchangeResponse::ByteSizeLong,
+              &KeyExchangeResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_._cached_size_),
+          false,
+      },
+      &KeyExchangeResponse::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull KeyExchangeResponse_class_data_ =
+        KeyExchangeResponse::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+KeyExchangeResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&KeyExchangeResponse_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(KeyExchangeResponse_class_data_.tc_table);
+  return KeyExchangeResponse_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 0, 0, 2>
+KeyExchangeResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    KeyExchangeResponse_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::KeyExchangeResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // bool success = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(KeyExchangeResponse, _impl_.success_), 2>(),
+     {8, 2, 0,
+      PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_.success_)}},
+    // bytes public_key = 2;
+    {::_pbi::TcParser::FastBS1,
+     {18, 0, 0,
+      PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_.public_key_)}},
+    // bytes encrypted_session_key = 3;
+    {::_pbi::TcParser::FastBS1,
+     {26, 1, 0,
+      PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_.encrypted_session_key_)}},
+    // .openclaw.EncryptionAlgorithm algorithm = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(KeyExchangeResponse, _impl_.algorithm_), 3>(),
+     {32, 3, 0,
+      PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_.algorithm_)}},
+    // uint64 expires_time = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(KeyExchangeResponse, _impl_.expires_time_), 4>(),
+     {40, 4, 0,
+      PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_.expires_time_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bool success = 1;
+    {PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_.success_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bytes public_key = 2;
+    {PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_.public_key_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kBytes | ::_fl::kRepAString)},
+    // bytes encrypted_session_key = 3;
+    {PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_.encrypted_session_key_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kBytes | ::_fl::kRepAString)},
+    // .openclaw.EncryptionAlgorithm algorithm = 4;
+    {PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_.algorithm_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
+    // uint64 expires_time = 5;
+    {PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_.expires_time_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void KeyExchangeResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.KeyExchangeResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.public_key_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.encrypted_session_key_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000001cU)) {
+    ::memset(&_impl_.success_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.expires_time_) -
+        reinterpret_cast<char*>(&_impl_.success_)) + sizeof(_impl_.expires_time_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL KeyExchangeResponse::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const KeyExchangeResponse& this_ = static_cast<const KeyExchangeResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL KeyExchangeResponse::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const KeyExchangeResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.KeyExchangeResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // bool success = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_success() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          1, this_._internal_success(), target);
+    }
+  }
+
+  // bytes public_key = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_public_key().empty()) {
+      const ::std::string& _s = this_._internal_public_key();
+      target = stream->WriteBytesMaybeAliased(2, _s, target);
+    }
+  }
+
+  // bytes encrypted_session_key = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_encrypted_session_key().empty()) {
+      const ::std::string& _s = this_._internal_encrypted_session_key();
+      target = stream->WriteBytesMaybeAliased(3, _s, target);
+    }
+  }
+
+  // .openclaw.EncryptionAlgorithm algorithm = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_algorithm() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteEnumToArray(
+          4, this_._internal_algorithm(), target);
+    }
+  }
+
+  // uint64 expires_time = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (this_._internal_expires_time() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          5, this_._internal_expires_time(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.KeyExchangeResponse)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t KeyExchangeResponse::ByteSizeLong(const MessageLite& base) {
+  const KeyExchangeResponse& this_ = static_cast<const KeyExchangeResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t KeyExchangeResponse::ByteSizeLong() const {
+  const KeyExchangeResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.KeyExchangeResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000001fU)) {
+    // bytes public_key = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_public_key().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                        this_._internal_public_key());
+      }
+    }
+    // bytes encrypted_session_key = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_encrypted_session_key().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                        this_._internal_encrypted_session_key());
+      }
+    }
+    // bool success = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_success() != 0) {
+        total_size += 2;
+      }
+    }
+    // .openclaw.EncryptionAlgorithm algorithm = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_algorithm() != 0) {
+        total_size += 1 +
+                      ::_pbi::WireFormatLite::EnumSize(this_._internal_algorithm());
+      }
+    }
+    // uint64 expires_time = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (this_._internal_expires_time() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_expires_time());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void KeyExchangeResponse::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<KeyExchangeResponse*>(&to_msg);
+  auto& from = static_cast<const KeyExchangeResponse&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.KeyExchangeResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000001fU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_public_key().empty()) {
+        _this->_internal_set_public_key(from._internal_public_key());
+      } else {
+        if (_this->_impl_.public_key_.IsDefault()) {
+          _this->_internal_set_public_key("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_encrypted_session_key().empty()) {
+        _this->_internal_set_encrypted_session_key(from._internal_encrypted_session_key());
+      } else {
+        if (_this->_impl_.encrypted_session_key_.IsDefault()) {
+          _this->_internal_set_encrypted_session_key("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_success() != 0) {
+        _this->_impl_.success_ = from._impl_.success_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_algorithm() != 0) {
+        _this->_impl_.algorithm_ = from._impl_.algorithm_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (from._internal_expires_time() != 0) {
+        _this->_impl_.expires_time_ = from._impl_.expires_time_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void KeyExchangeResponse::CopyFrom(const KeyExchangeResponse& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.KeyExchangeResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void KeyExchangeResponse::InternalSwap(KeyExchangeResponse* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.public_key_, &other->_impl_.public_key_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.encrypted_session_key_, &other->_impl_.encrypted_session_key_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_.expires_time_)
+      + sizeof(KeyExchangeResponse::_impl_.expires_time_)
+      - PROTOBUF_FIELD_OFFSET(KeyExchangeResponse, _impl_.success_)>(
+          reinterpret_cast<char*>(&_impl_.success_),
+          reinterpret_cast<char*>(&other->_impl_.success_));
+}
+
+::google::protobuf::Metadata KeyExchangeResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+SecurityStatus_DetailsEntry_DoNotUse::SecurityStatus_DetailsEntry_DoNotUse()
+    : SuperType(SecurityStatus_DetailsEntry_DoNotUse_class_data_.base()) {}
+SecurityStatus_DetailsEntry_DoNotUse::SecurityStatus_DetailsEntry_DoNotUse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+    : SuperType(arena, SecurityStatus_DetailsEntry_DoNotUse_class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+SecurityStatus_DetailsEntry_DoNotUse::SecurityStatus_DetailsEntry_DoNotUse() : SuperType() {}
+SecurityStatus_DetailsEntry_DoNotUse::SecurityStatus_DetailsEntry_DoNotUse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+inline void* PROTOBUF_NONNULL SecurityStatus_DetailsEntry_DoNotUse::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) SecurityStatus_DetailsEntry_DoNotUse(arena);
+}
+constexpr auto SecurityStatus_DetailsEntry_DoNotUse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(SecurityStatus_DetailsEntry_DoNotUse),
+                                            alignof(SecurityStatus_DetailsEntry_DoNotUse));
+}
+constexpr auto SecurityStatus_DetailsEntry_DoNotUse::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_SecurityStatus_DetailsEntry_DoNotUse_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &SecurityStatus_DetailsEntry_DoNotUse::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<SecurityStatus_DetailsEntry_DoNotUse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &SecurityStatus_DetailsEntry_DoNotUse::SharedDtor,
+          static_cast<void (::google::protobuf::MessageLite::*)()>(&SecurityStatus_DetailsEntry_DoNotUse::ClearImpl),
+              ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+              ,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(SecurityStatus_DetailsEntry_DoNotUse, _impl_._cached_size_),
+          false,
+      },
+      &SecurityStatus_DetailsEntry_DoNotUse::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull SecurityStatus_DetailsEntry_DoNotUse_class_data_ =
+        SecurityStatus_DetailsEntry_DoNotUse::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+SecurityStatus_DetailsEntry_DoNotUse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&SecurityStatus_DetailsEntry_DoNotUse_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(SecurityStatus_DetailsEntry_DoNotUse_class_data_.tc_table);
+  return SecurityStatus_DetailsEntry_DoNotUse_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 53, 2>
+SecurityStatus_DetailsEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(SecurityStatus_DetailsEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    SecurityStatus_DetailsEntry_DoNotUse_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::SecurityStatus_DetailsEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string value = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(SecurityStatus_DetailsEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(SecurityStatus_DetailsEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1;
+    {PROTOBUF_FIELD_OFFSET(SecurityStatus_DetailsEntry_DoNotUse, _impl_.key_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string value = 2;
+    {PROTOBUF_FIELD_OFFSET(SecurityStatus_DetailsEntry_DoNotUse, _impl_.value_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\44\3\5\0\0\0\0\0"
+    "openclaw.SecurityStatus.DetailsEntry"
+    "key"
+    "value"
+  }},
+};
+// ===================================================================
+
+class SecurityStatus::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<SecurityStatus>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_._has_bits_);
+};
+
+SecurityStatus::SecurityStatus(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, SecurityStatus_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.SecurityStatus)
+}
+PROTOBUF_NDEBUG_INLINE SecurityStatus::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::SecurityStatus& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        device_id_(arena, from.device_id_),
+        security_chip_(arena, from.security_chip_),
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        details_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::SecurityStatus,
+            PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus, _impl_.details_)>()
+        , from.details_}
+        #else
+        details_ { visibility, arena, from.details_ }
+        #endif
+     {}
+
+SecurityStatus::SecurityStatus(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const SecurityStatus& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, SecurityStatus_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SecurityStatus* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, level_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, level_),
+           offsetof(Impl_, secure_display_) -
+               offsetof(Impl_, level_) +
+               sizeof(Impl_::secure_display_));
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.SecurityStatus)
+}
+PROTOBUF_NDEBUG_INLINE SecurityStatus::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        device_id_(arena),
+        security_chip_(arena),
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        details_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::SecurityStatus,
+            PROTOBUF_FIELD_OFFSET(::openclaw::SecurityStatus, _impl_.details_)>()
+        }
+        #else
+        details_ { visibility, arena }
+        #endif
+     {}
+
+inline void SecurityStatus::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, level_),
+           0,
+           offsetof(Impl_, secure_display_) -
+               offsetof(Impl_, level_) +
+               sizeof(Impl_::secure_display_));
+}
+SecurityStatus::~SecurityStatus() {
+  // @@protoc_insertion_point(destructor:openclaw.SecurityStatus)
+  SharedDtor(*this);
+}
+inline void SecurityStatus::SharedDtor(MessageLite& self) {
+  SecurityStatus& this_ = static_cast<SecurityStatus&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.device_id_.Destroy();
+  this_._impl_.security_chip_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL SecurityStatus::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) SecurityStatus(arena);
+}
+#ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto SecurityStatus::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(SecurityStatus),
+                                            alignof(SecurityStatus));
+}
+#else  // !PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto SecurityStatus::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.details_) +
+          decltype(SecurityStatus::_impl_.details_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(SecurityStatus), alignof(SecurityStatus), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&SecurityStatus::PlacementNew_,
+                                 sizeof(SecurityStatus),
+                                 alignof(SecurityStatus));
+  }
+}
+#endif
+constexpr auto SecurityStatus::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_SecurityStatus_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &SecurityStatus::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<SecurityStatus>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &SecurityStatus::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<SecurityStatus>(), &SecurityStatus::ByteSizeLong,
+              &SecurityStatus::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_._cached_size_),
+          false,
+      },
+      &SecurityStatus::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull SecurityStatus_class_data_ =
+        SecurityStatus::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+SecurityStatus::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&SecurityStatus_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(SecurityStatus_class_data_.tc_table);
+  return SecurityStatus_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 6, 1, 61, 2>
+SecurityStatus::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_._has_bits_),
+    0, // no _extensions_
+    6, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967232,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    SecurityStatus_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::SecurityStatus>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string device_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.device_id_)}},
+    // .openclaw.SecurityLevel level = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SecurityStatus, _impl_.level_), 2>(),
+     {16, 2, 0,
+      PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.level_)}},
+    // bool biometric_available = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(SecurityStatus, _impl_.biometric_available_), 3>(),
+     {24, 3, 0,
+      PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.biometric_available_)}},
+    // bool secure_display = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(SecurityStatus, _impl_.secure_display_), 4>(),
+     {32, 4, 0,
+      PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.secure_display_)}},
+    // string security_chip = 5;
+    {::_pbi::TcParser::FastUS1,
+     {42, 1, 0,
+      PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.security_chip_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string device_id = 1;
+    {PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.device_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .openclaw.SecurityLevel level = 2;
+    {PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.level_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
+    // bool biometric_available = 3;
+    {PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.biometric_available_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool secure_display = 4;
+    {PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.secure_display_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // string security_chip = 5;
+    {PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.security_chip_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // map<string, string> details = 6;
+    {PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.details_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+  }},
+  {{
+      {::_pbi::TcParser::GetMapAuxInfo(
+          1, 0, 9, 9, 0)},
+  }},
+  {{
+    "\27\11\0\0\0\15\7\0"
+    "openclaw.SecurityStatus"
+    "device_id"
+    "security_chip"
+    "details"
+  }},
+};
+PROTOBUF_NOINLINE void SecurityStatus::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.SecurityStatus)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.device_id_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.security_chip_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003cU)) {
+    ::memset(&_impl_.level_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.secure_display_) -
+        reinterpret_cast<char*>(&_impl_.level_)) + sizeof(_impl_.secure_display_));
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+      _impl_.details_.Clear();
+    }
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL SecurityStatus::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const SecurityStatus& this_ = static_cast<const SecurityStatus&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL SecurityStatus::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const SecurityStatus& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.SecurityStatus)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string device_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_device_id().empty()) {
+      const ::std::string& _s = this_._internal_device_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.SecurityStatus.device_id");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // .openclaw.SecurityLevel level = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_level() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteEnumToArray(
+          2, this_._internal_level(), target);
+    }
+  }
+
+  // bool biometric_available = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_biometric_available() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          3, this_._internal_biometric_available(), target);
+    }
+  }
+
+  // bool secure_display = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (this_._internal_secure_display() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          4, this_._internal_secure_display(), target);
+    }
+  }
+
+  // string security_chip = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_security_chip().empty()) {
+      const ::std::string& _s = this_._internal_security_chip();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.SecurityStatus.security_chip");
+      target = stream->WriteStringMaybeAliased(5, _s, target);
+    }
+  }
+
+  // map<string, string> details = 6;
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+    if (!this_._internal_details().empty()) {
+      using MapType = ::google::protobuf::Map<::std::string, ::std::string>;
+      using WireHelper = _pbi::MapEntryFuncs<::std::string, ::std::string,
+                                     _pbi::WireFormatLite::TYPE_STRING,
+                                     _pbi::WireFormatLite::TYPE_STRING>;
+      const auto& field = this_._internal_details();
+
+      if (stream->IsSerializationDeterministic() && field.size() > 1) {
+        for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+          target = WireHelper::InternalSerialize(
+              6, entry.first, entry.second, target, stream);
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.SecurityStatus.details");
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.SecurityStatus.details");
+        }
+      } else {
+        for (const auto& entry : field) {
+          target = WireHelper::InternalSerialize(
+              6, entry.first, entry.second, target, stream);
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.SecurityStatus.details");
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.SecurityStatus.details");
+        }
+      }
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.SecurityStatus)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t SecurityStatus::ByteSizeLong(const MessageLite& base) {
+  const SecurityStatus& this_ = static_cast<const SecurityStatus&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t SecurityStatus::ByteSizeLong() const {
+  const SecurityStatus& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.SecurityStatus)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003fU)) {
+    // string device_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_device_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_device_id());
+      }
+    }
+    // string security_chip = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_security_chip().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_security_chip());
+      }
+    }
+    // .openclaw.SecurityLevel level = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_level() != 0) {
+        total_size += 1 +
+                      ::_pbi::WireFormatLite::EnumSize(this_._internal_level());
+      }
+    }
+    // bool biometric_available = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_biometric_available() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool secure_display = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (this_._internal_secure_display() != 0) {
+        total_size += 2;
+      }
+    }
+    // map<string, string> details = 6;
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+      total_size +=
+          1 * ::google::protobuf::internal::FromIntSize(this_._internal_details_size());
+      for (const auto& entry : this_._internal_details()) {
+        total_size += _pbi::MapEntryFuncs<::std::string, ::std::string,
+                                       _pbi::WireFormatLite::TYPE_STRING,
+                                       _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void SecurityStatus::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<SecurityStatus*>(&to_msg);
+  auto& from = static_cast<const SecurityStatus&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.SecurityStatus)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003fU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_device_id().empty()) {
+        _this->_internal_set_device_id(from._internal_device_id());
+      } else {
+        if (_this->_impl_.device_id_.IsDefault()) {
+          _this->_internal_set_device_id("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_security_chip().empty()) {
+        _this->_internal_set_security_chip(from._internal_security_chip());
+      } else {
+        if (_this->_impl_.security_chip_.IsDefault()) {
+          _this->_internal_set_security_chip("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_level() != 0) {
+        _this->_impl_.level_ = from._impl_.level_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_biometric_available() != 0) {
+        _this->_impl_.biometric_available_ = from._impl_.biometric_available_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (from._internal_secure_display() != 0) {
+        _this->_impl_.secure_display_ = from._impl_.secure_display_;
+      }
+    }
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+      _this->_impl_.details_.MergeFrom(from._impl_.details_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void SecurityStatus::CopyFrom(const SecurityStatus& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.SecurityStatus)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SecurityStatus::InternalSwap(SecurityStatus* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.security_chip_, &other->_impl_.security_chip_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.secure_display_)
+      + sizeof(SecurityStatus::_impl_.secure_display_)
+      - PROTOBUF_FIELD_OFFSET(SecurityStatus, _impl_.level_)>(
+          reinterpret_cast<char*>(&_impl_.level_),
+          reinterpret_cast<char*>(&other->_impl_.level_));
+  _impl_.details_.InternalSwap(&other->_impl_.details_);
+}
+
+::google::protobuf::Metadata SecurityStatus::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class BiometricAuthRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<BiometricAuthRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(BiometricAuthRequest, _impl_._has_bits_);
+};
+
+BiometricAuthRequest::BiometricAuthRequest(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, BiometricAuthRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.BiometricAuthRequest)
+}
+PROTOBUF_NDEBUG_INLINE BiometricAuthRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::BiometricAuthRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        request_id_(arena, from.request_id_),
+        reason_(arena, from.reason_) {}
+
+BiometricAuthRequest::BiometricAuthRequest(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const BiometricAuthRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, BiometricAuthRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  BiometricAuthRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.timeout_seconds_ = from._impl_.timeout_seconds_;
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.BiometricAuthRequest)
+}
+PROTOBUF_NDEBUG_INLINE BiometricAuthRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        request_id_(arena),
+        reason_(arena) {}
+
+inline void BiometricAuthRequest::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.timeout_seconds_ = {};
+}
+BiometricAuthRequest::~BiometricAuthRequest() {
+  // @@protoc_insertion_point(destructor:openclaw.BiometricAuthRequest)
+  SharedDtor(*this);
+}
+inline void BiometricAuthRequest::SharedDtor(MessageLite& self) {
+  BiometricAuthRequest& this_ = static_cast<BiometricAuthRequest&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.request_id_.Destroy();
+  this_._impl_.reason_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL BiometricAuthRequest::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) BiometricAuthRequest(arena);
+}
+constexpr auto BiometricAuthRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(BiometricAuthRequest),
+                                            alignof(BiometricAuthRequest));
+}
+constexpr auto BiometricAuthRequest::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_BiometricAuthRequest_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &BiometricAuthRequest::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<BiometricAuthRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &BiometricAuthRequest::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<BiometricAuthRequest>(), &BiometricAuthRequest::ByteSizeLong,
+              &BiometricAuthRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(BiometricAuthRequest, _impl_._cached_size_),
+          false,
+      },
+      &BiometricAuthRequest::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull BiometricAuthRequest_class_data_ =
+        BiometricAuthRequest::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+BiometricAuthRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&BiometricAuthRequest_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(BiometricAuthRequest_class_data_.tc_table);
+  return BiometricAuthRequest_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 54, 2>
+BiometricAuthRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(BiometricAuthRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    BiometricAuthRequest_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::BiometricAuthRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string request_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(BiometricAuthRequest, _impl_.request_id_)}},
+    // string reason = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(BiometricAuthRequest, _impl_.reason_)}},
+    // uint32 timeout_seconds = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(BiometricAuthRequest, _impl_.timeout_seconds_), 2>(),
+     {24, 2, 0,
+      PROTOBUF_FIELD_OFFSET(BiometricAuthRequest, _impl_.timeout_seconds_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string request_id = 1;
+    {PROTOBUF_FIELD_OFFSET(BiometricAuthRequest, _impl_.request_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string reason = 2;
+    {PROTOBUF_FIELD_OFFSET(BiometricAuthRequest, _impl_.reason_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // uint32 timeout_seconds = 3;
+    {PROTOBUF_FIELD_OFFSET(BiometricAuthRequest, _impl_.timeout_seconds_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+    "\35\12\6\0\0\0\0\0"
+    "openclaw.BiometricAuthRequest"
+    "request_id"
+    "reason"
+  }},
+};
+PROTOBUF_NOINLINE void BiometricAuthRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.BiometricAuthRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.request_id_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.reason_.ClearNonDefaultToEmpty();
+    }
+  }
+  _impl_.timeout_seconds_ = 0u;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL BiometricAuthRequest::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const BiometricAuthRequest& this_ = static_cast<const BiometricAuthRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL BiometricAuthRequest::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const BiometricAuthRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.BiometricAuthRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string request_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_request_id().empty()) {
+      const ::std::string& _s = this_._internal_request_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.BiometricAuthRequest.request_id");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // string reason = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_reason().empty()) {
+      const ::std::string& _s = this_._internal_reason();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.BiometricAuthRequest.reason");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // uint32 timeout_seconds = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_timeout_seconds() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+          3, this_._internal_timeout_seconds(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.BiometricAuthRequest)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t BiometricAuthRequest::ByteSizeLong(const MessageLite& base) {
+  const BiometricAuthRequest& this_ = static_cast<const BiometricAuthRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t BiometricAuthRequest::ByteSizeLong() const {
+  const BiometricAuthRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.BiometricAuthRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    // string request_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_request_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_request_id());
+      }
+    }
+    // string reason = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_reason().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_reason());
+      }
+    }
+    // uint32 timeout_seconds = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_timeout_seconds() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+            this_._internal_timeout_seconds());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void BiometricAuthRequest::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<BiometricAuthRequest*>(&to_msg);
+  auto& from = static_cast<const BiometricAuthRequest&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.BiometricAuthRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_request_id().empty()) {
+        _this->_internal_set_request_id(from._internal_request_id());
+      } else {
+        if (_this->_impl_.request_id_.IsDefault()) {
+          _this->_internal_set_request_id("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_reason().empty()) {
+        _this->_internal_set_reason(from._internal_reason());
+      } else {
+        if (_this->_impl_.reason_.IsDefault()) {
+          _this->_internal_set_reason("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_timeout_seconds() != 0) {
+        _this->_impl_.timeout_seconds_ = from._impl_.timeout_seconds_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void BiometricAuthRequest::CopyFrom(const BiometricAuthRequest& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.BiometricAuthRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void BiometricAuthRequest::InternalSwap(BiometricAuthRequest* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.request_id_, &other->_impl_.request_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.reason_, &other->_impl_.reason_, arena);
+  swap(_impl_.timeout_seconds_, other->_impl_.timeout_seconds_);
+}
+
+::google::protobuf::Metadata BiometricAuthRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class BiometricAuthResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<BiometricAuthResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_._has_bits_);
+};
+
+BiometricAuthResponse::BiometricAuthResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, BiometricAuthResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.BiometricAuthResponse)
+}
+PROTOBUF_NDEBUG_INLINE BiometricAuthResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::BiometricAuthResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        request_id_(arena, from.request_id_),
+        error_message_(arena, from.error_message_) {}
+
+BiometricAuthResponse::BiometricAuthResponse(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const BiometricAuthResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, BiometricAuthResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  BiometricAuthResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, timestamp_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, timestamp_),
+           offsetof(Impl_, success_) -
+               offsetof(Impl_, timestamp_) +
+               sizeof(Impl_::success_));
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.BiometricAuthResponse)
+}
+PROTOBUF_NDEBUG_INLINE BiometricAuthResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        request_id_(arena),
+        error_message_(arena) {}
+
+inline void BiometricAuthResponse::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, timestamp_),
+           0,
+           offsetof(Impl_, success_) -
+               offsetof(Impl_, timestamp_) +
+               sizeof(Impl_::success_));
+}
+BiometricAuthResponse::~BiometricAuthResponse() {
+  // @@protoc_insertion_point(destructor:openclaw.BiometricAuthResponse)
+  SharedDtor(*this);
+}
+inline void BiometricAuthResponse::SharedDtor(MessageLite& self) {
+  BiometricAuthResponse& this_ = static_cast<BiometricAuthResponse&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.request_id_.Destroy();
+  this_._impl_.error_message_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL BiometricAuthResponse::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) BiometricAuthResponse(arena);
+}
+constexpr auto BiometricAuthResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(BiometricAuthResponse),
+                                            alignof(BiometricAuthResponse));
+}
+constexpr auto BiometricAuthResponse::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_BiometricAuthResponse_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &BiometricAuthResponse::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<BiometricAuthResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &BiometricAuthResponse::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<BiometricAuthResponse>(), &BiometricAuthResponse::ByteSizeLong,
+              &BiometricAuthResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_._cached_size_),
+          false,
+      },
+      &BiometricAuthResponse::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull BiometricAuthResponse_class_data_ =
+        BiometricAuthResponse::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+BiometricAuthResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&BiometricAuthResponse_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(BiometricAuthResponse_class_data_.tc_table);
+  return BiometricAuthResponse_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 0, 62, 2>
+BiometricAuthResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    BiometricAuthResponse_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::BiometricAuthResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // uint64 timestamp = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(BiometricAuthResponse, _impl_.timestamp_), 2>(),
+     {32, 2, 0,
+      PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_.timestamp_)}},
+    // string request_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_.request_id_)}},
+    // bool success = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(BiometricAuthResponse, _impl_.success_), 3>(),
+     {16, 3, 0,
+      PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_.success_)}},
+    // string error_message = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 1, 0,
+      PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_.error_message_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string request_id = 1;
+    {PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_.request_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool success = 2;
+    {PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_.success_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // string error_message = 3;
+    {PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_.error_message_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // uint64 timestamp = 4;
+    {PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_.timestamp_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+  }},
+  // no aux_entries
+  {{
+    "\36\12\0\15\0\0\0\0"
+    "openclaw.BiometricAuthResponse"
+    "request_id"
+    "error_message"
+  }},
+};
+PROTOBUF_NOINLINE void BiometricAuthResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.BiometricAuthResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.request_id_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.error_message_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000000cU)) {
+    ::memset(&_impl_.timestamp_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.success_) -
+        reinterpret_cast<char*>(&_impl_.timestamp_)) + sizeof(_impl_.success_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL BiometricAuthResponse::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const BiometricAuthResponse& this_ = static_cast<const BiometricAuthResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL BiometricAuthResponse::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const BiometricAuthResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.BiometricAuthResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string request_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_request_id().empty()) {
+      const ::std::string& _s = this_._internal_request_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.BiometricAuthResponse.request_id");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // bool success = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_success() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          2, this_._internal_success(), target);
+    }
+  }
+
+  // string error_message = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_error_message().empty()) {
+      const ::std::string& _s = this_._internal_error_message();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.BiometricAuthResponse.error_message");
+      target = stream->WriteStringMaybeAliased(3, _s, target);
+    }
+  }
+
+  // uint64 timestamp = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_timestamp() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          4, this_._internal_timestamp(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.BiometricAuthResponse)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t BiometricAuthResponse::ByteSizeLong(const MessageLite& base) {
+  const BiometricAuthResponse& this_ = static_cast<const BiometricAuthResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t BiometricAuthResponse::ByteSizeLong() const {
+  const BiometricAuthResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.BiometricAuthResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000000fU)) {
+    // string request_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_request_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_request_id());
+      }
+    }
+    // string error_message = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_error_message().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_error_message());
+      }
+    }
+    // uint64 timestamp = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_timestamp() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_timestamp());
+      }
+    }
+    // bool success = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_success() != 0) {
+        total_size += 2;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void BiometricAuthResponse::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<BiometricAuthResponse*>(&to_msg);
+  auto& from = static_cast<const BiometricAuthResponse&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.BiometricAuthResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000000fU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_request_id().empty()) {
+        _this->_internal_set_request_id(from._internal_request_id());
+      } else {
+        if (_this->_impl_.request_id_.IsDefault()) {
+          _this->_internal_set_request_id("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_error_message().empty()) {
+        _this->_internal_set_error_message(from._internal_error_message());
+      } else {
+        if (_this->_impl_.error_message_.IsDefault()) {
+          _this->_internal_set_error_message("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_timestamp() != 0) {
+        _this->_impl_.timestamp_ = from._impl_.timestamp_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_success() != 0) {
+        _this->_impl_.success_ = from._impl_.success_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void BiometricAuthResponse::CopyFrom(const BiometricAuthResponse& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.BiometricAuthResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void BiometricAuthResponse::InternalSwap(BiometricAuthResponse* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.request_id_, &other->_impl_.request_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.error_message_, &other->_impl_.error_message_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_.success_)
+      + sizeof(BiometricAuthResponse::_impl_.success_)
+      - PROTOBUF_FIELD_OFFSET(BiometricAuthResponse, _impl_.timestamp_)>(
+          reinterpret_cast<char*>(&_impl_.timestamp_),
+          reinterpret_cast<char*>(&other->_impl_.timestamp_));
+}
+
+::google::protobuf::Metadata BiometricAuthResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+NativeMessageRequest_DataEntry_DoNotUse::NativeMessageRequest_DataEntry_DoNotUse()
+    : SuperType(NativeMessageRequest_DataEntry_DoNotUse_class_data_.base()) {}
+NativeMessageRequest_DataEntry_DoNotUse::NativeMessageRequest_DataEntry_DoNotUse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+    : SuperType(arena, NativeMessageRequest_DataEntry_DoNotUse_class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+NativeMessageRequest_DataEntry_DoNotUse::NativeMessageRequest_DataEntry_DoNotUse() : SuperType() {}
+NativeMessageRequest_DataEntry_DoNotUse::NativeMessageRequest_DataEntry_DoNotUse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+inline void* PROTOBUF_NONNULL NativeMessageRequest_DataEntry_DoNotUse::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) NativeMessageRequest_DataEntry_DoNotUse(arena);
+}
+constexpr auto NativeMessageRequest_DataEntry_DoNotUse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(NativeMessageRequest_DataEntry_DoNotUse),
+                                            alignof(NativeMessageRequest_DataEntry_DoNotUse));
+}
+constexpr auto NativeMessageRequest_DataEntry_DoNotUse::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_NativeMessageRequest_DataEntry_DoNotUse_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &NativeMessageRequest_DataEntry_DoNotUse::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<NativeMessageRequest_DataEntry_DoNotUse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &NativeMessageRequest_DataEntry_DoNotUse::SharedDtor,
+          static_cast<void (::google::protobuf::MessageLite::*)()>(&NativeMessageRequest_DataEntry_DoNotUse::ClearImpl),
+              ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+              ,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(NativeMessageRequest_DataEntry_DoNotUse, _impl_._cached_size_),
+          false,
+      },
+      &NativeMessageRequest_DataEntry_DoNotUse::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull NativeMessageRequest_DataEntry_DoNotUse_class_data_ =
+        NativeMessageRequest_DataEntry_DoNotUse::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+NativeMessageRequest_DataEntry_DoNotUse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&NativeMessageRequest_DataEntry_DoNotUse_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(NativeMessageRequest_DataEntry_DoNotUse_class_data_.tc_table);
+  return NativeMessageRequest_DataEntry_DoNotUse_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 56, 2>
+NativeMessageRequest_DataEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(NativeMessageRequest_DataEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    NativeMessageRequest_DataEntry_DoNotUse_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::NativeMessageRequest_DataEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string value = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageRequest_DataEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageRequest_DataEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageRequest_DataEntry_DoNotUse, _impl_.key_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string value = 2;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageRequest_DataEntry_DoNotUse, _impl_.value_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\47\3\5\0\0\0\0\0"
+    "openclaw.NativeMessageRequest.DataEntry"
+    "key"
+    "value"
+  }},
+};
+// ===================================================================
+
+class NativeMessageRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<NativeMessageRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_._has_bits_);
+};
+
+NativeMessageRequest::NativeMessageRequest(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, NativeMessageRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.NativeMessageRequest)
+}
+PROTOBUF_NDEBUG_INLINE NativeMessageRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::NativeMessageRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        request_id_(arena, from.request_id_),
+        url_(arena, from.url_),
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        data_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::NativeMessageRequest,
+            PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest, _impl_.data_)>()
+        , from.data_}
+        #else
+        data_ { visibility, arena, from.data_ }
+        #endif
+     {}
+
+NativeMessageRequest::NativeMessageRequest(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const NativeMessageRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, NativeMessageRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  NativeMessageRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, type_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, type_),
+           offsetof(Impl_, timestamp_) -
+               offsetof(Impl_, type_) +
+               sizeof(Impl_::timestamp_));
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.NativeMessageRequest)
+}
+PROTOBUF_NDEBUG_INLINE NativeMessageRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        request_id_(arena),
+        url_(arena),
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        data_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::NativeMessageRequest,
+            PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageRequest, _impl_.data_)>()
+        }
+        #else
+        data_ { visibility, arena }
+        #endif
+     {}
+
+inline void NativeMessageRequest::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, type_),
+           0,
+           offsetof(Impl_, timestamp_) -
+               offsetof(Impl_, type_) +
+               sizeof(Impl_::timestamp_));
+}
+NativeMessageRequest::~NativeMessageRequest() {
+  // @@protoc_insertion_point(destructor:openclaw.NativeMessageRequest)
+  SharedDtor(*this);
+}
+inline void NativeMessageRequest::SharedDtor(MessageLite& self) {
+  NativeMessageRequest& this_ = static_cast<NativeMessageRequest&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.request_id_.Destroy();
+  this_._impl_.url_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL NativeMessageRequest::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) NativeMessageRequest(arena);
+}
+#ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto NativeMessageRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(NativeMessageRequest),
+                                            alignof(NativeMessageRequest));
+}
+#else  // !PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto NativeMessageRequest::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.data_) +
+          decltype(NativeMessageRequest::_impl_.data_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(NativeMessageRequest), alignof(NativeMessageRequest), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&NativeMessageRequest::PlacementNew_,
+                                 sizeof(NativeMessageRequest),
+                                 alignof(NativeMessageRequest));
+  }
+}
+#endif
+constexpr auto NativeMessageRequest::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_NativeMessageRequest_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &NativeMessageRequest::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<NativeMessageRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &NativeMessageRequest::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<NativeMessageRequest>(), &NativeMessageRequest::ByteSizeLong,
+              &NativeMessageRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_._cached_size_),
+          false,
+      },
+      &NativeMessageRequest::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull NativeMessageRequest_class_data_ =
+        NativeMessageRequest::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+NativeMessageRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&NativeMessageRequest_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(NativeMessageRequest_class_data_.tc_table);
+  return NativeMessageRequest_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 6, 1, 55, 2>
+NativeMessageRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    6, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967232,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    NativeMessageRequest_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::NativeMessageRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // .openclaw.NativeMessageType type = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(NativeMessageRequest, _impl_.type_), 2>(),
+     {8, 2, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.type_)}},
+    // string request_id = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 0, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.request_id_)}},
+    // uint32 tab_id = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(NativeMessageRequest, _impl_.tab_id_), 3>(),
+     {24, 3, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.tab_id_)}},
+    // string url = 4;
+    {::_pbi::TcParser::FastUS1,
+     {34, 1, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.url_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    // uint64 timestamp = 6;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(NativeMessageRequest, _impl_.timestamp_), 4>(),
+     {48, 4, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.timestamp_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .openclaw.NativeMessageType type = 1;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.type_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
+    // string request_id = 2;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.request_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // uint32 tab_id = 3;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.tab_id_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    // string url = 4;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.url_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // map<string, string> data = 5;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.data_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+    // uint64 timestamp = 6;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.timestamp_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+  }},
+  {{
+      {::_pbi::TcParser::GetMapAuxInfo(
+          1, 0, 9, 9, 0)},
+  }},
+  {{
+    "\35\0\12\0\3\4\0\0"
+    "openclaw.NativeMessageRequest"
+    "request_id"
+    "url"
+    "data"
+  }},
+};
+PROTOBUF_NOINLINE void NativeMessageRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.NativeMessageRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.request_id_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.url_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003cU)) {
+    ::memset(&_impl_.type_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.timestamp_) -
+        reinterpret_cast<char*>(&_impl_.type_)) + sizeof(_impl_.timestamp_));
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+      _impl_.data_.Clear();
+    }
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL NativeMessageRequest::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const NativeMessageRequest& this_ = static_cast<const NativeMessageRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL NativeMessageRequest::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const NativeMessageRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.NativeMessageRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // .openclaw.NativeMessageType type = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_type() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteEnumToArray(
+          1, this_._internal_type(), target);
+    }
+  }
+
+  // string request_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_request_id().empty()) {
+      const ::std::string& _s = this_._internal_request_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.NativeMessageRequest.request_id");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // uint32 tab_id = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_tab_id() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+          3, this_._internal_tab_id(), target);
+    }
+  }
+
+  // string url = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_url().empty()) {
+      const ::std::string& _s = this_._internal_url();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.NativeMessageRequest.url");
+      target = stream->WriteStringMaybeAliased(4, _s, target);
+    }
+  }
+
+  // map<string, string> data = 5;
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+    if (!this_._internal_data().empty()) {
+      using MapType = ::google::protobuf::Map<::std::string, ::std::string>;
+      using WireHelper = _pbi::MapEntryFuncs<::std::string, ::std::string,
+                                     _pbi::WireFormatLite::TYPE_STRING,
+                                     _pbi::WireFormatLite::TYPE_STRING>;
+      const auto& field = this_._internal_data();
+
+      if (stream->IsSerializationDeterministic() && field.size() > 1) {
+        for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+          target = WireHelper::InternalSerialize(
+              5, entry.first, entry.second, target, stream);
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.NativeMessageRequest.data");
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.NativeMessageRequest.data");
+        }
+      } else {
+        for (const auto& entry : field) {
+          target = WireHelper::InternalSerialize(
+              5, entry.first, entry.second, target, stream);
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.NativeMessageRequest.data");
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.NativeMessageRequest.data");
+        }
+      }
+    }
+  }
+
+  // uint64 timestamp = 6;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (this_._internal_timestamp() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          6, this_._internal_timestamp(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.NativeMessageRequest)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t NativeMessageRequest::ByteSizeLong(const MessageLite& base) {
+  const NativeMessageRequest& this_ = static_cast<const NativeMessageRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t NativeMessageRequest::ByteSizeLong() const {
+  const NativeMessageRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.NativeMessageRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003fU)) {
+    // string request_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_request_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_request_id());
+      }
+    }
+    // string url = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_url().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_url());
+      }
+    }
+    // .openclaw.NativeMessageType type = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_type() != 0) {
+        total_size += 1 +
+                      ::_pbi::WireFormatLite::EnumSize(this_._internal_type());
+      }
+    }
+    // uint32 tab_id = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_tab_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+            this_._internal_tab_id());
+      }
+    }
+    // uint64 timestamp = 6;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (this_._internal_timestamp() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_timestamp());
+      }
+    }
+    // map<string, string> data = 5;
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+      total_size +=
+          1 * ::google::protobuf::internal::FromIntSize(this_._internal_data_size());
+      for (const auto& entry : this_._internal_data()) {
+        total_size += _pbi::MapEntryFuncs<::std::string, ::std::string,
+                                       _pbi::WireFormatLite::TYPE_STRING,
+                                       _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void NativeMessageRequest::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<NativeMessageRequest*>(&to_msg);
+  auto& from = static_cast<const NativeMessageRequest&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.NativeMessageRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003fU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_request_id().empty()) {
+        _this->_internal_set_request_id(from._internal_request_id());
+      } else {
+        if (_this->_impl_.request_id_.IsDefault()) {
+          _this->_internal_set_request_id("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_url().empty()) {
+        _this->_internal_set_url(from._internal_url());
+      } else {
+        if (_this->_impl_.url_.IsDefault()) {
+          _this->_internal_set_url("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_type() != 0) {
+        _this->_impl_.type_ = from._impl_.type_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_tab_id() != 0) {
+        _this->_impl_.tab_id_ = from._impl_.tab_id_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (from._internal_timestamp() != 0) {
+        _this->_impl_.timestamp_ = from._impl_.timestamp_;
+      }
+    }
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+      _this->_impl_.data_.MergeFrom(from._impl_.data_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void NativeMessageRequest::CopyFrom(const NativeMessageRequest& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.NativeMessageRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void NativeMessageRequest::InternalSwap(NativeMessageRequest* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.request_id_, &other->_impl_.request_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, &other->_impl_.url_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.timestamp_)
+      + sizeof(NativeMessageRequest::_impl_.timestamp_)
+      - PROTOBUF_FIELD_OFFSET(NativeMessageRequest, _impl_.type_)>(
+          reinterpret_cast<char*>(&_impl_.type_),
+          reinterpret_cast<char*>(&other->_impl_.type_));
+  _impl_.data_.InternalSwap(&other->_impl_.data_);
+}
+
+::google::protobuf::Metadata NativeMessageRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+NativeMessageResponse_DataEntry_DoNotUse::NativeMessageResponse_DataEntry_DoNotUse()
+    : SuperType(NativeMessageResponse_DataEntry_DoNotUse_class_data_.base()) {}
+NativeMessageResponse_DataEntry_DoNotUse::NativeMessageResponse_DataEntry_DoNotUse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+    : SuperType(arena, NativeMessageResponse_DataEntry_DoNotUse_class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+NativeMessageResponse_DataEntry_DoNotUse::NativeMessageResponse_DataEntry_DoNotUse() : SuperType() {}
+NativeMessageResponse_DataEntry_DoNotUse::NativeMessageResponse_DataEntry_DoNotUse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+inline void* PROTOBUF_NONNULL NativeMessageResponse_DataEntry_DoNotUse::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) NativeMessageResponse_DataEntry_DoNotUse(arena);
+}
+constexpr auto NativeMessageResponse_DataEntry_DoNotUse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(NativeMessageResponse_DataEntry_DoNotUse),
+                                            alignof(NativeMessageResponse_DataEntry_DoNotUse));
+}
+constexpr auto NativeMessageResponse_DataEntry_DoNotUse::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_NativeMessageResponse_DataEntry_DoNotUse_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &NativeMessageResponse_DataEntry_DoNotUse::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<NativeMessageResponse_DataEntry_DoNotUse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &NativeMessageResponse_DataEntry_DoNotUse::SharedDtor,
+          static_cast<void (::google::protobuf::MessageLite::*)()>(&NativeMessageResponse_DataEntry_DoNotUse::ClearImpl),
+              ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+              ,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(NativeMessageResponse_DataEntry_DoNotUse, _impl_._cached_size_),
+          false,
+      },
+      &NativeMessageResponse_DataEntry_DoNotUse::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull NativeMessageResponse_DataEntry_DoNotUse_class_data_ =
+        NativeMessageResponse_DataEntry_DoNotUse::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+NativeMessageResponse_DataEntry_DoNotUse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&NativeMessageResponse_DataEntry_DoNotUse_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(NativeMessageResponse_DataEntry_DoNotUse_class_data_.tc_table);
+  return NativeMessageResponse_DataEntry_DoNotUse_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 57, 2>
+NativeMessageResponse_DataEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(NativeMessageResponse_DataEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    NativeMessageResponse_DataEntry_DoNotUse_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::NativeMessageResponse_DataEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string value = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageResponse_DataEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageResponse_DataEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageResponse_DataEntry_DoNotUse, _impl_.key_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string value = 2;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageResponse_DataEntry_DoNotUse, _impl_.value_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\50\3\5\0\0\0\0\0"
+    "openclaw.NativeMessageResponse.DataEntry"
+    "key"
+    "value"
+  }},
+};
+// ===================================================================
+
+class NativeMessageResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<NativeMessageResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_._has_bits_);
+};
+
+NativeMessageResponse::NativeMessageResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, NativeMessageResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.NativeMessageResponse)
+}
+PROTOBUF_NDEBUG_INLINE NativeMessageResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::NativeMessageResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        request_id_(arena, from.request_id_),
+        error_message_(arena, from.error_message_),
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        data_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::NativeMessageResponse,
+            PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse, _impl_.data_)>()
+        , from.data_}
+        #else
+        data_ { visibility, arena, from.data_ }
+        #endif
+     {}
+
+NativeMessageResponse::NativeMessageResponse(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const NativeMessageResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, NativeMessageResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  NativeMessageResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, type_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, type_),
+           offsetof(Impl_, timestamp_) -
+               offsetof(Impl_, type_) +
+               sizeof(Impl_::timestamp_));
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.NativeMessageResponse)
+}
+PROTOBUF_NDEBUG_INLINE NativeMessageResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        request_id_(arena),
+        error_message_(arena),
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        data_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::NativeMessageResponse,
+            PROTOBUF_FIELD_OFFSET(::openclaw::NativeMessageResponse, _impl_.data_)>()
+        }
+        #else
+        data_ { visibility, arena }
+        #endif
+     {}
+
+inline void NativeMessageResponse::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, type_),
+           0,
+           offsetof(Impl_, timestamp_) -
+               offsetof(Impl_, type_) +
+               sizeof(Impl_::timestamp_));
+}
+NativeMessageResponse::~NativeMessageResponse() {
+  // @@protoc_insertion_point(destructor:openclaw.NativeMessageResponse)
+  SharedDtor(*this);
+}
+inline void NativeMessageResponse::SharedDtor(MessageLite& self) {
+  NativeMessageResponse& this_ = static_cast<NativeMessageResponse&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.request_id_.Destroy();
+  this_._impl_.error_message_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL NativeMessageResponse::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) NativeMessageResponse(arena);
+}
+#ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto NativeMessageResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(NativeMessageResponse),
+                                            alignof(NativeMessageResponse));
+}
+#else  // !PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto NativeMessageResponse::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.data_) +
+          decltype(NativeMessageResponse::_impl_.data_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(NativeMessageResponse), alignof(NativeMessageResponse), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&NativeMessageResponse::PlacementNew_,
+                                 sizeof(NativeMessageResponse),
+                                 alignof(NativeMessageResponse));
+  }
+}
+#endif
+constexpr auto NativeMessageResponse::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_NativeMessageResponse_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &NativeMessageResponse::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<NativeMessageResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &NativeMessageResponse::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<NativeMessageResponse>(), &NativeMessageResponse::ByteSizeLong,
+              &NativeMessageResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_._cached_size_),
+          false,
+      },
+      &NativeMessageResponse::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull NativeMessageResponse_class_data_ =
+        NativeMessageResponse::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+NativeMessageResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&NativeMessageResponse_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(NativeMessageResponse_class_data_.tc_table);
+  return NativeMessageResponse_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 6, 1, 66, 2>
+NativeMessageResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    6, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967232,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    NativeMessageResponse_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::NativeMessageResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // .openclaw.NativeMessageType type = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(NativeMessageResponse, _impl_.type_), 2>(),
+     {8, 2, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.type_)}},
+    // string request_id = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 0, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.request_id_)}},
+    // bool success = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(NativeMessageResponse, _impl_.success_), 3>(),
+     {24, 3, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.success_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    // string error_message = 5;
+    {::_pbi::TcParser::FastUS1,
+     {42, 1, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.error_message_)}},
+    // uint64 timestamp = 6;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(NativeMessageResponse, _impl_.timestamp_), 4>(),
+     {48, 4, 0,
+      PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.timestamp_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .openclaw.NativeMessageType type = 1;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.type_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
+    // string request_id = 2;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.request_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool success = 3;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.success_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // map<string, string> data = 4;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.data_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+    // string error_message = 5;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.error_message_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // uint64 timestamp = 6;
+    {PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.timestamp_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+  }},
+  {{
+      {::_pbi::TcParser::GetMapAuxInfo(
+          1, 0, 9, 9, 0)},
+  }},
+  {{
+    "\36\0\12\0\4\15\0\0"
+    "openclaw.NativeMessageResponse"
+    "request_id"
+    "data"
+    "error_message"
+  }},
+};
+PROTOBUF_NOINLINE void NativeMessageResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.NativeMessageResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.request_id_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.error_message_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003cU)) {
+    ::memset(&_impl_.type_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.timestamp_) -
+        reinterpret_cast<char*>(&_impl_.type_)) + sizeof(_impl_.timestamp_));
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+      _impl_.data_.Clear();
+    }
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL NativeMessageResponse::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const NativeMessageResponse& this_ = static_cast<const NativeMessageResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL NativeMessageResponse::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const NativeMessageResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.NativeMessageResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // .openclaw.NativeMessageType type = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_type() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteEnumToArray(
+          1, this_._internal_type(), target);
+    }
+  }
+
+  // string request_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_request_id().empty()) {
+      const ::std::string& _s = this_._internal_request_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.NativeMessageResponse.request_id");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // bool success = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_success() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          3, this_._internal_success(), target);
+    }
+  }
+
+  // map<string, string> data = 4;
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+    if (!this_._internal_data().empty()) {
+      using MapType = ::google::protobuf::Map<::std::string, ::std::string>;
+      using WireHelper = _pbi::MapEntryFuncs<::std::string, ::std::string,
+                                     _pbi::WireFormatLite::TYPE_STRING,
+                                     _pbi::WireFormatLite::TYPE_STRING>;
+      const auto& field = this_._internal_data();
+
+      if (stream->IsSerializationDeterministic() && field.size() > 1) {
+        for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+          target = WireHelper::InternalSerialize(
+              4, entry.first, entry.second, target, stream);
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.NativeMessageResponse.data");
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.NativeMessageResponse.data");
+        }
+      } else {
+        for (const auto& entry : field) {
+          target = WireHelper::InternalSerialize(
+              4, entry.first, entry.second, target, stream);
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.NativeMessageResponse.data");
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.NativeMessageResponse.data");
+        }
+      }
+    }
+  }
+
+  // string error_message = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_error_message().empty()) {
+      const ::std::string& _s = this_._internal_error_message();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.NativeMessageResponse.error_message");
+      target = stream->WriteStringMaybeAliased(5, _s, target);
+    }
+  }
+
+  // uint64 timestamp = 6;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (this_._internal_timestamp() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          6, this_._internal_timestamp(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.NativeMessageResponse)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t NativeMessageResponse::ByteSizeLong(const MessageLite& base) {
+  const NativeMessageResponse& this_ = static_cast<const NativeMessageResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t NativeMessageResponse::ByteSizeLong() const {
+  const NativeMessageResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.NativeMessageResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003fU)) {
+    // string request_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_request_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_request_id());
+      }
+    }
+    // string error_message = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_error_message().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_error_message());
+      }
+    }
+    // .openclaw.NativeMessageType type = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_type() != 0) {
+        total_size += 1 +
+                      ::_pbi::WireFormatLite::EnumSize(this_._internal_type());
+      }
+    }
+    // bool success = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_success() != 0) {
+        total_size += 2;
+      }
+    }
+    // uint64 timestamp = 6;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (this_._internal_timestamp() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_timestamp());
+      }
+    }
+    // map<string, string> data = 4;
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+      total_size +=
+          1 * ::google::protobuf::internal::FromIntSize(this_._internal_data_size());
+      for (const auto& entry : this_._internal_data()) {
+        total_size += _pbi::MapEntryFuncs<::std::string, ::std::string,
+                                       _pbi::WireFormatLite::TYPE_STRING,
+                                       _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void NativeMessageResponse::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<NativeMessageResponse*>(&to_msg);
+  auto& from = static_cast<const NativeMessageResponse&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.NativeMessageResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003fU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_request_id().empty()) {
+        _this->_internal_set_request_id(from._internal_request_id());
+      } else {
+        if (_this->_impl_.request_id_.IsDefault()) {
+          _this->_internal_set_request_id("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_error_message().empty()) {
+        _this->_internal_set_error_message(from._internal_error_message());
+      } else {
+        if (_this->_impl_.error_message_.IsDefault()) {
+          _this->_internal_set_error_message("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_type() != 0) {
+        _this->_impl_.type_ = from._impl_.type_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_success() != 0) {
+        _this->_impl_.success_ = from._impl_.success_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (from._internal_timestamp() != 0) {
+        _this->_impl_.timestamp_ = from._impl_.timestamp_;
+      }
+    }
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+      _this->_impl_.data_.MergeFrom(from._impl_.data_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void NativeMessageResponse::CopyFrom(const NativeMessageResponse& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.NativeMessageResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void NativeMessageResponse::InternalSwap(NativeMessageResponse* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.request_id_, &other->_impl_.request_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.error_message_, &other->_impl_.error_message_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.timestamp_)
+      + sizeof(NativeMessageResponse::_impl_.timestamp_)
+      - PROTOBUF_FIELD_OFFSET(NativeMessageResponse, _impl_.type_)>(
+          reinterpret_cast<char*>(&_impl_.type_),
+          reinterpret_cast<char*>(&other->_impl_.type_));
+  _impl_.data_.InternalSwap(&other->_impl_.data_);
+}
+
+::google::protobuf::Metadata NativeMessageResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+AutoAuthRule_ConditionsEntry_DoNotUse::AutoAuthRule_ConditionsEntry_DoNotUse()
+    : SuperType(AutoAuthRule_ConditionsEntry_DoNotUse_class_data_.base()) {}
+AutoAuthRule_ConditionsEntry_DoNotUse::AutoAuthRule_ConditionsEntry_DoNotUse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+    : SuperType(arena, AutoAuthRule_ConditionsEntry_DoNotUse_class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+AutoAuthRule_ConditionsEntry_DoNotUse::AutoAuthRule_ConditionsEntry_DoNotUse() : SuperType() {}
+AutoAuthRule_ConditionsEntry_DoNotUse::AutoAuthRule_ConditionsEntry_DoNotUse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+inline void* PROTOBUF_NONNULL AutoAuthRule_ConditionsEntry_DoNotUse::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) AutoAuthRule_ConditionsEntry_DoNotUse(arena);
+}
+constexpr auto AutoAuthRule_ConditionsEntry_DoNotUse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(AutoAuthRule_ConditionsEntry_DoNotUse),
+                                            alignof(AutoAuthRule_ConditionsEntry_DoNotUse));
+}
+constexpr auto AutoAuthRule_ConditionsEntry_DoNotUse::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_AutoAuthRule_ConditionsEntry_DoNotUse_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &AutoAuthRule_ConditionsEntry_DoNotUse::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<AutoAuthRule_ConditionsEntry_DoNotUse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &AutoAuthRule_ConditionsEntry_DoNotUse::SharedDtor,
+          static_cast<void (::google::protobuf::MessageLite::*)()>(&AutoAuthRule_ConditionsEntry_DoNotUse::ClearImpl),
+              ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+              ,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(AutoAuthRule_ConditionsEntry_DoNotUse, _impl_._cached_size_),
+          false,
+      },
+      &AutoAuthRule_ConditionsEntry_DoNotUse::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull AutoAuthRule_ConditionsEntry_DoNotUse_class_data_ =
+        AutoAuthRule_ConditionsEntry_DoNotUse::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+AutoAuthRule_ConditionsEntry_DoNotUse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&AutoAuthRule_ConditionsEntry_DoNotUse_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(AutoAuthRule_ConditionsEntry_DoNotUse_class_data_.tc_table);
+  return AutoAuthRule_ConditionsEntry_DoNotUse_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 54, 2>
+AutoAuthRule_ConditionsEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(AutoAuthRule_ConditionsEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    AutoAuthRule_ConditionsEntry_DoNotUse_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::AutoAuthRule_ConditionsEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string value = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(AutoAuthRule_ConditionsEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(AutoAuthRule_ConditionsEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1;
+    {PROTOBUF_FIELD_OFFSET(AutoAuthRule_ConditionsEntry_DoNotUse, _impl_.key_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string value = 2;
+    {PROTOBUF_FIELD_OFFSET(AutoAuthRule_ConditionsEntry_DoNotUse, _impl_.value_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\45\3\5\0\0\0\0\0"
+    "openclaw.AutoAuthRule.ConditionsEntry"
+    "key"
+    "value"
+  }},
+};
+// ===================================================================
+
+class AutoAuthRule::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<AutoAuthRule>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_._has_bits_);
+};
+
+AutoAuthRule::AutoAuthRule(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, AutoAuthRule_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.AutoAuthRule)
+}
+PROTOBUF_NDEBUG_INLINE AutoAuthRule::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::AutoAuthRule& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        rule_id_(arena, from.rule_id_),
+        service_url_pattern_(arena, from.service_url_pattern_),
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        conditions_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::AutoAuthRule,
+            PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_.conditions_)>()
+        , from.conditions_}
+        #else
+        conditions_ { visibility, arena, from.conditions_ }
+        #endif
+     {}
+
+AutoAuthRule::AutoAuthRule(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const AutoAuthRule& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, AutoAuthRule_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  AutoAuthRule* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, max_auto_approvals_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, max_auto_approvals_),
+           offsetof(Impl_, require_biometric_) -
+               offsetof(Impl_, max_auto_approvals_) +
+               sizeof(Impl_::require_biometric_));
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.AutoAuthRule)
+}
+PROTOBUF_NDEBUG_INLINE AutoAuthRule::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        rule_id_(arena),
+        service_url_pattern_(arena),
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        conditions_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::AutoAuthRule,
+            PROTOBUF_FIELD_OFFSET(::openclaw::AutoAuthRule, _impl_.conditions_)>()
+        }
+        #else
+        conditions_ { visibility, arena }
+        #endif
+     {}
+
+inline void AutoAuthRule::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, max_auto_approvals_),
+           0,
+           offsetof(Impl_, require_biometric_) -
+               offsetof(Impl_, max_auto_approvals_) +
+               sizeof(Impl_::require_biometric_));
+}
+AutoAuthRule::~AutoAuthRule() {
+  // @@protoc_insertion_point(destructor:openclaw.AutoAuthRule)
+  SharedDtor(*this);
+}
+inline void AutoAuthRule::SharedDtor(MessageLite& self) {
+  AutoAuthRule& this_ = static_cast<AutoAuthRule&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.rule_id_.Destroy();
+  this_._impl_.service_url_pattern_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL AutoAuthRule::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) AutoAuthRule(arena);
+}
+#ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto AutoAuthRule::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(AutoAuthRule),
+                                            alignof(AutoAuthRule));
+}
+#else  // !PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto AutoAuthRule::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.conditions_) +
+          decltype(AutoAuthRule::_impl_.conditions_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(AutoAuthRule), alignof(AutoAuthRule), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&AutoAuthRule::PlacementNew_,
+                                 sizeof(AutoAuthRule),
+                                 alignof(AutoAuthRule));
+  }
+}
+#endif
+constexpr auto AutoAuthRule::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_AutoAuthRule_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &AutoAuthRule::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<AutoAuthRule>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &AutoAuthRule::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<AutoAuthRule>(), &AutoAuthRule::ByteSizeLong,
+              &AutoAuthRule::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_._cached_size_),
+          false,
+      },
+      &AutoAuthRule::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull AutoAuthRule_class_data_ =
+        AutoAuthRule::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+AutoAuthRule::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&AutoAuthRule_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(AutoAuthRule_class_data_.tc_table);
+  return AutoAuthRule_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 9, 1, 74, 2>
+AutoAuthRule::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_._has_bits_),
+    0, // no _extensions_
+    9, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294966784,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    9,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    AutoAuthRule_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::AutoAuthRule>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // bool require_biometric = 8;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(AutoAuthRule, _impl_.require_biometric_), 7>(),
+     {64, 7, 0,
+      PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.require_biometric_)}},
+    // string rule_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.rule_id_)}},
+    // string service_url_pattern = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.service_url_pattern_)}},
+    // bool auto_approve = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(AutoAuthRule, _impl_.auto_approve_), 6>(),
+     {24, 6, 0,
+      PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.auto_approve_)}},
+    // uint32 max_auto_approvals = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(AutoAuthRule, _impl_.max_auto_approvals_), 2>(),
+     {32, 2, 0,
+      PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.max_auto_approvals_)}},
+    // uint32 auto_approvals_used = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(AutoAuthRule, _impl_.auto_approvals_used_), 3>(),
+     {40, 3, 0,
+      PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.auto_approvals_used_)}},
+    // uint64 created_time = 6;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(AutoAuthRule, _impl_.created_time_), 4>(),
+     {48, 4, 0,
+      PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.created_time_)}},
+    // uint64 expires_time = 7;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(AutoAuthRule, _impl_.expires_time_), 5>(),
+     {56, 5, 0,
+      PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.expires_time_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string rule_id = 1;
+    {PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.rule_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string service_url_pattern = 2;
+    {PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.service_url_pattern_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool auto_approve = 3;
+    {PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.auto_approve_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // uint32 max_auto_approvals = 4;
+    {PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.max_auto_approvals_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    // uint32 auto_approvals_used = 5;
+    {PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.auto_approvals_used_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    // uint64 created_time = 6;
+    {PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.created_time_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+    // uint64 expires_time = 7;
+    {PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.expires_time_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+    // bool require_biometric = 8;
+    {PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.require_biometric_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // map<string, string> conditions = 9;
+    {PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.conditions_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+  }},
+  {{
+      {::_pbi::TcParser::GetMapAuxInfo(
+          1, 0, 9, 9, 0)},
+  }},
+  {{
+    "\25\7\23\0\0\0\0\0\0\12\0\0\0\0\0\0"
+    "openclaw.AutoAuthRule"
+    "rule_id"
+    "service_url_pattern"
+    "conditions"
+  }},
+};
+PROTOBUF_NOINLINE void AutoAuthRule::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.AutoAuthRule)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.rule_id_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.service_url_pattern_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x000000fcU)) {
+    ::memset(&_impl_.max_auto_approvals_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.require_biometric_) -
+        reinterpret_cast<char*>(&_impl_.max_auto_approvals_)) + sizeof(_impl_.require_biometric_));
+  }
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000100U)) {
+    _impl_.conditions_.Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL AutoAuthRule::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const AutoAuthRule& this_ = static_cast<const AutoAuthRule&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL AutoAuthRule::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const AutoAuthRule& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.AutoAuthRule)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string rule_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_rule_id().empty()) {
+      const ::std::string& _s = this_._internal_rule_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.AutoAuthRule.rule_id");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // string service_url_pattern = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_service_url_pattern().empty()) {
+      const ::std::string& _s = this_._internal_service_url_pattern();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.AutoAuthRule.service_url_pattern");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // bool auto_approve = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+    if (this_._internal_auto_approve() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          3, this_._internal_auto_approve(), target);
+    }
+  }
+
+  // uint32 max_auto_approvals = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_max_auto_approvals() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+          4, this_._internal_max_auto_approvals(), target);
+    }
+  }
+
+  // uint32 auto_approvals_used = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_auto_approvals_used() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+          5, this_._internal_auto_approvals_used(), target);
+    }
+  }
+
+  // uint64 created_time = 6;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (this_._internal_created_time() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          6, this_._internal_created_time(), target);
+    }
+  }
+
+  // uint64 expires_time = 7;
+  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    if (this_._internal_expires_time() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          7, this_._internal_expires_time(), target);
+    }
+  }
+
+  // bool require_biometric = 8;
+  if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+    if (this_._internal_require_biometric() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          8, this_._internal_require_biometric(), target);
+    }
+  }
+
+  // map<string, string> conditions = 9;
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000100U)) {
+    if (!this_._internal_conditions().empty()) {
+      using MapType = ::google::protobuf::Map<::std::string, ::std::string>;
+      using WireHelper = _pbi::MapEntryFuncs<::std::string, ::std::string,
+                                     _pbi::WireFormatLite::TYPE_STRING,
+                                     _pbi::WireFormatLite::TYPE_STRING>;
+      const auto& field = this_._internal_conditions();
+
+      if (stream->IsSerializationDeterministic() && field.size() > 1) {
+        for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+          target = WireHelper::InternalSerialize(
+              9, entry.first, entry.second, target, stream);
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.AutoAuthRule.conditions");
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.AutoAuthRule.conditions");
+        }
+      } else {
+        for (const auto& entry : field) {
+          target = WireHelper::InternalSerialize(
+              9, entry.first, entry.second, target, stream);
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.AutoAuthRule.conditions");
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.AutoAuthRule.conditions");
+        }
+      }
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.AutoAuthRule)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t AutoAuthRule::ByteSizeLong(const MessageLite& base) {
+  const AutoAuthRule& this_ = static_cast<const AutoAuthRule&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t AutoAuthRule::ByteSizeLong() const {
+  const AutoAuthRule& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.AutoAuthRule)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
+    // string rule_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_rule_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_rule_id());
+      }
+    }
+    // string service_url_pattern = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_service_url_pattern().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_service_url_pattern());
+      }
+    }
+    // uint32 max_auto_approvals = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_max_auto_approvals() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+            this_._internal_max_auto_approvals());
+      }
+    }
+    // uint32 auto_approvals_used = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_auto_approvals_used() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+            this_._internal_auto_approvals_used());
+      }
+    }
+    // uint64 created_time = 6;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (this_._internal_created_time() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_created_time());
+      }
+    }
+    // uint64 expires_time = 7;
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (this_._internal_expires_time() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_expires_time());
+      }
+    }
+    // bool auto_approve = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      if (this_._internal_auto_approve() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool require_biometric = 8;
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      if (this_._internal_require_biometric() != 0) {
+        total_size += 2;
+      }
+    }
+  }
+   {
+    // map<string, string> conditions = 9;
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000100U)) {
+      total_size +=
+          1 * ::google::protobuf::internal::FromIntSize(this_._internal_conditions_size());
+      for (const auto& entry : this_._internal_conditions()) {
+        total_size += _pbi::MapEntryFuncs<::std::string, ::std::string,
+                                       _pbi::WireFormatLite::TYPE_STRING,
+                                       _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void AutoAuthRule::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<AutoAuthRule*>(&to_msg);
+  auto& from = static_cast<const AutoAuthRule&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.AutoAuthRule)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_rule_id().empty()) {
+        _this->_internal_set_rule_id(from._internal_rule_id());
+      } else {
+        if (_this->_impl_.rule_id_.IsDefault()) {
+          _this->_internal_set_rule_id("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_service_url_pattern().empty()) {
+        _this->_internal_set_service_url_pattern(from._internal_service_url_pattern());
+      } else {
+        if (_this->_impl_.service_url_pattern_.IsDefault()) {
+          _this->_internal_set_service_url_pattern("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_max_auto_approvals() != 0) {
+        _this->_impl_.max_auto_approvals_ = from._impl_.max_auto_approvals_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_auto_approvals_used() != 0) {
+        _this->_impl_.auto_approvals_used_ = from._impl_.auto_approvals_used_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (from._internal_created_time() != 0) {
+        _this->_impl_.created_time_ = from._impl_.created_time_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (from._internal_expires_time() != 0) {
+        _this->_impl_.expires_time_ = from._impl_.expires_time_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      if (from._internal_auto_approve() != 0) {
+        _this->_impl_.auto_approve_ = from._impl_.auto_approve_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      if (from._internal_require_biometric() != 0) {
+        _this->_impl_.require_biometric_ = from._impl_.require_biometric_;
+      }
+    }
+  }
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000100U)) {
+    _this->_impl_.conditions_.MergeFrom(from._impl_.conditions_);
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void AutoAuthRule::CopyFrom(const AutoAuthRule& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.AutoAuthRule)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void AutoAuthRule::InternalSwap(AutoAuthRule* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.rule_id_, &other->_impl_.rule_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.service_url_pattern_, &other->_impl_.service_url_pattern_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.require_biometric_)
+      + sizeof(AutoAuthRule::_impl_.require_biometric_)
+      - PROTOBUF_FIELD_OFFSET(AutoAuthRule, _impl_.max_auto_approvals_)>(
+          reinterpret_cast<char*>(&_impl_.max_auto_approvals_),
+          reinterpret_cast<char*>(&other->_impl_.max_auto_approvals_));
+  _impl_.conditions_.InternalSwap(&other->_impl_.conditions_);
+}
+
+::google::protobuf::Metadata AutoAuthRule::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class AddAutoAuthRuleRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<AddAutoAuthRuleRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleRequest, _impl_._has_bits_);
+};
+
+AddAutoAuthRuleRequest::AddAutoAuthRuleRequest(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, AddAutoAuthRuleRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.AddAutoAuthRuleRequest)
+}
+PROTOBUF_NDEBUG_INLINE AddAutoAuthRuleRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::AddAutoAuthRuleRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+AddAutoAuthRuleRequest::AddAutoAuthRuleRequest(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const AddAutoAuthRuleRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, AddAutoAuthRuleRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  AddAutoAuthRuleRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.rule_ = (CheckHasBit(cached_has_bits, 0x00000001U))
+                ? ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.rule_)
+                : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.AddAutoAuthRuleRequest)
+}
+PROTOBUF_NDEBUG_INLINE AddAutoAuthRuleRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0} {}
+
+inline void AddAutoAuthRuleRequest::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.rule_ = {};
+}
+AddAutoAuthRuleRequest::~AddAutoAuthRuleRequest() {
+  // @@protoc_insertion_point(destructor:openclaw.AddAutoAuthRuleRequest)
+  SharedDtor(*this);
+}
+inline void AddAutoAuthRuleRequest::SharedDtor(MessageLite& self) {
+  AddAutoAuthRuleRequest& this_ = static_cast<AddAutoAuthRuleRequest&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.rule_;
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL AddAutoAuthRuleRequest::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) AddAutoAuthRuleRequest(arena);
+}
+constexpr auto AddAutoAuthRuleRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(AddAutoAuthRuleRequest),
+                                            alignof(AddAutoAuthRuleRequest));
+}
+constexpr auto AddAutoAuthRuleRequest::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_AddAutoAuthRuleRequest_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &AddAutoAuthRuleRequest::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<AddAutoAuthRuleRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &AddAutoAuthRuleRequest::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<AddAutoAuthRuleRequest>(), &AddAutoAuthRuleRequest::ByteSizeLong,
+              &AddAutoAuthRuleRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleRequest, _impl_._cached_size_),
+          false,
+      },
+      &AddAutoAuthRuleRequest::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull AddAutoAuthRuleRequest_class_data_ =
+        AddAutoAuthRuleRequest::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+AddAutoAuthRuleRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&AddAutoAuthRuleRequest_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(AddAutoAuthRuleRequest_class_data_.tc_table);
+  return AddAutoAuthRuleRequest_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2>
+AddAutoAuthRuleRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    AddAutoAuthRuleRequest_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::AddAutoAuthRuleRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .openclaw.AutoAuthRule rule = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleRequest, _impl_.rule_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .openclaw.AutoAuthRule rule = 1;
+    {PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleRequest, _impl_.rule_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }},
+  {{
+      {::_pbi::TcParser::GetTable<::openclaw::AutoAuthRule>()},
+  }},
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void AddAutoAuthRuleRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.AddAutoAuthRuleRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    ABSL_DCHECK(_impl_.rule_ != nullptr);
+    _impl_.rule_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL AddAutoAuthRuleRequest::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const AddAutoAuthRuleRequest& this_ = static_cast<const AddAutoAuthRuleRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL AddAutoAuthRuleRequest::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const AddAutoAuthRuleRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.AddAutoAuthRuleRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // .openclaw.AutoAuthRule rule = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, *this_._impl_.rule_, this_._impl_.rule_->GetCachedSize(), target,
+        stream);
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.AddAutoAuthRuleRequest)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t AddAutoAuthRuleRequest::ByteSizeLong(const MessageLite& base) {
+  const AddAutoAuthRuleRequest& this_ = static_cast<const AddAutoAuthRuleRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t AddAutoAuthRuleRequest::ByteSizeLong() const {
+  const AddAutoAuthRuleRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.AddAutoAuthRuleRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+   {
+    // .openclaw.AutoAuthRule rule = 1;
+    cached_has_bits = this_._impl_._has_bits_[0];
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      total_size += 1 +
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.rule_);
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void AddAutoAuthRuleRequest::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<AddAutoAuthRuleRequest*>(&to_msg);
+  auto& from = static_cast<const AddAutoAuthRuleRequest&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.AddAutoAuthRuleRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    ABSL_DCHECK(from._impl_.rule_ != nullptr);
+    if (_this->_impl_.rule_ == nullptr) {
+      _this->_impl_.rule_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.rule_);
+    } else {
+      _this->_impl_.rule_->MergeFrom(*from._impl_.rule_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void AddAutoAuthRuleRequest::CopyFrom(const AddAutoAuthRuleRequest& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.AddAutoAuthRuleRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void AddAutoAuthRuleRequest::InternalSwap(AddAutoAuthRuleRequest* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.rule_, other->_impl_.rule_);
+}
+
+::google::protobuf::Metadata AddAutoAuthRuleRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class AddAutoAuthRuleResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<AddAutoAuthRuleResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleResponse, _impl_._has_bits_);
+};
+
+AddAutoAuthRuleResponse::AddAutoAuthRuleResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, AddAutoAuthRuleResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.AddAutoAuthRuleResponse)
+}
+PROTOBUF_NDEBUG_INLINE AddAutoAuthRuleResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::AddAutoAuthRuleResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        error_message_(arena, from.error_message_),
+        rule_id_(arena, from.rule_id_) {}
+
+AddAutoAuthRuleResponse::AddAutoAuthRuleResponse(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const AddAutoAuthRuleResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, AddAutoAuthRuleResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  AddAutoAuthRuleResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.success_ = from._impl_.success_;
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.AddAutoAuthRuleResponse)
+}
+PROTOBUF_NDEBUG_INLINE AddAutoAuthRuleResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        error_message_(arena),
+        rule_id_(arena) {}
+
+inline void AddAutoAuthRuleResponse::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.success_ = {};
+}
+AddAutoAuthRuleResponse::~AddAutoAuthRuleResponse() {
+  // @@protoc_insertion_point(destructor:openclaw.AddAutoAuthRuleResponse)
+  SharedDtor(*this);
+}
+inline void AddAutoAuthRuleResponse::SharedDtor(MessageLite& self) {
+  AddAutoAuthRuleResponse& this_ = static_cast<AddAutoAuthRuleResponse&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.error_message_.Destroy();
+  this_._impl_.rule_id_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL AddAutoAuthRuleResponse::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) AddAutoAuthRuleResponse(arena);
+}
+constexpr auto AddAutoAuthRuleResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(AddAutoAuthRuleResponse),
+                                            alignof(AddAutoAuthRuleResponse));
+}
+constexpr auto AddAutoAuthRuleResponse::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_AddAutoAuthRuleResponse_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &AddAutoAuthRuleResponse::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<AddAutoAuthRuleResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &AddAutoAuthRuleResponse::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<AddAutoAuthRuleResponse>(), &AddAutoAuthRuleResponse::ByteSizeLong,
+              &AddAutoAuthRuleResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleResponse, _impl_._cached_size_),
+          false,
+      },
+      &AddAutoAuthRuleResponse::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull AddAutoAuthRuleResponse_class_data_ =
+        AddAutoAuthRuleResponse::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+AddAutoAuthRuleResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&AddAutoAuthRuleResponse_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(AddAutoAuthRuleResponse_class_data_.tc_table);
+  return AddAutoAuthRuleResponse_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 61, 2>
+AddAutoAuthRuleResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    AddAutoAuthRuleResponse_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::AddAutoAuthRuleResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // bool success = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(AddAutoAuthRuleResponse, _impl_.success_), 2>(),
+     {8, 2, 0,
+      PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleResponse, _impl_.success_)}},
+    // string error_message = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 0, 0,
+      PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleResponse, _impl_.error_message_)}},
+    // string rule_id = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 1, 0,
+      PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleResponse, _impl_.rule_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bool success = 1;
+    {PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleResponse, _impl_.success_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // string error_message = 2;
+    {PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleResponse, _impl_.error_message_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string rule_id = 3;
+    {PROTOBUF_FIELD_OFFSET(AddAutoAuthRuleResponse, _impl_.rule_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\40\0\15\7\0\0\0\0"
+    "openclaw.AddAutoAuthRuleResponse"
+    "error_message"
+    "rule_id"
+  }},
+};
+PROTOBUF_NOINLINE void AddAutoAuthRuleResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.AddAutoAuthRuleResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.error_message_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.rule_id_.ClearNonDefaultToEmpty();
+    }
+  }
+  _impl_.success_ = false;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL AddAutoAuthRuleResponse::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const AddAutoAuthRuleResponse& this_ = static_cast<const AddAutoAuthRuleResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL AddAutoAuthRuleResponse::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const AddAutoAuthRuleResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.AddAutoAuthRuleResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // bool success = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_success() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          1, this_._internal_success(), target);
+    }
+  }
+
+  // string error_message = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_error_message().empty()) {
+      const ::std::string& _s = this_._internal_error_message();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.AddAutoAuthRuleResponse.error_message");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // string rule_id = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_rule_id().empty()) {
+      const ::std::string& _s = this_._internal_rule_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.AddAutoAuthRuleResponse.rule_id");
+      target = stream->WriteStringMaybeAliased(3, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.AddAutoAuthRuleResponse)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t AddAutoAuthRuleResponse::ByteSizeLong(const MessageLite& base) {
+  const AddAutoAuthRuleResponse& this_ = static_cast<const AddAutoAuthRuleResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t AddAutoAuthRuleResponse::ByteSizeLong() const {
+  const AddAutoAuthRuleResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.AddAutoAuthRuleResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    // string error_message = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_error_message().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_error_message());
+      }
+    }
+    // string rule_id = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_rule_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_rule_id());
+      }
+    }
+    // bool success = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_success() != 0) {
+        total_size += 2;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void AddAutoAuthRuleResponse::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<AddAutoAuthRuleResponse*>(&to_msg);
+  auto& from = static_cast<const AddAutoAuthRuleResponse&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.AddAutoAuthRuleResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_error_message().empty()) {
+        _this->_internal_set_error_message(from._internal_error_message());
+      } else {
+        if (_this->_impl_.error_message_.IsDefault()) {
+          _this->_internal_set_error_message("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_rule_id().empty()) {
+        _this->_internal_set_rule_id(from._internal_rule_id());
+      } else {
+        if (_this->_impl_.rule_id_.IsDefault()) {
+          _this->_internal_set_rule_id("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_success() != 0) {
+        _this->_impl_.success_ = from._impl_.success_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void AddAutoAuthRuleResponse::CopyFrom(const AddAutoAuthRuleResponse& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.AddAutoAuthRuleResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void AddAutoAuthRuleResponse::InternalSwap(AddAutoAuthRuleResponse* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.error_message_, &other->_impl_.error_message_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.rule_id_, &other->_impl_.rule_id_, arena);
+  swap(_impl_.success_, other->_impl_.success_);
+}
+
+::google::protobuf::Metadata AddAutoAuthRuleResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RemoveAutoAuthRuleRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<RemoveAutoAuthRuleRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(RemoveAutoAuthRuleRequest, _impl_._has_bits_);
+};
+
+RemoveAutoAuthRuleRequest::RemoveAutoAuthRuleRequest(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RemoveAutoAuthRuleRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.RemoveAutoAuthRuleRequest)
+}
+PROTOBUF_NDEBUG_INLINE RemoveAutoAuthRuleRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::RemoveAutoAuthRuleRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        rule_id_(arena, from.rule_id_) {}
+
+RemoveAutoAuthRuleRequest::RemoveAutoAuthRuleRequest(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const RemoveAutoAuthRuleRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RemoveAutoAuthRuleRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  RemoveAutoAuthRuleRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.RemoveAutoAuthRuleRequest)
+}
+PROTOBUF_NDEBUG_INLINE RemoveAutoAuthRuleRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        rule_id_(arena) {}
+
+inline void RemoveAutoAuthRuleRequest::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+RemoveAutoAuthRuleRequest::~RemoveAutoAuthRuleRequest() {
+  // @@protoc_insertion_point(destructor:openclaw.RemoveAutoAuthRuleRequest)
+  SharedDtor(*this);
+}
+inline void RemoveAutoAuthRuleRequest::SharedDtor(MessageLite& self) {
+  RemoveAutoAuthRuleRequest& this_ = static_cast<RemoveAutoAuthRuleRequest&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.rule_id_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL RemoveAutoAuthRuleRequest::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) RemoveAutoAuthRuleRequest(arena);
+}
+constexpr auto RemoveAutoAuthRuleRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RemoveAutoAuthRuleRequest),
+                                            alignof(RemoveAutoAuthRuleRequest));
+}
+constexpr auto RemoveAutoAuthRuleRequest::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_RemoveAutoAuthRuleRequest_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &RemoveAutoAuthRuleRequest::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<RemoveAutoAuthRuleRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &RemoveAutoAuthRuleRequest::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<RemoveAutoAuthRuleRequest>(), &RemoveAutoAuthRuleRequest::ByteSizeLong,
+              &RemoveAutoAuthRuleRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(RemoveAutoAuthRuleRequest, _impl_._cached_size_),
+          false,
+      },
+      &RemoveAutoAuthRuleRequest::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull RemoveAutoAuthRuleRequest_class_data_ =
+        RemoveAutoAuthRuleRequest::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+RemoveAutoAuthRuleRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&RemoveAutoAuthRuleRequest_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(RemoveAutoAuthRuleRequest_class_data_.tc_table);
+  return RemoveAutoAuthRuleRequest_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 50, 2>
+RemoveAutoAuthRuleRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(RemoveAutoAuthRuleRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    RemoveAutoAuthRuleRequest_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::RemoveAutoAuthRuleRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string rule_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(RemoveAutoAuthRuleRequest, _impl_.rule_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string rule_id = 1;
+    {PROTOBUF_FIELD_OFFSET(RemoveAutoAuthRuleRequest, _impl_.rule_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\42\7\0\0\0\0\0\0"
+    "openclaw.RemoveAutoAuthRuleRequest"
+    "rule_id"
+  }},
+};
+PROTOBUF_NOINLINE void RemoveAutoAuthRuleRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.RemoveAutoAuthRuleRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    _impl_.rule_id_.ClearNonDefaultToEmpty();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL RemoveAutoAuthRuleRequest::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const RemoveAutoAuthRuleRequest& this_ = static_cast<const RemoveAutoAuthRuleRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL RemoveAutoAuthRuleRequest::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const RemoveAutoAuthRuleRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.RemoveAutoAuthRuleRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string rule_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_rule_id().empty()) {
+      const ::std::string& _s = this_._internal_rule_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.RemoveAutoAuthRuleRequest.rule_id");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.RemoveAutoAuthRuleRequest)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t RemoveAutoAuthRuleRequest::ByteSizeLong(const MessageLite& base) {
+  const RemoveAutoAuthRuleRequest& this_ = static_cast<const RemoveAutoAuthRuleRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t RemoveAutoAuthRuleRequest::ByteSizeLong() const {
+  const RemoveAutoAuthRuleRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.RemoveAutoAuthRuleRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+   {
+    // string rule_id = 1;
+    cached_has_bits = this_._impl_._has_bits_[0];
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_rule_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_rule_id());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void RemoveAutoAuthRuleRequest::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<RemoveAutoAuthRuleRequest*>(&to_msg);
+  auto& from = static_cast<const RemoveAutoAuthRuleRequest&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.RemoveAutoAuthRuleRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!from._internal_rule_id().empty()) {
+      _this->_internal_set_rule_id(from._internal_rule_id());
+    } else {
+      if (_this->_impl_.rule_id_.IsDefault()) {
+        _this->_internal_set_rule_id("");
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void RemoveAutoAuthRuleRequest::CopyFrom(const RemoveAutoAuthRuleRequest& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.RemoveAutoAuthRuleRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void RemoveAutoAuthRuleRequest::InternalSwap(RemoveAutoAuthRuleRequest* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.rule_id_, &other->_impl_.rule_id_, arena);
+}
+
+::google::protobuf::Metadata RemoveAutoAuthRuleRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RemoveAutoAuthRuleResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<RemoveAutoAuthRuleResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(RemoveAutoAuthRuleResponse, _impl_._has_bits_);
+};
+
+RemoveAutoAuthRuleResponse::RemoveAutoAuthRuleResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RemoveAutoAuthRuleResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.RemoveAutoAuthRuleResponse)
+}
+PROTOBUF_NDEBUG_INLINE RemoveAutoAuthRuleResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::RemoveAutoAuthRuleResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        error_message_(arena, from.error_message_) {}
+
+RemoveAutoAuthRuleResponse::RemoveAutoAuthRuleResponse(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const RemoveAutoAuthRuleResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RemoveAutoAuthRuleResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  RemoveAutoAuthRuleResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.success_ = from._impl_.success_;
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.RemoveAutoAuthRuleResponse)
+}
+PROTOBUF_NDEBUG_INLINE RemoveAutoAuthRuleResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        error_message_(arena) {}
+
+inline void RemoveAutoAuthRuleResponse::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.success_ = {};
+}
+RemoveAutoAuthRuleResponse::~RemoveAutoAuthRuleResponse() {
+  // @@protoc_insertion_point(destructor:openclaw.RemoveAutoAuthRuleResponse)
+  SharedDtor(*this);
+}
+inline void RemoveAutoAuthRuleResponse::SharedDtor(MessageLite& self) {
+  RemoveAutoAuthRuleResponse& this_ = static_cast<RemoveAutoAuthRuleResponse&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.error_message_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL RemoveAutoAuthRuleResponse::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) RemoveAutoAuthRuleResponse(arena);
+}
+constexpr auto RemoveAutoAuthRuleResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RemoveAutoAuthRuleResponse),
+                                            alignof(RemoveAutoAuthRuleResponse));
+}
+constexpr auto RemoveAutoAuthRuleResponse::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_RemoveAutoAuthRuleResponse_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &RemoveAutoAuthRuleResponse::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<RemoveAutoAuthRuleResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &RemoveAutoAuthRuleResponse::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<RemoveAutoAuthRuleResponse>(), &RemoveAutoAuthRuleResponse::ByteSizeLong,
+              &RemoveAutoAuthRuleResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(RemoveAutoAuthRuleResponse, _impl_._cached_size_),
+          false,
+      },
+      &RemoveAutoAuthRuleResponse::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull RemoveAutoAuthRuleResponse_class_data_ =
+        RemoveAutoAuthRuleResponse::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+RemoveAutoAuthRuleResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&RemoveAutoAuthRuleResponse_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(RemoveAutoAuthRuleResponse_class_data_.tc_table);
+  return RemoveAutoAuthRuleResponse_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 57, 2>
+RemoveAutoAuthRuleResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(RemoveAutoAuthRuleResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    RemoveAutoAuthRuleResponse_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::RemoveAutoAuthRuleResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string error_message = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 0, 0,
+      PROTOBUF_FIELD_OFFSET(RemoveAutoAuthRuleResponse, _impl_.error_message_)}},
+    // bool success = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RemoveAutoAuthRuleResponse, _impl_.success_), 1>(),
+     {8, 1, 0,
+      PROTOBUF_FIELD_OFFSET(RemoveAutoAuthRuleResponse, _impl_.success_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bool success = 1;
+    {PROTOBUF_FIELD_OFFSET(RemoveAutoAuthRuleResponse, _impl_.success_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // string error_message = 2;
+    {PROTOBUF_FIELD_OFFSET(RemoveAutoAuthRuleResponse, _impl_.error_message_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\43\0\15\0\0\0\0\0"
+    "openclaw.RemoveAutoAuthRuleResponse"
+    "error_message"
+  }},
+};
+PROTOBUF_NOINLINE void RemoveAutoAuthRuleResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.RemoveAutoAuthRuleResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    _impl_.error_message_.ClearNonDefaultToEmpty();
+  }
+  _impl_.success_ = false;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL RemoveAutoAuthRuleResponse::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const RemoveAutoAuthRuleResponse& this_ = static_cast<const RemoveAutoAuthRuleResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL RemoveAutoAuthRuleResponse::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const RemoveAutoAuthRuleResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.RemoveAutoAuthRuleResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // bool success = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_success() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          1, this_._internal_success(), target);
+    }
+  }
+
+  // string error_message = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_error_message().empty()) {
+      const ::std::string& _s = this_._internal_error_message();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.RemoveAutoAuthRuleResponse.error_message");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.RemoveAutoAuthRuleResponse)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t RemoveAutoAuthRuleResponse::ByteSizeLong(const MessageLite& base) {
+  const RemoveAutoAuthRuleResponse& this_ = static_cast<const RemoveAutoAuthRuleResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t RemoveAutoAuthRuleResponse::ByteSizeLong() const {
+  const RemoveAutoAuthRuleResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.RemoveAutoAuthRuleResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    // string error_message = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_error_message().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_error_message());
+      }
+    }
+    // bool success = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_success() != 0) {
+        total_size += 2;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void RemoveAutoAuthRuleResponse::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<RemoveAutoAuthRuleResponse*>(&to_msg);
+  auto& from = static_cast<const RemoveAutoAuthRuleResponse&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.RemoveAutoAuthRuleResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_error_message().empty()) {
+        _this->_internal_set_error_message(from._internal_error_message());
+      } else {
+        if (_this->_impl_.error_message_.IsDefault()) {
+          _this->_internal_set_error_message("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_success() != 0) {
+        _this->_impl_.success_ = from._impl_.success_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void RemoveAutoAuthRuleResponse::CopyFrom(const RemoveAutoAuthRuleResponse& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.RemoveAutoAuthRuleResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void RemoveAutoAuthRuleResponse::InternalSwap(RemoveAutoAuthRuleResponse* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.error_message_, &other->_impl_.error_message_, arena);
+  swap(_impl_.success_, other->_impl_.success_);
+}
+
+::google::protobuf::Metadata RemoveAutoAuthRuleResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ListAutoAuthRulesRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<ListAutoAuthRulesRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(ListAutoAuthRulesRequest, _impl_._has_bits_);
+};
+
+ListAutoAuthRulesRequest::ListAutoAuthRulesRequest(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, ListAutoAuthRulesRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.ListAutoAuthRulesRequest)
+}
+PROTOBUF_NDEBUG_INLINE ListAutoAuthRulesRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::ListAutoAuthRulesRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        service_url_(arena, from.service_url_) {}
+
+ListAutoAuthRulesRequest::ListAutoAuthRulesRequest(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const ListAutoAuthRulesRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, ListAutoAuthRulesRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ListAutoAuthRulesRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.ListAutoAuthRulesRequest)
+}
+PROTOBUF_NDEBUG_INLINE ListAutoAuthRulesRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        service_url_(arena) {}
+
+inline void ListAutoAuthRulesRequest::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+ListAutoAuthRulesRequest::~ListAutoAuthRulesRequest() {
+  // @@protoc_insertion_point(destructor:openclaw.ListAutoAuthRulesRequest)
+  SharedDtor(*this);
+}
+inline void ListAutoAuthRulesRequest::SharedDtor(MessageLite& self) {
+  ListAutoAuthRulesRequest& this_ = static_cast<ListAutoAuthRulesRequest&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.service_url_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL ListAutoAuthRulesRequest::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) ListAutoAuthRulesRequest(arena);
+}
+constexpr auto ListAutoAuthRulesRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ListAutoAuthRulesRequest),
+                                            alignof(ListAutoAuthRulesRequest));
+}
+constexpr auto ListAutoAuthRulesRequest::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_ListAutoAuthRulesRequest_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &ListAutoAuthRulesRequest::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<ListAutoAuthRulesRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &ListAutoAuthRulesRequest::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<ListAutoAuthRulesRequest>(), &ListAutoAuthRulesRequest::ByteSizeLong,
+              &ListAutoAuthRulesRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(ListAutoAuthRulesRequest, _impl_._cached_size_),
+          false,
+      },
+      &ListAutoAuthRulesRequest::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull ListAutoAuthRulesRequest_class_data_ =
+        ListAutoAuthRulesRequest::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+ListAutoAuthRulesRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&ListAutoAuthRulesRequest_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(ListAutoAuthRulesRequest_class_data_.tc_table);
+  return ListAutoAuthRulesRequest_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 53, 2>
+ListAutoAuthRulesRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ListAutoAuthRulesRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    ListAutoAuthRulesRequest_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::ListAutoAuthRulesRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string service_url = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(ListAutoAuthRulesRequest, _impl_.service_url_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string service_url = 1;
+    {PROTOBUF_FIELD_OFFSET(ListAutoAuthRulesRequest, _impl_.service_url_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\41\13\0\0\0\0\0\0"
+    "openclaw.ListAutoAuthRulesRequest"
+    "service_url"
+  }},
+};
+PROTOBUF_NOINLINE void ListAutoAuthRulesRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.ListAutoAuthRulesRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    _impl_.service_url_.ClearNonDefaultToEmpty();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL ListAutoAuthRulesRequest::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const ListAutoAuthRulesRequest& this_ = static_cast<const ListAutoAuthRulesRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL ListAutoAuthRulesRequest::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const ListAutoAuthRulesRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.ListAutoAuthRulesRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string service_url = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_service_url().empty()) {
+      const ::std::string& _s = this_._internal_service_url();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.ListAutoAuthRulesRequest.service_url");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.ListAutoAuthRulesRequest)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t ListAutoAuthRulesRequest::ByteSizeLong(const MessageLite& base) {
+  const ListAutoAuthRulesRequest& this_ = static_cast<const ListAutoAuthRulesRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t ListAutoAuthRulesRequest::ByteSizeLong() const {
+  const ListAutoAuthRulesRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.ListAutoAuthRulesRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+   {
+    // string service_url = 1;
+    cached_has_bits = this_._impl_._has_bits_[0];
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_service_url().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_service_url());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void ListAutoAuthRulesRequest::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<ListAutoAuthRulesRequest*>(&to_msg);
+  auto& from = static_cast<const ListAutoAuthRulesRequest&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.ListAutoAuthRulesRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!from._internal_service_url().empty()) {
+      _this->_internal_set_service_url(from._internal_service_url());
+    } else {
+      if (_this->_impl_.service_url_.IsDefault()) {
+        _this->_internal_set_service_url("");
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void ListAutoAuthRulesRequest::CopyFrom(const ListAutoAuthRulesRequest& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.ListAutoAuthRulesRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ListAutoAuthRulesRequest::InternalSwap(ListAutoAuthRulesRequest* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.service_url_, &other->_impl_.service_url_, arena);
+}
+
+::google::protobuf::Metadata ListAutoAuthRulesRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ListAutoAuthRulesResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<ListAutoAuthRulesResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(ListAutoAuthRulesResponse, _impl_._has_bits_);
+};
+
+ListAutoAuthRulesResponse::ListAutoAuthRulesResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, ListAutoAuthRulesResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.ListAutoAuthRulesResponse)
+}
+PROTOBUF_NDEBUG_INLINE ListAutoAuthRulesResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::ListAutoAuthRulesResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+        rules_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::ListAutoAuthRulesResponse,
+            PROTOBUF_FIELD_OFFSET(::openclaw::ListAutoAuthRulesResponse, _impl_.rules_)>()
+        , from.rules_}
+        #else
+        rules_ { visibility, arena, from.rules_ }
+        #endif
+     {}
+
+ListAutoAuthRulesResponse::ListAutoAuthRulesResponse(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const ListAutoAuthRulesResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, ListAutoAuthRulesResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ListAutoAuthRulesResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.ListAutoAuthRulesResponse)
+}
+PROTOBUF_NDEBUG_INLINE ListAutoAuthRulesResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+        rules_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::ListAutoAuthRulesResponse,
+            PROTOBUF_FIELD_OFFSET(::openclaw::ListAutoAuthRulesResponse, _impl_.rules_)>()
+        }
+        #else
+        rules_ { visibility, arena }
+        #endif
+     {}
+
+inline void ListAutoAuthRulesResponse::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+ListAutoAuthRulesResponse::~ListAutoAuthRulesResponse() {
+  // @@protoc_insertion_point(destructor:openclaw.ListAutoAuthRulesResponse)
+  SharedDtor(*this);
+}
+inline void ListAutoAuthRulesResponse::SharedDtor(MessageLite& self) {
+  ListAutoAuthRulesResponse& this_ = static_cast<ListAutoAuthRulesResponse&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL ListAutoAuthRulesResponse::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) ListAutoAuthRulesResponse(arena);
+}
+#ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto ListAutoAuthRulesResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ListAutoAuthRulesResponse),
+                                            alignof(ListAutoAuthRulesResponse));
+}
+#else  // !PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto ListAutoAuthRulesResponse::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(ListAutoAuthRulesResponse, _impl_.rules_) +
+          decltype(ListAutoAuthRulesResponse::_impl_.rules_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(ListAutoAuthRulesResponse), alignof(ListAutoAuthRulesResponse), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&ListAutoAuthRulesResponse::PlacementNew_,
+                                 sizeof(ListAutoAuthRulesResponse),
+                                 alignof(ListAutoAuthRulesResponse));
+  }
+}
+#endif
+constexpr auto ListAutoAuthRulesResponse::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_ListAutoAuthRulesResponse_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &ListAutoAuthRulesResponse::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<ListAutoAuthRulesResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &ListAutoAuthRulesResponse::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<ListAutoAuthRulesResponse>(), &ListAutoAuthRulesResponse::ByteSizeLong,
+              &ListAutoAuthRulesResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(ListAutoAuthRulesResponse, _impl_._cached_size_),
+          false,
+      },
+      &ListAutoAuthRulesResponse::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull ListAutoAuthRulesResponse_class_data_ =
+        ListAutoAuthRulesResponse::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+ListAutoAuthRulesResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&ListAutoAuthRulesResponse_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(ListAutoAuthRulesResponse_class_data_.tc_table);
+  return ListAutoAuthRulesResponse_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2>
+ListAutoAuthRulesResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ListAutoAuthRulesResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    ListAutoAuthRulesResponse_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::ListAutoAuthRulesResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated .openclaw.AutoAuthRule rules = 1;
+    {::_pbi::TcParser::FastMtR1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(ListAutoAuthRulesResponse, _impl_.rules_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .openclaw.AutoAuthRule rules = 1;
+    {PROTOBUF_FIELD_OFFSET(ListAutoAuthRulesResponse, _impl_.rules_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }},
+  {{
+      {::_pbi::TcParser::GetTable<::openclaw::AutoAuthRule>()},
+  }},
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void ListAutoAuthRulesResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.ListAutoAuthRulesResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+    _impl_.rules_.Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL ListAutoAuthRulesResponse::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const ListAutoAuthRulesResponse& this_ = static_cast<const ListAutoAuthRulesResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL ListAutoAuthRulesResponse::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const ListAutoAuthRulesResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.ListAutoAuthRulesResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // repeated .openclaw.AutoAuthRule rules = 1;
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+    for (unsigned i = 0, n = static_cast<unsigned>(
+                             this_._internal_rules_size());
+         i < n; i++) {
+      const auto& repfield = this_._internal_rules().Get(i);
+      target =
+          ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+              1, repfield, repfield.GetCachedSize(),
+              target, stream);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.ListAutoAuthRulesResponse)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t ListAutoAuthRulesResponse::ByteSizeLong(const MessageLite& base) {
+  const ListAutoAuthRulesResponse& this_ = static_cast<const ListAutoAuthRulesResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t ListAutoAuthRulesResponse::ByteSizeLong() const {
+  const ListAutoAuthRulesResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.ListAutoAuthRulesResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+   {
+    // repeated .openclaw.AutoAuthRule rules = 1;
+    cached_has_bits = this_._impl_._has_bits_[0];
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      total_size += 1UL * this_._internal_rules_size();
+      for (const auto& msg : this_._internal_rules()) {
+        total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void ListAutoAuthRulesResponse::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<ListAutoAuthRulesResponse*>(&to_msg);
+  auto& from = static_cast<const ListAutoAuthRulesResponse&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.ListAutoAuthRulesResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+    _this->_internal_mutable_rules()->InternalMergeFromWithArena(
+        ::google::protobuf::MessageLite::internal_visibility(), arena,
+        from._internal_rules());
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void ListAutoAuthRulesResponse::CopyFrom(const ListAutoAuthRulesResponse& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.ListAutoAuthRulesResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ListAutoAuthRulesResponse::InternalSwap(ListAutoAuthRulesResponse* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.rules_.InternalSwap(&other->_impl_.rules_);
+}
+
+::google::protobuf::Metadata ListAutoAuthRulesResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+Event_DataEntry_DoNotUse::Event_DataEntry_DoNotUse()
+    : SuperType(Event_DataEntry_DoNotUse_class_data_.base()) {}
+Event_DataEntry_DoNotUse::Event_DataEntry_DoNotUse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+    : SuperType(arena, Event_DataEntry_DoNotUse_class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+Event_DataEntry_DoNotUse::Event_DataEntry_DoNotUse() : SuperType() {}
+Event_DataEntry_DoNotUse::Event_DataEntry_DoNotUse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+inline void* PROTOBUF_NONNULL Event_DataEntry_DoNotUse::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) Event_DataEntry_DoNotUse(arena);
+}
+constexpr auto Event_DataEntry_DoNotUse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Event_DataEntry_DoNotUse),
+                                            alignof(Event_DataEntry_DoNotUse));
+}
+constexpr auto Event_DataEntry_DoNotUse::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_Event_DataEntry_DoNotUse_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &Event_DataEntry_DoNotUse::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<Event_DataEntry_DoNotUse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &Event_DataEntry_DoNotUse::SharedDtor,
+          static_cast<void (::google::protobuf::MessageLite::*)()>(&Event_DataEntry_DoNotUse::ClearImpl),
+              ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+              ,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(Event_DataEntry_DoNotUse, _impl_._cached_size_),
+          false,
+      },
+      &Event_DataEntry_DoNotUse::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull Event_DataEntry_DoNotUse_class_data_ =
+        Event_DataEntry_DoNotUse::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+Event_DataEntry_DoNotUse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&Event_DataEntry_DoNotUse_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(Event_DataEntry_DoNotUse_class_data_.tc_table);
+  return Event_DataEntry_DoNotUse_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 41, 2>
+Event_DataEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(Event_DataEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    Event_DataEntry_DoNotUse_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::Event_DataEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string value = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(Event_DataEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(Event_DataEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1;
+    {PROTOBUF_FIELD_OFFSET(Event_DataEntry_DoNotUse, _impl_.key_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string value = 2;
+    {PROTOBUF_FIELD_OFFSET(Event_DataEntry_DoNotUse, _impl_.value_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\30\3\5\0\0\0\0\0"
+    "openclaw.Event.DataEntry"
+    "key"
+    "value"
+  }},
+};
+// ===================================================================
+
+class Event::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<Event>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(Event, _impl_._has_bits_);
+};
+
+Event::Event(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, Event_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.Event)
+}
+PROTOBUF_NDEBUG_INLINE Event::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::Event& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        event_id_(arena, from.event_id_),
+        device_id_(arena, from.device_id_),
+        message_(arena, from.message_),
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        data_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::Event,
+            PROTOBUF_FIELD_OFFSET(::openclaw::Event, _impl_.data_)>()
+        , from.data_}
+        #else
+        data_ { visibility, arena, from.data_ }
+        #endif
+     {}
+
+Event::Event(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const Event& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, Event_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  Event* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, timestamp_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, timestamp_),
+           offsetof(Impl_, type_) -
+               offsetof(Impl_, timestamp_) +
+               sizeof(Impl_::type_));
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.Event)
+}
+PROTOBUF_NDEBUG_INLINE Event::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        event_id_(arena),
+        device_id_(arena),
+        message_(arena),
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_MAP_FIELD
+        data_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::Event,
+            PROTOBUF_FIELD_OFFSET(::openclaw::Event, _impl_.data_)>()
+        }
+        #else
+        data_ { visibility, arena }
+        #endif
+     {}
+
+inline void Event::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, timestamp_),
+           0,
+           offsetof(Impl_, type_) -
+               offsetof(Impl_, timestamp_) +
+               sizeof(Impl_::type_));
+}
+Event::~Event() {
+  // @@protoc_insertion_point(destructor:openclaw.Event)
+  SharedDtor(*this);
+}
+inline void Event::SharedDtor(MessageLite& self) {
+  Event& this_ = static_cast<Event&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.event_id_.Destroy();
+  this_._impl_.device_id_.Destroy();
+  this_._impl_.message_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL Event::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) Event(arena);
+}
+#ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto Event::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Event),
+                                            alignof(Event));
+}
+#else  // !PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto Event::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(Event, _impl_.data_) +
+          decltype(Event::_impl_.data_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(Event), alignof(Event), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&Event::PlacementNew_,
+                                 sizeof(Event),
+                                 alignof(Event));
+  }
+}
+#endif
+constexpr auto Event::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_Event_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &Event::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<Event>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &Event::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<Event>(), &Event::ByteSizeLong,
+              &Event::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(Event, _impl_._cached_size_),
+          false,
+      },
+      &Event::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull Event_class_data_ =
+        Event::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+Event::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&Event_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(Event_class_data_.tc_table);
+  return Event_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 6, 1, 51, 2>
+Event::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(Event, _impl_._has_bits_),
+    0, // no _extensions_
+    6, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967232,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    Event_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::Event>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string event_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(Event, _impl_.event_id_)}},
+    // .openclaw.EventType type = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Event, _impl_.type_), 4>(),
+     {16, 4, 0,
+      PROTOBUF_FIELD_OFFSET(Event, _impl_.type_)}},
+    // string device_id = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 1, 0,
+      PROTOBUF_FIELD_OFFSET(Event, _impl_.device_id_)}},
+    // uint64 timestamp = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Event, _impl_.timestamp_), 3>(),
+     {32, 3, 0,
+      PROTOBUF_FIELD_OFFSET(Event, _impl_.timestamp_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    // string message = 6;
+    {::_pbi::TcParser::FastUS1,
+     {50, 2, 0,
+      PROTOBUF_FIELD_OFFSET(Event, _impl_.message_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string event_id = 1;
+    {PROTOBUF_FIELD_OFFSET(Event, _impl_.event_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .openclaw.EventType type = 2;
+    {PROTOBUF_FIELD_OFFSET(Event, _impl_.type_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
+    // string device_id = 3;
+    {PROTOBUF_FIELD_OFFSET(Event, _impl_.device_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // uint64 timestamp = 4;
+    {PROTOBUF_FIELD_OFFSET(Event, _impl_.timestamp_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+    // map<string, string> data = 5;
+    {PROTOBUF_FIELD_OFFSET(Event, _impl_.data_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+    // string message = 6;
+    {PROTOBUF_FIELD_OFFSET(Event, _impl_.message_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  {{
+      {::_pbi::TcParser::GetMapAuxInfo(
+          1, 0, 9, 9, 0)},
+  }},
+  {{
+    "\16\10\0\11\0\4\7\0"
+    "openclaw.Event"
+    "event_id"
+    "device_id"
+    "data"
+    "message"
+  }},
+};
+PROTOBUF_NOINLINE void Event::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.Event)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.event_id_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.device_id_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      _impl_.message_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00000038U)) {
+    ::memset(&_impl_.timestamp_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.type_) -
+        reinterpret_cast<char*>(&_impl_.timestamp_)) + sizeof(_impl_.type_));
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+      _impl_.data_.Clear();
+    }
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL Event::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const Event& this_ = static_cast<const Event&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL Event::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const Event& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.Event)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string event_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_event_id().empty()) {
+      const ::std::string& _s = this_._internal_event_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.Event.event_id");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // .openclaw.EventType type = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (this_._internal_type() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteEnumToArray(
+          2, this_._internal_type(), target);
+    }
+  }
+
+  // string device_id = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_device_id().empty()) {
+      const ::std::string& _s = this_._internal_device_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.Event.device_id");
+      target = stream->WriteStringMaybeAliased(3, _s, target);
+    }
+  }
+
+  // uint64 timestamp = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_timestamp() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          4, this_._internal_timestamp(), target);
+    }
+  }
+
+  // map<string, string> data = 5;
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+    if (!this_._internal_data().empty()) {
+      using MapType = ::google::protobuf::Map<::std::string, ::std::string>;
+      using WireHelper = _pbi::MapEntryFuncs<::std::string, ::std::string,
+                                     _pbi::WireFormatLite::TYPE_STRING,
+                                     _pbi::WireFormatLite::TYPE_STRING>;
+      const auto& field = this_._internal_data();
+
+      if (stream->IsSerializationDeterministic() && field.size() > 1) {
+        for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+          target = WireHelper::InternalSerialize(
+              5, entry.first, entry.second, target, stream);
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.Event.data");
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.Event.data");
+        }
+      } else {
+        for (const auto& entry : field) {
+          target = WireHelper::InternalSerialize(
+              5, entry.first, entry.second, target, stream);
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.Event.data");
+          ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+              entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.Event.data");
+        }
+      }
+    }
+  }
+
+  // string message = 6;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (!this_._internal_message().empty()) {
+      const ::std::string& _s = this_._internal_message();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.Event.message");
+      target = stream->WriteStringMaybeAliased(6, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.Event)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t Event::ByteSizeLong(const MessageLite& base) {
+  const Event& this_ = static_cast<const Event&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t Event::ByteSizeLong() const {
+  const Event& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.Event)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003fU)) {
+    // string event_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_event_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_event_id());
+      }
+    }
+    // string device_id = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_device_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_device_id());
+      }
+    }
+    // string message = 6;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (!this_._internal_message().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_message());
+      }
+    }
+    // uint64 timestamp = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_timestamp() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_timestamp());
+      }
+    }
+    // .openclaw.EventType type = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (this_._internal_type() != 0) {
+        total_size += 1 +
+                      ::_pbi::WireFormatLite::EnumSize(this_._internal_type());
+      }
+    }
+    // map<string, string> data = 5;
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+      total_size +=
+          1 * ::google::protobuf::internal::FromIntSize(this_._internal_data_size());
+      for (const auto& entry : this_._internal_data()) {
+        total_size += _pbi::MapEntryFuncs<::std::string, ::std::string,
+                                       _pbi::WireFormatLite::TYPE_STRING,
+                                       _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void Event::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<Event*>(&to_msg);
+  auto& from = static_cast<const Event&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.Event)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003fU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_event_id().empty()) {
+        _this->_internal_set_event_id(from._internal_event_id());
+      } else {
+        if (_this->_impl_.event_id_.IsDefault()) {
+          _this->_internal_set_event_id("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_device_id().empty()) {
+        _this->_internal_set_device_id(from._internal_device_id());
+      } else {
+        if (_this->_impl_.device_id_.IsDefault()) {
+          _this->_internal_set_device_id("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (!from._internal_message().empty()) {
+        _this->_internal_set_message(from._internal_message());
+      } else {
+        if (_this->_impl_.message_.IsDefault()) {
+          _this->_internal_set_message("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_timestamp() != 0) {
+        _this->_impl_.timestamp_ = from._impl_.timestamp_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (from._internal_type() != 0) {
+        _this->_impl_.type_ = from._impl_.type_;
+      }
+    }
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000020U)) {
+      _this->_impl_.data_.MergeFrom(from._impl_.data_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void Event::CopyFrom(const Event& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.Event)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void Event::InternalSwap(Event* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.event_id_, &other->_impl_.event_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Event, _impl_.type_)
+      + sizeof(Event::_impl_.type_)
+      - PROTOBUF_FIELD_OFFSET(Event, _impl_.timestamp_)>(
+          reinterpret_cast<char*>(&_impl_.timestamp_),
+          reinterpret_cast<char*>(&other->_impl_.timestamp_));
+  _impl_.data_.InternalSwap(&other->_impl_.data_);
+}
+
+::google::protobuf::Metadata Event::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SubscribeEventsRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<SubscribeEventsRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(SubscribeEventsRequest, _impl_._has_bits_);
+};
+
+SubscribeEventsRequest::SubscribeEventsRequest(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, SubscribeEventsRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.SubscribeEventsRequest)
+}
+PROTOBUF_NDEBUG_INLINE SubscribeEventsRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::SubscribeEventsRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_FIELD
+        event_types_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::SubscribeEventsRequest,
+            PROTOBUF_FIELD_OFFSET(::openclaw::SubscribeEventsRequest, _impl_.event_types_)>()
+        , from.event_types_}
+        #else
+        event_types_ { visibility, arena, from.event_types_ }
+        #endif
+        ,
+        _event_types_cached_byte_size_{0},
+        subscriber_id_(arena, from.subscriber_id_) {}
+
+SubscribeEventsRequest::SubscribeEventsRequest(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const SubscribeEventsRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, SubscribeEventsRequest_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SubscribeEventsRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.SubscribeEventsRequest)
+}
+PROTOBUF_NDEBUG_INLINE SubscribeEventsRequest::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        #ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_FIELD
+        event_types_{visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::openclaw::SubscribeEventsRequest,
+            PROTOBUF_FIELD_OFFSET(::openclaw::SubscribeEventsRequest, _impl_.event_types_)>()
+        }
+        #else
+        event_types_ { visibility, arena }
+        #endif
+        ,
+        _event_types_cached_byte_size_{0},
+        subscriber_id_(arena) {}
+
+inline void SubscribeEventsRequest::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+SubscribeEventsRequest::~SubscribeEventsRequest() {
+  // @@protoc_insertion_point(destructor:openclaw.SubscribeEventsRequest)
+  SharedDtor(*this);
+}
+inline void SubscribeEventsRequest::SharedDtor(MessageLite& self) {
+  SubscribeEventsRequest& this_ = static_cast<SubscribeEventsRequest&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.subscriber_id_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL SubscribeEventsRequest::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) SubscribeEventsRequest(arena);
+}
+#ifdef PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto SubscribeEventsRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(SubscribeEventsRequest),
+                                            alignof(SubscribeEventsRequest));
+}
+#else  // !PROTOBUF_INTERNAL_REMOVE_ARENA_PTRS_REPEATED_PTR_FIELD
+constexpr auto SubscribeEventsRequest::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(SubscribeEventsRequest, _impl_.event_types_) +
+          decltype(SubscribeEventsRequest::_impl_.event_types_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(SubscribeEventsRequest), alignof(SubscribeEventsRequest), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&SubscribeEventsRequest::PlacementNew_,
+                                 sizeof(SubscribeEventsRequest),
+                                 alignof(SubscribeEventsRequest));
+  }
+}
+#endif
+constexpr auto SubscribeEventsRequest::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_SubscribeEventsRequest_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &SubscribeEventsRequest::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<SubscribeEventsRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &SubscribeEventsRequest::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<SubscribeEventsRequest>(), &SubscribeEventsRequest::ByteSizeLong,
+              &SubscribeEventsRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(SubscribeEventsRequest, _impl_._cached_size_),
+          false,
+      },
+      &SubscribeEventsRequest::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull SubscribeEventsRequest_class_data_ =
+        SubscribeEventsRequest::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+SubscribeEventsRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&SubscribeEventsRequest_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(SubscribeEventsRequest_class_data_.tc_table);
+  return SubscribeEventsRequest_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 53, 2>
+SubscribeEventsRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(SubscribeEventsRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    SubscribeEventsRequest_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::SubscribeEventsRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string subscriber_id = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(SubscribeEventsRequest, _impl_.subscriber_id_)}},
+    // repeated .openclaw.EventType event_types = 1;
+    {::_pbi::TcParser::FastV32P1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(SubscribeEventsRequest, _impl_.event_types_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .openclaw.EventType event_types = 1;
+    {PROTOBUF_FIELD_OFFSET(SubscribeEventsRequest, _impl_.event_types_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcRepeated | ::_fl::kPackedOpenEnum)},
+    // string subscriber_id = 2;
+    {PROTOBUF_FIELD_OFFSET(SubscribeEventsRequest, _impl_.subscriber_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\37\0\15\0\0\0\0\0"
+    "openclaw.SubscribeEventsRequest"
+    "subscriber_id"
+  }},
+};
+PROTOBUF_NOINLINE void SubscribeEventsRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.SubscribeEventsRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      _impl_.event_types_.Clear();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.subscriber_id_.ClearNonDefaultToEmpty();
+    }
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL SubscribeEventsRequest::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const SubscribeEventsRequest& this_ = static_cast<const SubscribeEventsRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL SubscribeEventsRequest::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const SubscribeEventsRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.SubscribeEventsRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // repeated .openclaw.EventType event_types = 1;
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+    {
+      ::size_t byte_size = this_._impl_._event_types_cached_byte_size_.Get();
+      if (byte_size > 0) {
+        target = stream->WriteEnumPacked(
+            1, this_._internal_event_types(), byte_size, target);
+      }
+    }
+  }
+
+  // string subscriber_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_subscriber_id().empty()) {
+      const ::std::string& _s = this_._internal_subscriber_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.SubscribeEventsRequest.subscriber_id");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.SubscribeEventsRequest)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t SubscribeEventsRequest::ByteSizeLong(const MessageLite& base) {
+  const SubscribeEventsRequest& this_ = static_cast<const SubscribeEventsRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t SubscribeEventsRequest::ByteSizeLong() const {
+  const SubscribeEventsRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.SubscribeEventsRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    // repeated .openclaw.EventType event_types = 1;
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      total_size += ::_pbi::WireFormatLite::EnumSizeWithPackedTagSize(
+          this_._internal_event_types(), 1, this_._impl_._event_types_cached_byte_size_);
+    }
+    // string subscriber_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_subscriber_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_subscriber_id());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void SubscribeEventsRequest::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<SubscribeEventsRequest*>(&to_msg);
+  auto& from = static_cast<const SubscribeEventsRequest&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.SubscribeEventsRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      _this->_internal_mutable_event_types()->MergeFrom(from._internal_event_types());
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_subscriber_id().empty()) {
+        _this->_internal_set_subscriber_id(from._internal_subscriber_id());
+      } else {
+        if (_this->_impl_.subscriber_id_.IsDefault()) {
+          _this->_internal_set_subscriber_id("");
+        }
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void SubscribeEventsRequest::CopyFrom(const SubscribeEventsRequest& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.SubscribeEventsRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SubscribeEventsRequest::InternalSwap(SubscribeEventsRequest* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.event_types_.InternalSwap(&other->_impl_.event_types_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.subscriber_id_, &other->_impl_.subscriber_id_, arena);
+}
+
+::google::protobuf::Metadata SubscribeEventsRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SubscribeEventsResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<SubscribeEventsResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(SubscribeEventsResponse, _impl_._has_bits_);
+};
+
+SubscribeEventsResponse::SubscribeEventsResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, SubscribeEventsResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:openclaw.SubscribeEventsResponse)
+}
+PROTOBUF_NDEBUG_INLINE SubscribeEventsResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::openclaw::SubscribeEventsResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        error_message_(arena, from.error_message_),
+        subscription_id_(arena, from.subscription_id_) {}
+
+SubscribeEventsResponse::SubscribeEventsResponse(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const SubscribeEventsResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, SubscribeEventsResponse_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SubscribeEventsResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.success_ = from._impl_.success_;
+
+  // @@protoc_insertion_point(copy_constructor:openclaw.SubscribeEventsResponse)
+}
+PROTOBUF_NDEBUG_INLINE SubscribeEventsResponse::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        error_message_(arena),
+        subscription_id_(arena) {}
+
+inline void SubscribeEventsResponse::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.success_ = {};
+}
+SubscribeEventsResponse::~SubscribeEventsResponse() {
+  // @@protoc_insertion_point(destructor:openclaw.SubscribeEventsResponse)
+  SharedDtor(*this);
+}
+inline void SubscribeEventsResponse::SharedDtor(MessageLite& self) {
+  SubscribeEventsResponse& this_ = static_cast<SubscribeEventsResponse&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.error_message_.Destroy();
+  this_._impl_.subscription_id_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL SubscribeEventsResponse::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) SubscribeEventsResponse(arena);
+}
+constexpr auto SubscribeEventsResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(SubscribeEventsResponse),
+                                            alignof(SubscribeEventsResponse));
+}
+constexpr auto SubscribeEventsResponse::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_SubscribeEventsResponse_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // IsInitialized
+          &SubscribeEventsResponse::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<SubscribeEventsResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &SubscribeEventsResponse::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<SubscribeEventsResponse>(), &SubscribeEventsResponse::ByteSizeLong,
+              &SubscribeEventsResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(SubscribeEventsResponse, _impl_._cached_size_),
+          false,
+      },
+      &SubscribeEventsResponse::kDescriptorMethods,
+      &descriptor_table_openclaw_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull SubscribeEventsResponse_class_data_ =
+        SubscribeEventsResponse::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+SubscribeEventsResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&SubscribeEventsResponse_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(SubscribeEventsResponse_class_data_.tc_table);
+  return SubscribeEventsResponse_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 69, 2>
+SubscribeEventsResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(SubscribeEventsResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    SubscribeEventsResponse_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::openclaw::SubscribeEventsResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // bool success = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(SubscribeEventsResponse, _impl_.success_), 2>(),
+     {8, 2, 0,
+      PROTOBUF_FIELD_OFFSET(SubscribeEventsResponse, _impl_.success_)}},
+    // string error_message = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 0, 0,
+      PROTOBUF_FIELD_OFFSET(SubscribeEventsResponse, _impl_.error_message_)}},
+    // string subscription_id = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 1, 0,
+      PROTOBUF_FIELD_OFFSET(SubscribeEventsResponse, _impl_.subscription_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bool success = 1;
+    {PROTOBUF_FIELD_OFFSET(SubscribeEventsResponse, _impl_.success_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // string error_message = 2;
+    {PROTOBUF_FIELD_OFFSET(SubscribeEventsResponse, _impl_.error_message_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string subscription_id = 3;
+    {PROTOBUF_FIELD_OFFSET(SubscribeEventsResponse, _impl_.subscription_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\40\0\15\17\0\0\0\0"
+    "openclaw.SubscribeEventsResponse"
+    "error_message"
+    "subscription_id"
+  }},
+};
+PROTOBUF_NOINLINE void SubscribeEventsResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:openclaw.SubscribeEventsResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.error_message_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.subscription_id_.ClearNonDefaultToEmpty();
+    }
+  }
+  _impl_.success_ = false;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL SubscribeEventsResponse::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const SubscribeEventsResponse& this_ = static_cast<const SubscribeEventsResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL SubscribeEventsResponse::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const SubscribeEventsResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:openclaw.SubscribeEventsResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // bool success = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_success() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          1, this_._internal_success(), target);
+    }
+  }
+
+  // string error_message = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_error_message().empty()) {
+      const ::std::string& _s = this_._internal_error_message();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.SubscribeEventsResponse.error_message");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // string subscription_id = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_subscription_id().empty()) {
+      const ::std::string& _s = this_._internal_subscription_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "openclaw.SubscribeEventsResponse.subscription_id");
+      target = stream->WriteStringMaybeAliased(3, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:openclaw.SubscribeEventsResponse)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t SubscribeEventsResponse::ByteSizeLong(const MessageLite& base) {
+  const SubscribeEventsResponse& this_ = static_cast<const SubscribeEventsResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t SubscribeEventsResponse::ByteSizeLong() const {
+  const SubscribeEventsResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:openclaw.SubscribeEventsResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    // string error_message = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_error_message().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_error_message());
+      }
+    }
+    // string subscription_id = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_subscription_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_subscription_id());
+      }
+    }
+    // bool success = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_success() != 0) {
+        total_size += 2;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void SubscribeEventsResponse::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<SubscribeEventsResponse*>(&to_msg);
+  auto& from = static_cast<const SubscribeEventsResponse&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:openclaw.SubscribeEventsResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_error_message().empty()) {
+        _this->_internal_set_error_message(from._internal_error_message());
+      } else {
+        if (_this->_impl_.error_message_.IsDefault()) {
+          _this->_internal_set_error_message("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_subscription_id().empty()) {
+        _this->_internal_set_subscription_id(from._internal_subscription_id());
+      } else {
+        if (_this->_impl_.subscription_id_.IsDefault()) {
+          _this->_internal_set_subscription_id("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_success() != 0) {
+        _this->_impl_.success_ = from._impl_.success_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void SubscribeEventsResponse::CopyFrom(const SubscribeEventsResponse& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:openclaw.SubscribeEventsResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SubscribeEventsResponse::InternalSwap(SubscribeEventsResponse* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.error_message_, &other->_impl_.error_message_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.subscription_id_, &other->_impl_.subscription_id_, arena);
+  swap(_impl_.success_, other->_impl_.success_);
+}
+
+::google::protobuf::Metadata SubscribeEventsResponse::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)
