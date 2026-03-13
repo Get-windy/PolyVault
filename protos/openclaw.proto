@@ -2,37 +2,406 @@ syntax = "proto3";
 
 package openclaw;
 
-// 凭证请求
+// ============================================================================
+// 基础类型
+// ============================================================================
+
+/**
+ * 设备类型
+ */
+enum DeviceType {
+    DEVICE_TYPE_UNSPECIFIED = 0;
+    DEVICE_TYPE_ANDROID = 1;
+    DEVICE_TYPE_IOS = 2;
+    DEVICE_TYPE_WINDOWS = 3;
+    DEVICE_TYPE_MACOS = 4;
+    DEVICE_TYPE_LINUX = 5;
+    DEVICE_TYPE_HARMONY = 6;
+    DEVICE_TYPE_EMBEDDED = 7;
+}
+
+/**
+ * 凭证类型
+ */
+enum CredentialType {
+    CREDENTIAL_TYPE_UNSPECIFIED = 0;
+    CREDENTIAL_TYPE_PASSWORD = 1;       // 用户名+密码
+    CREDENTIAL_TYPE_OAUTH = 2;          // OAuth令牌
+    CREDENTIAL_TYPE_API_KEY = 3;        // API密钥
+    CREDENTIAL_TYPE_CERTIFICATE = 4;    // 客户端证书
+    CREDENTIAL_TYPE_COOKIE = 5;         // Cookie
+}
+
+/**
+ * 授权状态
+ */
+enum AuthorizationStatus {
+    AUTH_STATUS_UNSPECIFIED = 0;
+    AUTH_STATUS_PENDING = 1;            // 等待用户授权
+    AUTH_STATUS_APPROVED = 2;           // 用户已批准
+    AUTH_STATUS_DENIED = 3;             // 用户已拒绝
+    AUTH_STATUS_TIMEOUT = 4;            // 超时
+    AUTH_STATUS_CANCELED = 5;           // 已取消
+}
+
+// ============================================================================
+// 设备管理
+// ============================================================================
+
+/**
+ * 设备信息
+ */
+message DeviceInfo {
+    string device_id = 1;               // 设备唯一标识
+    string device_name = 2;             // 设备名称（用户可自定义）
+    DeviceType device_type = 3;         // 设备类型
+    string platform_version = 4;        // 平台版本（如 Android 14, iOS 17.2）
+    string app_version = 5;             // 客户端版本
+    uint64 last_active_time = 6;        // 最后活跃时间（Unix时间戳）
+    bool is_online = 7;                 // 是否在线
+    repeated string capabilities = 8;   // 设备能力列表
+}
+
+/**
+ * 设备注册请求
+ */
+message DeviceRegisterRequest {
+    DeviceInfo device = 1;
+    bytes public_key = 2;               // 设备公钥（用于加密通信）
+    string device_token = 3;            // 推送令牌（可选，用于移动设备）
+}
+
+/**
+ * 设备注册响应
+ */
+message DeviceRegisterResponse {
+    bool success = 1;
+    string error_message = 2;
+    string device_id = 3;               // 分配的设备ID
+    uint64 registration_time = 4;       // 注册时间
+}
+
+/**
+ * 设备心跳
+ */
+message DeviceHeartbeat {
+    string device_id = 1;
+    uint64 timestamp = 2;
+    map<string, string> status = 3;     // 状态信息（如电量、网络状态）
+}
+
+/**
+ * 设备列表请求
+ */
+message DeviceListRequest {
+    string user_id = 1;                 // 用户ID（可选，用于跨设备查询）
+}
+
+/**
+ * 设备列表响应
+ */
+message DeviceListResponse {
+    repeated DeviceInfo devices = 1;
+}
+
+// ============================================================================
+// 凭证请求/响应
+// ============================================================================
+
+/**
+ * 凭证请求
+ */
 message CredentialRequest {
-    string service_url = 1;      // 例如 "https://accounts.google.com"
-    string session_id = 2;        // 会话标识
-    uint64 timestamp = 3;
+    string request_id = 1;              // 请求唯一标识（UUID）
+    string service_url = 2;             // 服务URL（如 https://accounts.google.com）
+    string service_name = 3;            // 服务名称（如 Google, GitHub）
+    CredentialType credential_type = 4; // 需要的凭证类型
+    uint64 timestamp = 5;               // 请求时间戳
+    uint32 timeout_seconds = 6;         // 超时时间（秒）
+    string reason = 7;                  // 请求原因（用于向用户展示）
+    map<string, string> context = 8;    // 额外上下文信息
 }
 
-// 凭证响应
+/**
+ * 凭证响应
+ */
 message CredentialResponse {
-    string session_id = 1;
-    bytes encrypted_credential = 2;  // 由客户端公钥加密的凭证
-    bool success = 3;
-    string error_message = 4;
+    string request_id = 1;              // 对应的请求ID
+    AuthorizationStatus status = 2;     // 授权状态
+    bytes encrypted_credential = 3;     // 加密的凭证（使用设备公钥加密）
+    string error_message = 4;           // 错误信息
+    uint64 timestamp = 5;               // 响应时间戳
 }
 
-// Cookie上传
-message CookieUpload {
+/**
+ * 凭证存储请求
+ */
+message CredentialStoreRequest {
     string service_url = 1;
-    bytes encrypted_cookie = 2;   // 由客户端公钥加密
-    string session_id = 3;
+    CredentialType credential_type = 2;
+    bytes encrypted_credential = 3;     // 加密的凭证
+    map<string, string> metadata = 4;   // 元数据（如用户名提示）
 }
 
-// 设备能力声明（用于能力虚拟化）
+/**
+ * 凭证存储响应
+ */
+message CredentialStoreResponse {
+    bool success = 1;
+    string error_message = 2;
+    string credential_id = 3;           // 凭证ID
+}
+
+/**
+ * 凭证删除请求
+ */
+message CredentialDeleteRequest {
+    string service_url = 1;
+    string credential_id = 2;           // 可选，删除特定凭证
+}
+
+/**
+ * 凭证删除响应
+ */
+message CredentialDeleteResponse {
+    bool success = 1;
+    string error_message = 2;
+}
+
+// ============================================================================
+// Cookie管理
+// ============================================================================
+
+/**
+ * Cookie项
+ */
+message CookieItem {
+    string name = 1;
+    string value = 2;
+    string domain = 3;
+    string path = 4;
+    uint64 expires = 5;                 // 过期时间（Unix时间戳）
+    bool secure = 6;
+    bool http_only = 7;
+    string same_site = 8;               // Strict, Lax, None
+}
+
+/**
+ * Cookie上传请求
+ */
+message CookieUploadRequest {
+    string request_id = 1;
+    string service_url = 2;
+    repeated CookieItem cookies = 3;
+    bytes encrypted_cookies = 4;        // 可选：整体加密的Cookie数据
+}
+
+/**
+ * Cookie上传响应
+ */
+message CookieUploadResponse {
+    bool success = 1;
+    string error_message = 2;
+}
+
+/**
+ * Cookie下载请求
+ */
+message CookieDownloadRequest {
+    string service_url = 1;
+    string device_id = 2;               // 从哪个设备获取
+}
+
+/**
+ * Cookie下载响应
+ */
+message CookieDownloadResponse {
+    bool success = 1;
+    string error_message = 2;
+    repeated CookieItem cookies = 3;
+    bytes encrypted_cookies = 4;
+}
+
+// ============================================================================
+// 设备能力（能力虚拟化）
+// ============================================================================
+
+/**
+ * 能力类型
+ */
+enum CapabilityType {
+    CAPABILITY_UNSPECIFIED = 0;
+    CAPABILITY_CREDENTIAL_PROVIDER = 1;     // 凭证提供者
+    CAPABILITY_COOKIE_STORAGE = 2;          // Cookie存储
+    CAPABILITY_BIOMETRIC_AUTH = 3;          // 生物认证
+    CAPABILITY_SECURE_DISPLAY = 4;          // 安全显示（TEE）
+    CAPABILITY_SENSOR_DATA = 5;             // 传感器数据
+    CAPABILITY_LOCATION = 6;                // 位置服务
+}
+
+/**
+ * 能力声明
+ */
 message Capability {
     string device_id = 1;
-    repeated string services = 2;  // 例如 "credential_provider", "sensor_data"
-    map<string, string> metadata = 3;
+    CapabilityType type = 2;
+    string name = 3;
+    string description = 4;
+    map<string, string> properties = 5;     // 能力属性
+    bool is_available = 6;                  // 当前是否可用
 }
 
-// 服务定义
-service CredentialService {
-    rpc GetCredential(CredentialRequest) returns (CredentialResponse);
-    rpc UploadCookie(CookieUpload) returns (CredentialResponse);
+/**
+ * 能力发现请求
+ */
+message CapabilityDiscoveryRequest {
+    string device_id = 1;                   // 可选，查询特定设备
+    CapabilityType type_filter = 2;         // 可选，按类型过滤
 }
+
+/**
+ * 能力发现响应
+ */
+message CapabilityDiscoveryResponse {
+    repeated Capability capabilities = 1;
+}
+
+// ============================================================================
+ // 授权流程
+// ============================================================================
+
+/**
+ * 授权请求
+ */
+message AuthorizationRequest {
+    string auth_id = 1;                     // 授权会话ID
+    CredentialRequest credential_request = 2;
+    DeviceInfo requesting_device = 3;       // 请求设备信息
+    uint64 created_time = 4;
+    uint64 expires_time = 5;
+}
+
+/**
+ * 授权响应
+ */
+message AuthorizationResponse {
+    string auth_id = 1;
+    AuthorizationStatus status = 2;
+    string device_id = 3;                   // 授权设备ID
+    CredentialResponse credential_response = 4;
+}
+
+/**
+ * 授权取消请求
+ */
+message AuthorizationCancelRequest {
+    string auth_id = 1;
+    string reason = 2;
+}
+
+/**
+ * 授权取消响应
+ */
+message AuthorizationCancelResponse {
+    bool success = 1;
+    string error_message = 2;
+}
+
+// ============================================================================
+// 同步与备份
+// ============================================================================
+
+/**
+ * 同步请求
+ */
+message SyncRequest {
+    string device_id = 1;
+    uint64 last_sync_time = 2;              // 上次同步时间
+    repeated string service_urls = 3;       // 需要同步的服务（空=全部）
+}
+
+/**
+ * 同步数据
+ */
+message SyncData {
+    string service_url = 1;
+    bytes encrypted_data = 2;               // 加密的同步数据
+    uint64 modified_time = 3;
+    string checksum = 4;                    // 数据校验
+}
+
+/**
+ * 同步响应
+ */
+message SyncResponse {
+    bool success = 1;
+    string error_message = 2;
+    repeated SyncData data = 3;
+    uint64 sync_time = 4;
+}
+
+// ============================================================================
+// 服务定义
+// ============================================================================
+
+/**
+ * 凭证服务 - 客户端提供
+ */
+service CredentialService {
+    // 获取凭证
+    rpc GetCredential(CredentialRequest) returns (CredentialResponse);
+    
+    // 存储凭证
+    rpc StoreCredential(CredentialStoreRequest) returns (CredentialStoreResponse);
+    
+    // 删除凭证
+    rpc DeleteCredential(CredentialDeleteRequest) returns (CredentialDeleteResponse);
+    
+    // Cookie上传
+    rpc UploadCookie(CookieUploadRequest) returns (CookieUploadResponse);
+    
+    // Cookie下载
+    rpc DownloadCookie(CookieDownloadRequest) returns (CookieDownloadResponse);
+}
+
+/**
+ * 设备服务 - 管理服务
+ */
+service DeviceService {
+    // 设备注册
+    rpc RegisterDevice(DeviceRegisterRequest) returns (DeviceRegisterResponse);
+    
+    // 设备心跳
+    rpc Heartbeat(DeviceHeartbeat) returns (google.protobuf.Empty);
+    
+    // 获取设备列表
+    rpc ListDevices(DeviceListRequest) returns (DeviceListResponse);
+    
+    // 能力发现
+    rpc DiscoverCapabilities(CapabilityDiscoveryRequest) returns (CapabilityDiscoveryResponse);
+}
+
+/**
+ * 授权服务 - Agent提供
+ */
+service AuthorizationService {
+    // 请求授权
+    rpc RequestAuthorization(AuthorizationRequest) returns (AuthorizationResponse);
+    
+    // 取消授权
+    rpc CancelAuthorization(AuthorizationCancelRequest) returns (AuthorizationCancelResponse);
+}
+
+/**
+ * 同步服务
+ */
+service SyncService {
+    // 同步数据
+    rpc Sync(SyncRequest) returns (SyncResponse);
+}
+
+// ============================================================================
+// 导入Google Protobuf
+// ============================================================================
+
+import "google/protobuf/empty.proto";
