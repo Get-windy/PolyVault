@@ -1,0 +1,46 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+.pub-cache/
+.pub/
+.pub-workspace/
+*.lock
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# eCAL
+ecal_log/
+*.ecallog
+
+# Build outputs
+build/
+dist/
+*.so
+*.dll
+*.dylib
+
+# Test
+*.gcda
+*.gcno
+
+# Secrets
+.env
+*.key
+*.pem
+!*.pub
+
+# Generated files
+lib/generated/*.pb.dart
+lib/generated/*.pbenum.dart
+lib/generated/*.pbgrpc.dart
+lib/generated/*.pbjson.dart
