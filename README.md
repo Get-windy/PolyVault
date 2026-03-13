@@ -1,4 +1,4 @@
-# PolyVault - OpenClaw远程授信客户端
+# PolyVault - OpenClaw远程多源授信客户端
 
 基于 eCAL + zk_vault 的跨平台、硬件级安全、去中心化远程授信系统。
 
