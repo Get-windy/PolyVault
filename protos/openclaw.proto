@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package openclaw;
+
+// 凭证请求
+message CredentialRequest {
+    string service_url = 1;      // 例如 "https://accounts.google.com"
+    string session_id = 2;        // 会话标识
+    uint64 timestamp = 3;
+}
+
+// 凭证响应
+message CredentialResponse {
+    string session_id = 1;
+    bytes encrypted_credential = 2;  // 由客户端公钥加密的凭证
+    bool success = 3;
+    string error_message = 4;
+}
+
+// Cookie上传
+message CookieUpload {
+    string service_url = 1;
+    bytes encrypted_cookie = 2;   // 由客户端公钥加密
+    string session_id = 3;
+}
+
+// 设备能力声明（用于能力虚拟化）
+message Capability {
+    string device_id = 1;
+    repeated string services = 2;  // 例如 "credential_provider", "sensor_data"
+    map<string, string> metadata = 3;
+}
+
+// 服务定义
+service CredentialService {
+    rpc GetCredential(CredentialRequest) returns (CredentialResponse);
+    rpc UploadCookie(CookieUpload) returns (CredentialResponse);
+}
