@@ -41,6 +41,26 @@ class _CredentialsScreenState extends State<CredentialsScreen> {
     }
   }
 
+  Future<void> _deleteCredential(CredentialSummary credential) async {
+    try {
+      final storage = SecureStorageService();
+      await storage.deleteCredential(credential.id);
+      await _loadCredentials();
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('凭证已删除')),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('删除失败: $e')),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -253,4 +273,65 @@ class _CredentialsScreenState extends State<CredentialsScreen> {
                   obscureText: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return '
+                      return '请输入密码';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) => password = value!,
+                ),
+                const SizedBox(height: 16),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: '备注（可选）',
+                    hintText: '添加说明信息',
+                    prefixIcon: Icon(Icons.notes),
+                  ),
+                  maxLines: 2,
+                  onSaved: (value) => notes = value ?? '',
+                ),
+              ],
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('取消'),
+          ),
+          FilledButton(
+            onPressed: () async {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+                Navigator.pop(context);
+
+                try {
+                  final storage = SecureStorageService();
+                  await storage.saveCredential(
+                    serviceName: serviceName,
+                    username: username,
+                    password: password,
+                    notes: notes.isEmpty ? null : notes,
+                  );
+                  await _loadCredentials();
+
+                  if (mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('凭证已保存')),
+                    );
+                  }
+                } catch (e) {
+                  if (mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('保存失败: $e')),
+                    );
+                  }
+                }
+              }
+            },
+            child: const Text('保存'),
+          ),
+        ],
+      ),
+    );
+  }
+}

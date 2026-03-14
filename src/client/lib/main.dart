@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'services/secure_storage.dart';
 import 'screens/home_screen.dart';
 import 'screens/credentials_screen.dart';
+import 'screens/devices_screen.dart';
+import 'screens/settings_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,6 +62,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const CredentialsScreen(),
+    const DevicesScreen(),
+    const SettingsScreen(),
   ];
 
   @override
@@ -83,6 +87,16 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             icon: Icon(Icons.vpn_key_outlined),
             selectedIcon: Icon(Icons.vpn_key),
             label: '凭证管理',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.devices_outlined),
+            selectedIcon: Icon(Icons.devices),
+            label: '设备',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.settings_outlined),
+            selectedIcon: Icon(Icons.settings),
+            label: '设置',
           ),
         ],
       ),
