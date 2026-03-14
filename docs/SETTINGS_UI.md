@@ -133,6 +133,283 @@ void initState() {
 
 ---
 
+### 3. 自动授权规则配置
+
+**功能**: 配置 eCAL 设备间自动授权规则
+
+**设置项**:
+- **图标**: `Icons.security`
+- **标题**: "自动授权规则"
+- **副标题**: "管理信任设备的自动授权"
+- **操作**: 点击进入规则配置页面
+
+#### 3.1 规则类型
+
+| 规则 | 说明 | 默认 |
+|------|------|------|
+| **同网络自动授权** | 同一 WiFi 网络下自动授权 | 开启 |
+| **首次配对确认** | 新设备首次连接需确认 | 开启 |
+| **授权有效期** | 授权凭证有效时间 | 24 小时 |
+| **自动续期** | 到期前自动续期 | 开启 |
+
+#### 3.2 规则配置页面
+
+```dart
+class AutoAuthRulesScreen extends StatefulWidget {
+  const AutoAuthRulesScreen({super.key});
+
+  @override
+  State<AutoAuthRulesScreen> createState() => _AutoAuthRulesScreenState();
+}
+
+class _AutoAuthRulesScreenState extends State<AutoAuthRulesScreen> {
+  bool _isSameNetworkAutoAuth = true;
+  bool _requireFirstPairConfirm = true;
+  int _authValidityHours = 24;
+  bool _autoRenew = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('自动授权规则'),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          _buildRuleCard(
+            icon: Icons.wifi,
+            title: '同网络自动授权',
+            subtitle: '同一 WiFi 网络下自动授权信任设备',
+            trailing: Switch(
+              value: _isSameNetworkAutoAuth,
+              onChanged: (value) {
+                setState(() {
+                  _isSameNetworkAutoAuth = value;
+                });
+                _saveRules();
+              },
+            ),
+          ),
+          _buildRuleCard(
+            icon: Icons.verified_user,
+            title: '首次配对确认',
+            subtitle: '新设备首次连接需要用户确认',
+            trailing: Switch(
+              value: _requireFirstPairConfirm,
+              onChanged: (value) {
+                setState(() {
+                  _requireFirstPairConfirm = value;
+                });
+                _saveRules();
+              },
+            ),
+          ),
+          _buildRuleCard(
+            icon: Icons.timer,
+            title: '授权有效期',
+            subtitle: '$_authValidityHours 小时',
+            trailing: DropdownButton<int>(
+              value: _authValidityHours,
+              items: [1, 4, 8, 12, 24, 48, 72]
+                .map((e) => DropdownMenuItem(
+                  value: e,
+                  child: Text('$e 小时'),
+                ))
+                .toList(),
+              onChanged: (value) {
+                if (value != null) {
+                  setState(() {
+                    _authValidityHours = value;
+                  });
+                  _saveRules();
+                }
+              },
+            ),
+          ),
+          if (_authValidityHours < 72)
+            _buildRuleCard(
+              icon: Icons.refresh,
+              title: '自动续期',
+              subtitle: '到期前 1 小时自动续期',
+              trailing: Switch(
+                value: _autoRenew,
+                onChanged: (value) {
+                  setState(() {
+                    _autoRenew = value;
+                  });
+                  _saveRules();
+                },
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _saveRules() async {
+    final rules = AutoAuthRules(
+      sameNetworkAutoAuth: _isSameNetworkAutoAuth,
+      requireFirstPairConfirm: _requireFirstPairConfirm,
+      validityHours: _authValidityHours,
+      autoRenew: _autoRenew,
+    );
+    await SecureStorageService().saveAuthRules(rules);
+    
+    // 通知 eCAL 服务更新规则
+    await EcalService.updateAuthRules(rules);
+    
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('规则已保存')),
+    );
+  }
+}
+```
+
+#### 3.3 规则存储结构
+
+```dart
+class AutoAuthRules {
+  final bool sameNetworkAutoAuth;
+  final bool requireFirstPairConfirm;
+  final int validityHours;
+  final bool autoRenew;
+
+  AutoAuthRules({
+    required this.sameNetworkAutoAuth,
+    required this.requireFirstPairConfirm,
+    required this.validityHours,
+    required this.autoRenew,
+  });
+
+  // 序列化为 JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'same_network_auto_auth': sameNetworkAutoAuth,
+      'require_first_pair_confirm': requireFirstPairConfirm,
+      'validity_hours': validityHours,
+      'auto_renew': autoRenew,
+    };
+  }
+
+  // 从 JSON 反序列化
+  factory AutoAuthRules.fromJson(Map<String, dynamic> json) {
+    return AutoAuthRules(
+      sameNetworkAutoAuth: json['same_network_auto_auth'] ?? true,
+      requireFirstPairConfirm: json['require_first_pair_confirm'] ?? true,
+      validityHours: json['validity_hours'] ?? 24,
+      autoRenew: json['auto_renew'] ?? true,
+    );
+  }
+}
+```
+
+#### 3.4 eCAL 集成
+
+**规则应用到 eCAL 通信**:
+
+```dart
+class EcalAuthManager {
+  AutoAuthRules _rules;
+
+  EcalAuthManager() {
+    _loadRules();
+  }
+
+  Future<void> _loadRules() async {
+    _rules = await SecureStorageService().loadAuthRules();
+  }
+
+  // 检查是否自动授权
+  Future<bool> shouldAutoAuthorize(DeviceInfo device) async {
+    // 规则 1: 同网络自动授权
+    if (_rules.sameNetworkAutoAuth && device.isOnSameNetwork) {
+      return true;
+    }
+
+    // 规则 2: 首次配对确认
+    if (_rules.requireFirstPairConfirm && device.isFirstTime) {
+      return false; // 需要用户确认
+    }
+
+    // 规则 3: 检查授权有效期
+    if (await _isAuthExpired(device)) {
+      if (_rules.autoRenew) {
+        await _renewAuth(device);
+        return true;
+      }
+      return false;
+    }
+
+    return true;
+  }
+
+  // 检查授权是否过期
+  Future<bool> _isAuthExpired(DeviceInfo device) async {
+    final lastAuthTime = await _getLastAuthTime(device.id);
+    final expiryTime = lastAuthTime.add(
+      Duration(hours: _rules.validityHours),
+    );
+    return DateTime.now().isAfter(expiryTime);
+  }
+
+  // 续期授权
+  Future<void> _renewAuth(DeviceInfo device) async {
+    await _updateAuthTime(device.id);
+    // 重新发送授权凭证
+    await _sendAuthCredential(device);
+  }
+}
+```
+
+#### 3.5 安全考虑
+
+**安全机制**:
+- ✅ 所有规则加密存储（AES-256-GCM）
+- ✅ 规则变更需生物认证
+- ✅ 授权凭证定期轮换
+- ✅ 异常行为检测（频繁授权请求）
+
+**风险提示**:
+⚠️ **警告**: 启用同网络自动授权可能带来安全风险，建议在可信网络环境下使用。
+
+#### 3.6 使用场景
+
+**场景 1: 家庭环境**
+```
+配置:
+- 同网络自动授权：✅ 开启
+- 首次配对确认：✅ 开启
+- 授权有效期：24 小时
+- 自动续期：✅ 开启
+
+效果: 家庭设备间自动授权，新设备需确认一次
+```
+
+**场景 2: 办公环境**
+```
+配置:
+- 同网络自动授权：❌ 关闭
+- 首次配对确认：✅ 开启
+- 授权有效期：8 小时
+- 自动续期：❌ 关闭
+
+效果: 每次连接都需确认，提高安全性
+```
+
+**场景 3: 高安全环境**
+```
+配置:
+- 同网络自动授权：❌ 关闭
+- 首次配对确认：✅ 开启
+- 授权有效期：1 小时
+- 自动续期：❌ 关闭
+
+效果: 每次授权仅 1 小时有效，最大化安全
+```
+
+---
+
 ### 3. 自动锁定时间
 
 **功能**: 设置自动锁定的延迟时间
