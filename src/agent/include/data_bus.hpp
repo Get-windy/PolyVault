@@ -25,6 +25,7 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+#include <future>
 
 #ifdef USE_ECAL
 #include <ecal/ecal.h>
@@ -43,6 +44,7 @@ namespace bus {
 
 class DataBus;
 class Connection;
+struct DataBus::PendingResponse;
 
 /**
  * @brief 消息优先级
@@ -251,6 +253,12 @@ private:
     std::atomic<uint64_t> messages_sent_;
     std::atomic<uint64_t> messages_received_;
     std::atomic<uint64_t> message_id_counter_;
+    int request_timeout_ms_;
+    
+    // 请求/响应管理
+    struct PendingResponse;
+    std::mutex pending_responses_mutex_;
+    std::unordered_map<std::string, std::shared_ptr<PendingResponse>> pending_responses_;
     
     // 回调
     ConnectionCallback connection_callback_;
@@ -369,6 +377,59 @@ private:
 };
 
 // ============================================================================
+// Protobuf序列化辅助
+// ============================================================================
+
+/**
+ * @brief Protobuf消息序列化器
+ */
+class ProtobufSerializer {
+public:
+    /**
+     * @brief 将Protobuf消息序列化到字节向量
+     */
+    template<typename T>
+    static std::vector<uint8_t> serialize(const T& msg) {
+        std::string serialized;
+        if (msg.SerializeToString(&serialized)) {
+            return std::vector<uint8_t>(serialized.begin(), serialized.end());
+        }
+        return {};
+    }
+    
+    /**
+     * @brief 从字节向量反序列化Protobuf消息
+     */
+    template<typename T>
+    static bool deserialize(const std::vector<uint8_t>& data, T& msg) {
+        if (data.empty()) return false;
+        std::string serialized(data.begin(), data.end());
+        return msg.ParseFromString(serialized);
+    }
+    
+    /**
+     * @brief 从Message payload提取CredentialRequest
+     */
+    static bool extractCredentialRequest(const Message& msg, openclaw::CredentialRequest& request) {
+        return deserialize(msg.payload, request);
+    }
+    
+    /**
+     * @brief 从Message payload提取CredentialResponse
+     */
+    static bool extractCredentialResponse(const Message& msg, openclaw::CredentialResponse& response) {
+        return deserialize(msg.payload, response);
+    }
+    
+    /**
+     * @brief 从Message payload提取Event
+     */
+    static bool extractEvent(const Message& msg, openclaw::Event& event) {
+        return deserialize(msg.payload, event);
+    }
+};
+
+// ============================================================================
 // 便捷函数
 // ============================================================================
 
@@ -380,11 +441,32 @@ Message createCredentialRequest(const std::string& service_url,
                                 int credential_type);
 
 /**
+ * @brief 创建CredentialResponse消息
+ */
+Message createCredentialResponse(const std::string& request_id,
+                                bool success,
+                                const std::string& encrypted_credential,
+                                const std::string& error_message = "");
+
+/**
  * @brief 创建Event消息
  */
 Message createEventMessage(const std::string& device_id, 
                           openclaw::EventType event_type,
                           const std::string& message);
+
+/**
+ * @brief 创建DeviceHeartbeat消息
+ */
+Message createHeartbeatMessage(const std::string& device_id,
+                              const std::map<std::string, std::string>& status = {});
+
+/**
+ * @brief 创建AuthorizationRequest消息
+ */
+Message createAuthorizationRequest(const std::string& auth_id,
+                                   const std::string& service_url,
+                                   const std::string& device_id);
 
 } // namespace bus
 } // namespace polyvault

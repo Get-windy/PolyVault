@@ -68,6 +68,19 @@ std::optional<std::string> Connection::getMetadata(const std::string& key) const
 }
 
 // ============================================================================
+// PendingResponse - 待响应请求
+// ============================================================================
+
+struct PendingResponse {
+    std::string correlation_id;
+    Message request;
+    std::promise<Message> promise;
+    std::chrono::steady_clock::time_point start_time;
+    int retry_count;
+    int max_retries;
+};
+
+// ============================================================================
 // DataBus实现
 // ============================================================================
 
@@ -78,6 +91,7 @@ DataBus::DataBus(const DataBusConfig& config)
     , messages_sent_(0)
     , messages_received_(0)
     , message_id_counter_(0)
+    , request_timeout_ms_(5000)
 #ifdef USE_ECAL
     , ecal_enabled_(false)
 #endif
@@ -289,25 +303,86 @@ bool DataBus::publishAsync(const std::string& topic, const Message& message) {
 std::optional<Message> DataBus::request(const std::string& target, 
                                           const Message& request_msg, 
                                           int timeout_ms) {
-    // 简化的请求-响应实现
-    // 实际实现需要correlation ID和响应存储
+    if (!running_) {
+        return std::nullopt;
+    }
     
-    std::cout << "[DataBus] Request to " << target << ": " << request_msg.topic << std::endl;
+    std::string correlation_id = "corr_" + std::to_string(++message_id_counter_) + "_" + 
+                                  std::to_string(Message::currentTimestamp());
     
-    // 模拟响应
-    Message response;
-    response.message_id = "resp_" + request_msg.message_id;
-    response.kind = MessageKind::CREDENTIAL_RESPONSE;
-    response.source_id = target;
-    response.target_id = request_msg.source_id;
-    response.topic = request_msg.topic + "_response";
-    response.timestamp = Message::currentTimestamp();
+    // 创建带correlation ID的请求消息
+    Message request = request_msg;
+    request.message_id = correlation_id;
+    request.target_id = target;
     
-    return response;
+    // 创建Promise和Future
+    std::promise<Message> promise;
+    std::future<Message> future = promise.get_future();
+    
+    // 存储待响应请求
+    auto pending = std::make_shared<PendingResponse>();
+    pending->correlation_id = correlation_id;
+    pending->request = request;
+    pending->promise = std::move(promise);
+    pending->start_time = std::chrono::steady_clock::now();
+    pending->retry_count = 0;
+    pending->max_retries = config_.max_retries;
+    
+    {
+        std::lock_guard<std::mutex> lock(pending_responses_mutex_);
+        pending_responses_[correlation_id] = pending;
+    }
+    
+    // 发送请求
+    std::cout << "[DataBus] Request to " << target << ": " << request.topic 
+              << " (corr_id: " << correlation_id << ")" << std::endl;
+    
+    // 直接调用publish进行本地发布（实际跨进程需要eCAL）
+    publish(request.topic + "/" + target, request);
+    
+    // 等待响应或超时
+    auto timeout = std::chrono::milliseconds(timeout_ms > 0 ? timeout_ms : request_timeout_ms_);
+    
+    auto status = future.wait_for(timeout);
+    
+    // 清理待响应请求
+    {
+        std::lock_guard<std::mutex> lock(pending_responses_mutex_);
+        pending_responses_.erase(correlation_id);
+    }
+    
+    if (status == std::future_status::ready) {
+        try {
+            Message response = future.get();
+            std::cout << "[DataBus] Response received for: " << correlation_id << std::endl;
+            return response;
+        } catch (const std::exception& e) {
+            std::cerr << "[DataBus] Response error: " << e.what() << std::endl;
+        }
+    }
+    
+    std::cerr << "[DataBus] Request timeout: " << correlation_id << std::endl;
+    return std::nullopt;
 }
 
 void DataBus::respond(const std::string& target, const Message& response) {
-    std::cout << "[DataBus] Response to " << target << std::endl;
+    // 查找对应的请求并设置响应
+    std::string correlation_id = response.message_id;
+    
+    // 如果响应有correlation ID，尝试找到对应的pending请求
+    if (correlation_id.find("corr_") == 0) {
+        std::lock_guard<std::mutex> lock(pending_responses_mutex_);
+        auto it = pending_responses_.find(correlation_id);
+        if (it != pending_responses_.end()) {
+            it->second->promise.set_value(response);
+            std::cout << "[DataBus] Response sent to: " << correlation_id << std::endl;
+            messages_sent_++;
+            return;
+        }
+    }
+    
+    // 如果没有找到pending请求，尝试作为普通消息发布
+    std::cout << "[DataBus] Response to " << target << " (no pending request found)" << std::endl;
     messages_sent_++;
 }
 
@@ -615,6 +690,76 @@ Message createEventMessage(const std::string& device_id,
     
     std::string serialized;
     if (event.SerializeToString(&serialized)) {
+        msg.payload.assign(serialized.begin(), serialized.end());
+    }
+    
+    return msg;
+}
+
+Message createCredentialResponse(const std::string& request_id,
+                                bool success,
+                                const std::string& encrypted_credential,
+                                const std::string& error_message) {
+    Message msg;
+    msg.kind = MessageKind::CREDENTIAL_RESPONSE;
+    msg.topic = "credential/response";
+    
+    openclaw::CredentialResponse resp;
+    resp.set_request_id(request_id);
+    resp.set_status(success ? openclaw::AUTH_STATUS_APPROVED : openclaw::AUTH_STATUS_DENIED);
+    resp.set_encrypted_credential(encrypted_credential);
+    resp.set_error_message(error_message);
+    resp.set_timestamp(Message::currentTimestamp());
+    
+    std::string serialized;
+    if (resp.SerializeToString(&serialized)) {
+        msg.payload.assign(serialized.begin(), serialized.end());
+    }
+    
+    return msg;
+}
+
+Message createHeartbeatMessage(const std::string& device_id,
+                              const std::map<std::string, std::string>& status) {
+    Message msg;
+    msg.kind = MessageKind::DEVICE_HEARTBEAT;
+    msg.topic = "device/heartbeat";
+    msg.source_id = device_id;
+    
+    openclaw::DeviceHeartbeat hb;
+    hb.set_device_id(device_id);
+    hb.set_timestamp(Message::currentTimestamp());
+    
+    for (const auto& [k, v] : status) {
+        (*hb.mutable_status())[k] = v;
+    }
+    
+    std::string serialized;
+    if (hb.SerializeToString(&serialized)) {
+        msg.payload.assign(serialized.begin(), serialized.end());
+    }
+    
+    return msg;
+}
+
+Message createAuthorizationRequest(const std::string& auth_id,
+                                   const std::string& service_url,
+                                   const std::string& device_id) {
+    Message msg;
+    msg.kind = MessageKind::AUTHORIZATION_REQUEST;
+    msg.topic = "authorization/request";
+    msg.source_id = device_id;
+    
+    openclaw::AuthorizationRequest auth_req;
+    auth_req.set_auth_id(auth_id);
+    auth_req.set_created_time(Message::currentTimestamp());
+    auth_req.set_expires_time(Message::currentTimestamp() + 60000); // 1 minute
+    
+    auth_req.mutable_credential_request()->set_service_url(service_url);
+    auth_req.mutable_requesting_device()->set_device_id(device_id);
+    
+    std::string serialized;
+    if (auth_req.SerializeToString(&serialized)) {
         msg.payload.assign(serialized.begin(), serialized.end());
     }
     

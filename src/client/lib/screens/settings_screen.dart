@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../services/secure_storage.dart';
+import '../utils/theme.dart';
 
 /// 设置页面
-class SettingsScreen extends StatefulWidget {
+class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
 
   @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
+  ConsumerState<SettingsScreen> createState() => _SettingsScreenState();
 }
 
-class _SettingsScreenState extends State<SettingsScreen> {
+class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   bool _isBiometricEnabled = false;
   bool _isAutoLockEnabled = true;
   int _autoLockDuration = 5;
@@ -40,6 +42,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       appBar: AppBar(
@@ -54,6 +57,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
           : ListView(
               padding: const EdgeInsets.all(16),
               children: [
+                // 外观设置
+                _buildSectionHeader('外观'),
+                _buildSettingCard(
+                  icon: Icons.dark_mode,
+                  title: '深色模式',
+                  subtitle: isDark ? '当前：深色' : '当前：浅色',
+                  trailing: Switch(
+                    value: isDark,
+                    onChanged: (value) {
+                      ThemeService.toggleTheme(ref);
+                    },
+                  ),
+                ),
+
+                const SizedBox(height: 24),
+
                 // 安全设置
                 _buildSectionHeader('安全设置'),
                 _buildSettingCard(
@@ -115,7 +134,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: '备份凭证',
                   subtitle: '导出加密备份文件',
                   onTap: () {
-                    // TODO: 实现备份功能
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('备份功能开发中...')),
+                    );
                   },
                 ),
                 _buildSettingCard(
@@ -123,7 +144,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: '恢复凭证',
                   subtitle: '从备份文件恢复',
                   onTap: () {
-                    // TODO: 实现恢复功能
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('恢复功能开发中...')),
+                    );
                   },
                 ),
                 _buildSettingCard(
@@ -148,8 +171,44 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: '开源协议',
                   subtitle: '查看许可证信息',
                   onTap: () {
-                    // TODO: 显示开源协议
+                    showLicensePage(
+                      context: context,
+                      applicationName: 'PolyVault',
+                      applicationVersion: '0.1.0',
+                    );
                   },
+                ),
+                
+                const SizedBox(height: 32),
+                
+                // 应用信息
+                Center(
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.shield,
+                        size: 48,
+                        color: colorScheme.primary,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'PolyVault',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: colorScheme.primary,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        '安全凭证存储解决方案',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

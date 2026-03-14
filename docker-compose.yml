@@ -1,0 +1,174 @@
+# ============================================
+# PolyVault - Docker Compose配置
+# ============================================
+
+version: '3.8'
+
+services:
+  # ==================== Agent服务 ====================
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: polyvault/agent:${VERSION:-latest}
+    container_name: polyvault-agent
+    restart: unless-stopped
+    
+    ports:
+      - "8080:8080"   # REST API
+      - "9090:9090"   # Metrics
+    
+    volumes:
+      - ./config:/app/config:ro
+      - ./data:/app/data
+      - ./logs:/app/logs
+    
+    environment:
+      - POLYVAULT_LOG_LEVEL=${LOG_LEVEL:-info}
+      - POLYVAULT_LOG_DIR=/app/logs
+      - POLYVAULT_DATA_DIR=/app/data
+      - POLYVAULT_REST_PORT=8080
+      - POLYVAULT_METRICS_PORT=9090
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    networks:
+      - polyvault-network
+    
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ==================== 开发服务 ====================
+  agent-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    image: polyvault/agent:dev
+    container_name: polyvault-agent-dev
+    profiles:
+      - dev
+    
+    volumes:
+      - ./src/agent:/build/agent
+      - ./protos:/build/protos
+    
+    environment:
+      - CMAKE_BUILD_TYPE=Debug
+    
+    command: ["/bin/bash"]
+    stdin_open: true
+    tty: true
+    
+    networks:
+      - polyvault-network
+
+  # ==================== 测试服务 ====================
+  agent-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    image: polyvault/agent:test
+    container_name: polyvault-agent-test
+    profiles:
+      - test
+    
+    volumes:
+      - ./src/agent:/build/agent
+    
+    command: ["ctest", "--output-on-failure"]
+    
+    networks:
+      - polyvault-network
+
+  # ==================== Redis (可选) ====================
+  redis:
+    image: redis:7-alpine
+    container_name: polyvault-redis
+    profiles:
+      - full
+    
+    ports:
+      - "6379:6379"
+    
+    volumes:
+      - redis-data:/data
+    
+    command: redis-server --appendonly yes
+    
+    networks:
+      - polyvault-network
+    
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==================== 监控 (可选) ====================
+  prometheus:
+    image: prom/prometheus:v2.45.0
+    container_name: polyvault-prometheus
+    profiles:
+      - monitoring
+    
+    ports:
+      - "9091:9090"
+    
+    volumes:
+      - ./deploy/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    
+    networks:
+      - polyvault-network
+
+  grafana:
+    image: grafana/grafana:10.0.0
+    container_name: polyvault-grafana
+    profiles:
+      - monitoring
+    
+    ports:
+      - "3000:3000"
+    
+    volumes:
+      - ./deploy/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+    
+    depends_on:
+      - prometheus
+    
+    networks:
+      - polyvault-network
+
+# ==================== 网络配置 ====================
+networks:
+  polyvault-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+# ==================== 数据卷 ====================
+volumes:
+  redis-data:
+  prometheus-data:
+  grafana-data:
