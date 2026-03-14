@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/connection_status_indicator.dart';
+import '../widgets/animated_connection_indicator.dart';
+import '../widgets/custom_button.dart';
 
 /// 设备管理页面
 class DevicesScreen extends StatefulWidget {
@@ -17,6 +18,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
       type: 'Mobile Phone',
       isConnected: true,
       platform: 'Android',
+      ipAddress: '192.168.1.100',
     ),
     DeviceInfo(
       id: '2',
@@ -25,6 +27,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
       isConnected: false,
       lastSeen: '2小时前',
       platform: 'Windows',
+      ipAddress: '192.168.1.101',
     ),
   ];
 
@@ -35,7 +38,6 @@ class _DevicesScreenState extends State<DevicesScreen> {
       _isScanning = true;
     });
 
-    // 模拟扫描过程
     await Future.delayed(const Duration(seconds: 2));
 
     setState(() {
@@ -80,10 +82,11 @@ class _DevicesScreenState extends State<DevicesScreen> {
           children: [
             // 本机设备
             _buildSectionHeader('本机设备'),
-            DeviceConnectionCard(
+            AnimatedDeviceCard(
               deviceName: '本机设备',
               deviceType: 'Current Device',
               isConnected: true,
+              onTap: () {},
             ),
 
             const SizedBox(height: 24),
@@ -244,7 +247,6 @@ class _DevicesScreenState extends State<DevicesScreen> {
               subtitle: const Text('扫描设备上的配对二维码'),
               onTap: () {
                 Navigator.pop(context);
-                // TODO: 实现二维码扫描
               },
             ),
             const SizedBox(height: 8),
@@ -253,43 +255,4 @@ class _DevicesScreenState extends State<DevicesScreen> {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.secondaryContainer,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Icon(
-                  Icons.keyboard,
-                  color: Theme.of(context).colorScheme.onSecondaryContainer,
-                ),
-              ),
-              title: const Text('手动输入'),
-              subtitle: const Text('输入设备配对码'),
-              onTap: () {
-                Navigator.pop(context);
-                // TODO: 实现手动输入
-              },
-            ),
-            const SizedBox(height: 16),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/// 设备信息模型
-class DeviceInfo {
-  final String id;
-  String name;
-  final String type;
-  bool isConnected;
-  String? lastSeen;
-  final String platform;
-
-  DeviceInfo({
-    required this.id,
-    required this.name,
-    required this.type,
-    required this.isConnected,
-    this.lastSeen,
-    required this.platform,
-  });
-}
+                  borderRadius: BorderRadius
