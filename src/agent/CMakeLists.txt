@@ -70,6 +70,13 @@ if(BUILD_TESTS)
     add_subdirectory(tests)
 endif()
 
+# eCAL通信测试
+if(USE_ECAL)
+    add_executable(test_ecal_communication src/test_ecal_communication.cpp)
+    target_link_libraries(test_ecal_communication PRIVATE polyvault_agent_lib)
+    target_include_directories(test_ecal_communication PRIVATE ${CMAKE_SOURCE_DIR}/include)
+endif()
+
 # 安装规则
 install(TARGETS polyvault_agent DESTINATION bin)
 install(TARGETS polyvault_agent_lib DESTINATION lib)
