@@ -6,5 +6,5 @@
   "dependencies": [
     "protobuf"
   ],
-  "builtin-baseline": "2024.03.15"
+  "builtin-baseline": "c3173be258001c60814b6adf161322b6eb3688ee"
 }
