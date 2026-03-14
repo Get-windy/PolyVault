@@ -6,6 +6,7 @@
  * - 通过eCAL与客户端通信
  * - 处理凭证请求
  * - 管理本地安全存储
+ * - 支持Cookie上传、心跳、配置同步
  */
 
 #pragma once
@@ -23,6 +24,9 @@
 #include "openclaw.pb.h"
 
 namespace polyvault {
+
+// 前向声明
+class MessageHandlerManager;
 
 /**
  * @brief Agent配置
@@ -74,9 +78,14 @@ public:
     void setCredentialCallback(CredentialCallback callback);
 
     /**
+     * @brief 设置消息处理器管理器
+     */
+    void setMessageHandlerManager(MessageHandlerManager* manager);
+
+    /**
      * @brief 获取Agent状态
      */
-    bool isRunning() const { return running_; }
+    bool isRunning() const;
 
     /**
      * @brief 获取Agent ID
@@ -85,22 +94,8 @@ public:
 
 private:
     AgentConfig config_;
-    bool running_ = false;
-    CredentialCallback credential_callback_;
-
-#ifdef USE_ECAL
-    // eCAL订阅者 - 接收凭证请求
-    std::unique_ptr<eCAL::protobuf::CSubscriber<openclaw::CredentialRequest>> request_subscriber_;
-    
-    // eCAL发布者 - 发送凭证响应
-    std::unique_ptr<eCAL::protobuf::CPublisher<openclaw::CredentialResponse>> response_publisher_;
-    
-    // eCAL服务 - Cookie上传
-    std::unique_ptr<eCAL::protobuf::CPublisher<openclaw::CookieUpload>> cookie_publisher_;
-    
-    // 处理凭证请求
-    void handleCredentialRequest(const openclaw::CredentialRequest& request);
-#endif
+    class Impl;
+    std::unique_ptr<Impl> impl_;
 };
 
 } // namespace polyvault

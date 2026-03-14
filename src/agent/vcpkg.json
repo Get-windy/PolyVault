@@ -1,0 +1,10 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "polyvault-agent",
+  "version": "0.1.0",
+  "description": "PolyVault Agent - Remote credential management",
+  "dependencies": [
+    "protobuf"
+  ],
+  "builtin-baseline": "2024.03.15"
+}

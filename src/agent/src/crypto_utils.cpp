@@ -4,6 +4,7 @@
  */
 
 #include "crypto_utils.hpp"
+#include <iostream>
 #include <random>
 #include <stdexcept>
 
@@ -29,8 +30,7 @@ std::vector<uint8_t> encryptAesGcm(
     const std::vector<uint8_t>& iv) {
     
     // TODO: 实现真正的AES-256-GCM加密
-    // 目前返回明文作为占位
-    std::cout << "[Crypto] encryptAesGcm called (not implemented)" << std::endl;
+    std::cout << "[Crypto] encryptAesGcm called (placeholder)" << std::endl;
     return plaintext;
 }
 
@@ -40,7 +40,7 @@ std::vector<uint8_t> decryptAesGcm(
     const std::vector<uint8_t>& iv) {
     
     // TODO: 实现真正的AES-256-GCM解密
-    std::cout << "[Crypto] decryptAesGcm called (not implemented)" << std::endl;
+    std::cout << "[Crypto] decryptAesGcm called (placeholder)" << std::endl;
     return ciphertext;
 }
 
