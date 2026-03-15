@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../screens/main_layout.dart';
 import '../screens/home_screen.dart';
 import '../screens/credentials_screen.dart';
 import '../screens/devices_screen.dart';
+import '../screens/messages_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/connection_test_screen.dart';
 
@@ -12,6 +14,7 @@ class AppRoutes {
   static const String home = '/';
   static const String credentials = '/credentials';
   static const String devices = '/devices';
+  static const String messages = '/messages';
   static const String settings = '/settings';
   static const String connectionTest = '/connection-test';
 }
@@ -22,41 +25,11 @@ final routerProvider = Provider<GoRouter>((ref) {
     initialLocation: AppRoutes.home,
     debugLogDiagnostics: true,
     routes: [
-      // 主页面（底部导航）
-      ShellRoute(
-        builder: (context, state, child) {
-          return MainShell(child: child);
-        },
-        routes: [
-          GoRoute(
-            path: AppRoutes.home,
-            name: 'home',
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: HomeScreen(),
-            ),
-          ),
-          GoRoute(
-            path: AppRoutes.credentials,
-            name: 'credentials',
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: CredentialsScreen(),
-            ),
-          ),
-          GoRoute(
-            path: AppRoutes.devices,
-            name: 'devices',
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: DevicesScreen(),
-            ),
-          ),
-          GoRoute(
-            path: AppRoutes.settings,
-            name: 'settings',
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: SettingsScreen(),
-            ),
-          ),
-        ],
+      // 主页面（使用 MainLayout）
+      GoRoute(
+        path: AppRoutes.home,
+        name: 'main',
+        builder: (context, state) => const MainLayout(),
       ),
       // 独立页面
       GoRoute(
