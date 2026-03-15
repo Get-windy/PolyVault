@@ -1,8 +1,9 @@
 # PolyVault 测试指南
 
-**版本**: v1.0  
+**版本**: v1.1  
 **创建时间**: 2026-03-14  
-**适用对象**: 测试工程师、开发人员
+**更新时间**: 2026-03-15  
+**适用对象**: 测试工程师、开发人员、插件开发者
 
 ---
 
@@ -14,8 +15,10 @@
 4. [E2E 测试](#e2e-测试)
 5. [性能测试](#性能测试)
 6. [安全测试](#安全测试)
-7. [测试覆盖率](#测试覆盖率)
-8. [持续集成](#持续集成)
+7. [FFI Binding 测试](#ffi-binding-测试)
+8. [插件测试](#插件测试)
+9. [测试覆盖率](#测试覆盖率)
+10. [持续集成](#持续集成)
 
 ---
 
@@ -1030,6 +1033,368 @@ docker run -t owasp/zap2docker-stable zap-baseline.py \
 docker run -t owasp/zap2docker-stable zap-full-scan.py \
   -t https://api.openclaw.ai \
   -r zap_full_report.html
+```
+
+---
+
+## 🔌 FFI Binding 测试
+
+### Rust FFI Binding 测试
+
+#### 测试 FFI 初始化
+
+```rust
+// tests/test_ffi_initialization.rs
+use polyvault_rust::ecal::{Publisher, Subscriber};
+use polyvault_rust::ffi;
+
+#[test]
+fn test_ecal_initialization() {
+    unsafe {
+        let result = ffi::ecal_initialize(
+            std::ptr::null(),
+            b"Test App\0".as_ptr() as *const _
+        );
+        assert_eq!(result, 0, "eCAL initialization failed");
+        
+        ffi::ecal_finalize();
+    }
+}
+
+#[test]
+fn test_publisher_creation() {
+    unsafe {
+        ffi::ecal_initialize(std::ptr::null(), b"Test\0".as_ptr() as *const _);
+        
+        let publisher = Publisher::new("test/topic");
+        assert!(publisher.is_ok(), "Failed to create publisher");
+        
+        ffi::ecal_finalize();
+    }
+}
+
+#[test]
+fn test_publish_subscribe() {
+    use std::sync::{Arc, Mutex};
+    use std::thread;
+    use std::time::Duration;
+    
+    unsafe {
+        ffi::ecal_initialize(std::ptr::null(), b"Test\0".as_ptr() as *const _);
+    }
+    
+    let received = Arc::new(Mutex::new(Vec::new()));
+    let received_clone = Arc::clone(&received);
+    
+    // 创建订阅者
+    let _subscriber = Subscriber::new("test/topic", move |_topic, data, _ts| {
+        let mut guard = received_clone.lock().unwrap();
+        guard.push(String::from_utf8_lossy(data).to_string());
+    }).unwrap();
+    
+    // 等待订阅者就绪
+    thread::sleep(Duration::from_millis(500));
+    
+    // 创建发布者并发送消息
+    let publisher = Publisher::new("test/topic").unwrap();
+    publisher.write_string("Hello, FFI!").unwrap();
+    
+    // 等待消息传递
+    thread::sleep(Duration::from_millis(500));
+    
+    // 验证
+    let guard = received.lock().unwrap();
+    assert_eq!(guard.len(), 1);
+    assert_eq!(guard[0], "Hello, FFI!");
+    
+    unsafe {
+        ffi::ecal_finalize();
+    }
+}
+```
+
+---
+
+### Python FFI Binding 测试
+
+```python
+# tests/test_python_ffi.py
+import unittest
+import time
+from polyvault.ecal import Publisher, initialize, finalize
+
+class TestPythonFFI(unittest.TestCase):
+    def setUp(self):
+        initialize("Python FFI Test")
+    
+    def tearDown(self):
+        finalize()
+    
+    def test_publisher_creation(self):
+        """测试发布者创建"""
+        publisher = Publisher("test/topic")
+        self.assertIsNotNone(publisher)
+    
+    def test_publish_message(self):
+        """测试发布消息"""
+        publisher = Publisher("test/topic")
+        publisher.write_string("Test message")
+        # 验证不抛出异常
+    
+    def test_publish_multiple_messages(self):
+        """测试批量发布"""
+        publisher = Publisher("test/topic")
+        
+        for i in range(10):
+            publisher.write_string(f"Message {i}")
+            time.sleep(0.1)
+        
+        # 验证所有消息发送成功
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+---
+
+## 🔌 插件测试
+
+### C++ 插件测试
+
+#### 测试插件生命周期
+
+```cpp
+// tests/test_plugin_lifecycle.cpp
+#include <gtest/gtest.h>
+#include <polyvault/test.h>
+#include "../src/plugin.h"
+
+class PluginLifecycleTest : public ::testing::Test {
+protected:
+    void SetUp() override {
+        test_env = polyvault::test::createTestEnvironment();
+        test_env->start();
+    }
+    
+    void TearDown() override {
+        test_env->stop();
+    }
+    
+    std::unique_ptr<polyvault::test::TestEnvironment> test_env;
+};
+
+TEST_F(PluginLifecycleTest, LoadPlugin_Success) {
+    // 加载插件
+    auto plugin = test_env->loadPlugin("com.example.test-plugin");
+    
+    // 验证加载成功
+    ASSERT_NE(plugin, nullptr);
+}
+
+TEST_F(PluginLifecycleTest, StartPlugin_Success) {
+    // 加载并启动插件
+    auto plugin = test_env->loadPlugin("com.example.test-plugin");
+    ASSERT_NE(plugin, nullptr);
+    
+    auto result = test_env->startPlugin(plugin);
+    EXPECT_TRUE(result.isSuccess());
+}
+
+TEST_F(PluginLifecycleTest, StopPlugin_Success) {
+    // 加载、启动并停止插件
+    auto plugin = test_env->loadPlugin("com.example.test-plugin");
+    test_env->startPlugin(plugin);
+    
+    auto result = test_env->stopPlugin(plugin);
+    EXPECT_TRUE(result.isSuccess());
+}
+
+TEST_F(PluginLifecycleTest, UnloadPlugin_Success) {
+    // 完整生命周期测试
+    auto plugin = test_env->loadPlugin("com.example.test-plugin");
+    test_env->startPlugin(plugin);
+    test_env->stopPlugin(plugin);
+    
+    auto result = test_env->unloadPlugin(plugin);
+    EXPECT_TRUE(result.isSuccess());
+}
+```
+
+---
+
+### 插件能力测试
+
+```cpp
+// tests/test_plugin_capabilities.cpp
+#include <gtest/gtest.h>
+#include <polyvault/test.h>
+
+class PluginCapabilitiesTest : public ::testing::Test {
+protected:
+    void SetUp() override {
+        test_env = polyvault::test::createTestEnvironment();
+        test_env->start();
+        
+        // 加载并启动插件
+        plugin = test_env->loadPlugin("com.example.credential-provider");
+        test_env->startPlugin(plugin);
+    }
+    
+    void TearDown() override {
+        test_env->stop();
+    }
+    
+    std::unique_ptr<polyvault::test::TestEnvironment> test_env;
+    std::shared_ptr<polyvault::IPlugin> plugin;
+};
+
+TEST_F(PluginCapabilitiesTest, RegisterCapability_Success) {
+    // 验证插件注册了能力
+    auto capabilities = test_env->listCapabilities();
+    
+    bool found = std::any_of(capabilities.begin(), capabilities.end(),
+        [](const auto& cap) {
+            return cap.name == "credential_provider";
+        });
+    
+    EXPECT_TRUE(found);
+}
+
+TEST_F(PluginCapabilitiesTest, HandleCredentialRequest_Success) {
+    // 发送凭证请求事件
+    polyvault::Event request("credential/request");
+    request.setData(polyvault::CredentialRequest{
+        .service_url = "https://example.com",
+    });
+    
+    // 发布事件
+    test_env->eventBus().publish("credential/request", request);
+    
+    // 等待处理
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    
+    // 验证响应
+    auto responses = test_env->eventBus().getPublishedEvents("credential/response");
+    EXPECT_GT(responses.size(), 0);
+}
+```
+
+---
+
+### Flutter 插件测试
+
+```dart
+// tests/test_flutter_plugin.dart
+import 'package:flutter_test/flutter_test.dart';
+import 'package:polyvault_sdk/polyvault_sdk.dart';
+import 'package:mockito/mockito.dart';
+import 'mocks.dart';
+
+void main() {
+  group('Flutter Plugin Tests', () {
+    late MyPlugin plugin;
+    late MockContext mockContext;
+    
+    setUp(() {
+      mockContext = MockContext();
+      plugin = MyPlugin();
+    });
+    
+    test('metadata returns correct info', () {
+      final metadata = plugin.metadata;
+      
+      expect(metadata.id, 'com.example.my-plugin');
+      expect(metadata.name, 'My Plugin');
+      expect(metadata.version, '1.0.0');
+    });
+    
+    test('onLoad initializes correctly', () async {
+      when(mockContext.config).thenReturn(MockConfig());
+      
+      final result = await plugin.onLoad(mockContext);
+      
+      expect(result.isSuccess, true);
+    });
+    
+    test('onStart subscribes to events', () async {
+      await plugin.onLoad(mockContext);
+      
+      final result = await plugin.onStart();
+      
+      expect(result.isSuccess, true);
+      verify(mockContext.eventBus.subscribe('credential/request', any)).called(1);
+    });
+    
+    test('handleEvent processes credential request', () async {
+      await plugin.onLoad(mockContext);
+      await plugin.onStart();
+      
+      final event = Event(
+        type: 'credential/request',
+        data: CredentialRequest(serviceUrl: 'https://example.com'),
+      );
+      
+      final result = await plugin.handleEvent(event);
+      
+      expect(result.isSuccess, true);
+    });
+  });
+}
+```
+
+---
+
+### 插件集成测试
+
+```cpp
+// tests/plugin_integration_test.cpp
+#include <gtest/gtest.h>
+#include <polyvault/test.h>
+
+class PluginIntegrationTest : public ::testing::Test {
+protected:
+    void SetUp() override {
+        test_env = polyvault::test::createTestEnvironment();
+        test_env->start();
+    }
+    
+    void TearDown() override {
+        test_env->stop();
+    }
+    
+    std::unique_ptr<polyvault::test::TestEnvironment> test_env;
+};
+
+TEST_F(PluginIntegrationTest, FullPluginWorkflow) {
+    // 1. 加载插件
+    auto plugin = test_env->loadPlugin("com.example.full-plugin");
+    ASSERT_NE(plugin, nullptr);
+    
+    // 2. 启动插件
+    auto start_result = test_env->startPlugin(plugin);
+    EXPECT_TRUE(start_result.isSuccess());
+    
+    // 3. 验证能力注册
+    auto capabilities = test_env->listCapabilities();
+    EXPECT_GT(capabilities.size(), 0);
+    
+    // 4. 发送测试事件
+    polyvault::Event test_event("test/event");
+    test_env->eventBus().publish("test/event", test_event);
+    
+    // 5. 验证事件处理
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    auto events = test_env->eventBus().getPublishedEvents("test/response");
+    EXPECT_GT(events.size(), 0);
+    
+    // 6. 停止插件
+    auto stop_result = test_env->stopPlugin(plugin);
+    EXPECT_TRUE(stop_result.isSuccess());
+    
+    // 7. 卸载插件
+    auto unload_result = test_env->unloadPlugin(plugin);
+    EXPECT_TRUE(unload_result.isSuccess());
+}
 ```
 
 ---
