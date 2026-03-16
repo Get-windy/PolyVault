@@ -1,0 +1,219 @@
+syntax = "proto3";
+
+package openclaw;
+
+// ============================================================================
+// 基础消息类型
+// ============================================================================
+
+// P2P消息信封
+message P2PEnvelope {
+    string source_id = 1;          // 发送方设备ID
+    string target_id = 2;          // 接收方设备ID（空表示广播）
+    string message_id = 3;         // 消息唯一ID
+    string message_type = 4;       // 消息类型
+    uint64 timestamp = 5;          // 时间戳（毫秒）
+    bytes payload = 6;             // 消息负载
+    bytes signature = 7;           // 消息签名
+}
+
+// ============================================================================
+// 设备发现
+// ============================================================================
+
+message DiscoveryMessage {
+    string device_id = 1;
+    string device_name = 2;
+    string device_type = 3;        // "phone", "desktop", "embedded"
+    string platform = 4;           // "android", "ios", "windows", "linux", "macos"
+    string version = 5;
+    repeated string capabilities = 6;
+    string endpoint = 7;           // IP:Port
+    uint64 timestamp = 8;
+}
+
+message DiscoveryResponse {
+    string device_id = 1;
+    bool accept = 2;
+    string endpoint = 3;
+    uint64 timestamp = 4;
+}
+
+// ============================================================================
+// 凭证操作
+// ============================================================================
+
+message CredentialRequest {
+    string service_url = 1;        // 例如 "https://accounts.google.com"
+    string session_id = 2;         // 会话标识
+    uint64 timestamp = 3;
+    string purpose = 4;            // "login", "api_access", etc.
+    map<string, string> context = 5; // 额外上下文
+}
+
+message CredentialData {
+    string username = 1;
+    string password = 2;
+    map<string, string> additional = 3; // 其他凭证字段
+}
+
+message CredentialResponse {
+    string session_id = 1;
+    bytes encrypted_credential = 2;  // 由客户端公钥加密的凭证
+    bool success = 3;
+    string error_message = 4;
+    uint64 timestamp = 5;
+}
+
+message CredentialStore {
+    string service_url = 1;
+    bytes encrypted_credential = 2;
+    string session_id = 3;
+    uint64 expires_at = 4;          // 过期时间（可选）
+}
+
+// ============================================================================
+// Cookie管理
+// ============================================================================
+
+message CookieUpload {
+    string service_url = 1;
+    bytes encrypted_cookie = 2;     // 由客户端公钥加密
+    string session_id = 3;
+    uint64 expires_at = 4;
+}
+
+message CookieDownload {
+    string service_url = 1;
+    bytes encrypted_cookie = 2;
+    uint64 timestamp = 3;
+}
+
+// ============================================================================
+// 安全与认证
+// ============================================================================
+
+message HandshakeRequest {
+    string device_id = 1;
+    bytes public_key = 2;           // 设备公钥
+    string protocol_version = 3;
+    uint64 timestamp = 4;
+    bytes challenge = 5;            // 随机挑战
+}
+
+message HandshakeResponse {
+    string device_id = 1;
+    bool accept = 2;
+    bytes public_key = 3;
+    bytes encrypted_session_key = 4; // 用对方公钥加密的会话密钥
+    bytes challenge_response = 5;     // 签名的挑战响应
+    uint64 timestamp = 6;
+}
+
+message AuthenticationRequest {
+    string device_id = 1;
+    bytes signed_token = 2;
+    uint64 timestamp = 3;
+}
+
+message AuthenticationResponse {
+    bool success = 1;
+    string error_message = 2;
+    uint32 trust_level = 3;         // 0-100
+    uint64 timestamp = 4;
+}
+
+// ============================================================================
+// 心跳与状态
+// ============================================================================
+
+message Heartbeat {
+    string device_id = 1;
+    uint64 timestamp = 2;
+    uint32 sequence = 3;
+    DeviceStatus status = 4;
+}
+
+message HeartbeatAck {
+    string device_id = 1;
+    uint64 timestamp = 2;
+    uint32 sequence = 3;
+}
+
+message DeviceStatus {
+    bool online = 1;
+    double battery_level = 2;       // 0-100
+    string network_type = 3;        // "wifi", "cellular", "ethernet"
+    uint32 active_sessions = 4;
+}
+
+// ============================================================================
+// 同步消息
+// ============================================================================
+
+message SyncRequest {
+    string sync_id = 1;
+    uint64 since_timestamp = 2;
+    repeated string data_types = 3; // "credentials", "cookies", "settings"
+}
+
+message SyncResponse {
+    string sync_id = 1;
+    bool success = 2;
+    repeated SyncItem items = 3;
+    uint64 timestamp = 4;
+}
+
+message SyncItem {
+    string type = 1;
+    string key = 2;
+    bytes encrypted_data = 3;
+    uint64 version = 4;
+    uint64 timestamp = 5;
+}
+
+// ============================================================================
+// 错误处理
+// ============================================================================
+
+message ErrorMessage {
+    string message_id = 1;          // 关联的消息ID
+    int32 error_code = 2;
+    string error_message = 3;
+    bool retryable = 4;
+    uint32 retry_after_ms = 5;
+}
+
+// ============================================================================
+// 服务定义（用于gRPC风格的服务调用）
+// ============================================================================
+
+service CredentialService {
+    // 获取凭证
+    rpc GetCredential(CredentialRequest) returns (CredentialResponse);
+    
+    // 存储凭证
+    rpc StoreCredential(CredentialStore) returns (CredentialResponse);
+    
+    // 上传Cookie
+    rpc UploadCookie(CookieUpload) returns (CredentialResponse);
+    
+    // 下载Cookie
+    rpc DownloadCookie(CredentialRequest) returns (CookieDownload);
+}
+
+service SyncService {
+    // 请求同步
+    rpc RequestSync(SyncRequest) returns (SyncResponse);
+    
+    // 推送更新
+    rpc PushUpdate(SyncItem) returns (SyncResponse);
+}
+
+service DiscoveryService {
+    // 发现设备
+    rpc Discover(DiscoveryMessage) returns (DiscoveryResponse);
+    
+    // 心跳
+    rpc Heartbeat(Heartbeat) returns (HeartbeatAck);
+}

@@ -1,286 +1,327 @@
 /**
  * @file agent.cpp
- * @brief PolyVault Agent实现
+ * @brief PolyVault Agent主模块实现
  */
 
 #include "agent.hpp"
-#include "message_handler.hpp"
 #include <iostream>
 #include <chrono>
-#include <thread>
+#include <fstream>
 
 namespace polyvault {
+namespace agent {
 
-// 前向声明实现类
-class Agent::Impl {
-public:
-    explicit Impl(const AgentConfig& config) 
-        : config_(config) {}
-    
-    ~Impl() {
-        stop();
+// ============================================================================
+// PolyVaultAgent实现
+// ============================================================================
+
+PolyVaultAgent::PolyVaultAgent(const AgentConfig& config)
+    : config_(config) {
+    std::cout << "[Agent] Creating PolyVault Agent: " << config_.agent_id << std::endl;
+}
+
+PolyVaultAgent::~PolyVaultAgent() {
+    stop();
+}
+
+bool PolyVaultAgent::initialize() {
+    if (state_ != AgentState::UNINITIALIZED) {
+        return state_ == AgentState::RUNNING;
     }
     
-    bool initialize() {
-#ifdef USE_ECAL
-        if (config_.use_ecal) {
-            // 初始化eCAL
-            eCAL::Initialize(0, nullptr, "PolyVaultAgent");
-            
-            // 创建订阅者 - 监听凭证请求
-            request_subscriber_ = std::make_unique<eCAL::protobuf::CSubscriber<openclaw::CredentialRequest>>(
-                "polyvault/credential_request");
-            
-            // 创建发布者 - 发送凭证响应
-            response_publisher_ = std::make_unique<eCAL::protobuf::CPublisher<openclaw::CredentialResponse>>(
-                "polyvault/credential_response");
-            
-            // 创建Cookie订阅者
-            cookie_subscriber_ = std::make_unique<eCAL::protobuf::CSubscriber<openclaw::CookieUpload>>(
-                "polyvault/cookie_upload");
-            
-            // 创建Cookie响应发布者
-            cookie_response_publisher_ = std::make_unique<eCAL::protobuf::CPublisher<openclaw::CookieUploadResponse>>(
-                "polyvault/cookie_upload_response");
-            
-            // 创建心跳订阅者
-            heartbeat_subscriber_ = std::make_unique<eCAL::protobuf::CSubscriber<openclaw::Heartbeat>>(
-                "polyvault/heartbeat");
-            
-            // 创建心跳响应发布者
-            heartbeat_response_publisher_ = std::make_unique<eCAL::protobuf::CPublisher<openclaw::HeartbeatResponse>>(
-                "polyvault/heartbeat_response");
-            
-            // 创建配置订阅者
-            config_subscriber_ = std::make_unique<eCAL::protobuf::CSubscriber<openclaw::ConfigSync>>(
-                "polyvault/config_sync");
-            
-            // 创建配置响应发布者
-            config_response_publisher_ = std::make_unique<eCAL::protobuf::CPublisher<openclaw::ConfigSyncResponse>>(
-                "polyvault/config_sync_response");
-            
-            std::cout << "[Agent] eCAL initialized" << std::endl;
-            std::cout << "[Agent] Agent ID: " << config_.agent_id << std::endl;
-            std::cout << "[Agent] Subscribed topics:" << std::endl;
-            std::cout << "[Agent]   - polyvault/credential_request" << std::endl;
-            std::cout << "[Agent]   - polyvault/cookie_upload" << std::endl;
-            std::cout << "[Agent]   - polyvault/heartbeat" << std::endl;
-            std::cout << "[Agent]   - polyvault/config_sync" << std::endl;
-            
-            return true;
-        }
-#endif
-        
-        // 非eCAL模式
-        std::cout << "[Agent] Non-eCAL mode initialized" << std::endl;
-        std::cout << "[Agent] Agent ID: " << config_.agent_id << std::endl;
-        std::cout << "[Agent] Listen port: " << config_.listen_port << std::endl;
+    state_ = AgentState::INITIALIZING;
+    std::cout << "[Agent] Initializing..." << std::endl;
+    
+    // 创建数据总线
+    bus_ = std::make_unique<bus::DataBus>(config_.bus_config);
+    
+    if (!bus_->initialize()) {
+        std::cerr << "[Agent] Failed to initialize data bus" << std::endl;
+        state_ = AgentState::ERROR;
+        return false;
+    }
+    
+    // 注册消息处理器
+    bus_->registerHandler(bus::MessageKind::CREDENTIAL_REQUEST,
+        [this](const bus::Message& msg) { handleCredentialRequest(msg); });
+    
+    bus_->registerHandler(bus::MessageKind::CREDENTIAL_RESPONSE,
+        [this](const bus::Message& msg) { handleCredentialResponse(msg); });
+    
+    bus_->registerHandler(bus::MessageKind::EVENT,
+        [this](const bus::Message& msg) { handleEvent(msg); });
+    
+    // 创建OpenClaw适配器
+    openclaw_adapter_ = std::make_unique<OpenClawAgentAdapter>(config_.openclaw_config);
+    
+    if (!openclaw_adapter_->initialize(bus_.get())) {
+        std::cerr << "[Agent] Failed to initialize OpenClaw adapter" << std::endl;
+        // 不阻断初始化，可以离线运行
+    }
+    
+    start_time_ = bus::Message::currentTimestamp();
+    
+    std::cout << "[Agent] Initialized successfully" << std::endl;
+    return true;
+}
+
+bool PolyVaultAgent::start() {
+    if (state_ == AgentState::RUNNING) {
         return true;
     }
     
-    void start() {
-        if (running_) {
-            return;
-        }
-        
-        running_ = true;
-        
-#ifdef USE_ECAL
-        if (config_.use_ecal) {
-            // 注册凭证请求回调
-            if (request_subscriber_) {
-                request_subscriber_->AddReceiveCallback(
-                    [this](const char* topic_name, const openclaw::CredentialRequest& request) {
-                        handleCredentialRequest(request);
-                    });
-            }
-            
-            // 注册Cookie上传回调
-            if (cookie_subscriber_) {
-                cookie_subscriber_->AddReceiveCallback(
-                    [this](const char* topic_name, const openclaw::CookieUpload& upload) {
-                        handleCookieUpload(upload);
-                    });
-            }
-            
-            // 注册心跳回调
-            if (heartbeat_subscriber_) {
-                heartbeat_subscriber_->AddReceiveCallback(
-                    [this](const char* topic_name, const openclaw::Heartbeat& heartbeat) {
-                        handleHeartbeat(heartbeat);
-                    });
-            }
-            
-            // 注册配置同步回调
-            if (config_subscriber_) {
-                config_subscriber_->AddReceiveCallback(
-                    [this](const char* topic_name, const openclaw::ConfigSync& sync) {
-                        handleConfigSync(sync);
-                    });
-            }
-            
-            std::cout << "[Agent] Started, listening for messages..." << std::endl;
-            
-            // 主循环
-            while (running_ && eCAL::Ok()) {
-                eCAL::Process::SleepMS(100);
-            }
-        } else
-#endif
-        {
-            // 非eCAL模式的主循环
-            std::cout << "[Agent] Started in standalone mode" << std::endl;
-            while (running_) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(100));
-            }
+    if (state_ != AgentState::INITIALIZING && state_ != AgentState::STOPPED) {
+        if (!initialize()) {
+            return false;
         }
     }
     
-    void stop() {
-        if (!running_) {
-            return;
-        }
-        
-        running_ = false;
-        
-#ifdef USE_ECAL
-        if (config_.use_ecal) {
-            request_subscriber_.reset();
-            response_publisher_.reset();
-            cookie_subscriber_.reset();
-            cookie_response_publisher_.reset();
-            heartbeat_subscriber_.reset();
-            heartbeat_response_publisher_.reset();
-            config_subscriber_.reset();
-            config_response_publisher_.reset();
-            eCAL::Finalize();
-            
-            std::cout << "[Agent] Stopped" << std::endl;
-        }
-#endif
+    std::cout << "[Agent] Starting..." << std::endl;
+    
+    // 启动数据总线
+    bus_->start();
+    
+    // 启动OpenClaw连接
+    if (openclaw_adapter_) {
+        openclaw_adapter_->start();
     }
     
-    void setCredentialCallback(CredentialCallback callback) {
-        credential_callback_ = std::move(callback);
+    running_ = true;
+    state_ = AgentState::RUNNING;
+    
+    // 启动指标线程
+    if (config_.enable_monitoring) {
+        metrics_thread_ = std::thread(&PolyVaultAgent::metricsLoop, this);
     }
     
-    void setMessageHandlerManager(MessageHandlerManager* manager) {
-        handler_manager_ = manager;
-    }
+    std::cout << "[Agent] Started successfully" << std::endl;
+    std::cout << "[Agent] Agent ID: " << config_.agent_id << std::endl;
+    std::cout << "[Agent] Version: " << config_.version << std::endl;
     
-    bool isRunning() const { return running_; }
-
-private:
-    AgentConfig config_;
-    bool running_ = false;
-    CredentialCallback credential_callback_;
-    MessageHandlerManager* handler_manager_ = nullptr;
-    
-#ifdef USE_ECAL
-    // eCAL订阅者/发布者
-    std::unique_ptr<eCAL::protobuf::CSubscriber<openclaw::CredentialRequest>> request_subscriber_;
-    std::unique_ptr<eCAL::protobuf::CPublisher<openclaw::CredentialResponse>> response_publisher_;
-    std::unique_ptr<eCAL::protobuf::CSubscriber<openclaw::CookieUpload>> cookie_subscriber_;
-    std::unique_ptr<eCAL::protobuf::CPublisher<openclaw::CookieUploadResponse>> cookie_response_publisher_;
-    std::unique_ptr<eCAL::protobuf::CSubscriber<openclaw::Heartbeat>> heartbeat_subscriber_;
-    std::unique_ptr<eCAL::protobuf::CPublisher<openclaw::HeartbeatResponse>> heartbeat_response_publisher_;
-    std::unique_ptr<eCAL::protobuf::CSubscriber<openclaw::ConfigSync>> config_subscriber_;
-    std::unique_ptr<eCAL::protobuf::CPublisher<openclaw::ConfigSyncResponse>> config_response_publisher_;
-#endif
-    
-    void handleCredentialRequest(const openclaw::CredentialRequest& request) {
-        std::cout << "[Agent] Received credential request for: " << request.service_url() << std::endl;
-        
-        openclaw::CredentialResponse response;
-        
-        if (handler_manager_) {
-            response = handler_manager_->handleCredentialRequest(request);
-        } else if (credential_callback_) {
-            response = credential_callback_(request);
-        } else {
-            response.set_session_id(request.session_id());
-            response.set_success(false);
-            response.set_error_message("No handler registered");
-        }
-        
-#ifdef USE_ECAL
-        if (response_publisher_) {
-            response_publisher_->Send(response);
-            std::cout << "[Agent] Sent credential response for session: " 
-                      << response.session_id() << std::endl;
-        }
-#endif
-    }
-    
-    void handleCookieUpload(const openclaw::CookieUpload& upload) {
-        std::cout << "[Agent] Received cookie upload, count: " << upload.cookies_size() << std::endl;
-        
-        if (handler_manager_) {
-            auto response = handler_manager_->handleCookieUpload(upload);
-#ifdef USE_ECAL
-            if (cookie_response_publisher_) {
-                cookie_response_publisher_->Send(response);
-                std::cout << "[Agent] Sent cookie upload response" << std::endl;
-            }
-#endif
-        }
-    }
-    
-    void handleHeartbeat(const openclaw::Heartbeat& heartbeat) {
-        std::cout << "[Agent] Received heartbeat from: " << heartbeat.agent_id() << std::endl;
-        
-        if (handler_manager_) {
-            auto response = handler_manager_->handleHeartbeat(heartbeat);
-#ifdef USE_ECAL
-            if (heartbeat_response_publisher_) {
-                heartbeat_response_publisher_->Send(response);
-            }
-#endif
-        }
-    }
-    
-    void handleConfigSync(const openclaw::ConfigSync& sync) {
-        std::cout << "[Agent] Received config sync, entries: " << sync.entries_size() << std::endl;
-        
-        if (handler_manager_) {
-            auto response = handler_manager_->handleConfigSync(sync);
-#ifdef USE_ECAL
-            if (config_response_publisher_) {
-                config_response_publisher_->Send(response);
-            }
-#endif
-        }
-    }
-};
-
-// Agent公共接口实现
-Agent::Agent(const AgentConfig& config)
-    : impl_(std::make_unique<Impl>(config)) {}
-
-Agent::~Agent() = default;
-
-bool Agent::initialize() {
-    return impl_->initialize();
+    return true;
 }
 
-void Agent::start() {
-    impl_->start();
+void PolyVaultAgent::stop() {
+    if (state_ != AgentState::RUNNING) {
+        return;
+    }
+    
+    state_ = AgentState::STOPPING;
+    std::cout << "[Agent] Stopping..." << std::endl;
+    
+    running_ = false;
+    
+    // 停止OpenClaw连接
+    if (openclaw_adapter_) {
+        openclaw_adapter_->stop();
+    }
+    
+    // 停止数据总线
+    if (bus_) {
+        bus_->stop();
+    }
+    
+    // 停止指标线程
+    if (metrics_thread_.joinable()) {
+        metrics_thread_.join();
+    }
+    
+    // 卸载所有插件
+    {
+        std::lock_guard<std::mutex> lock(plugins_mutex_);
+        plugins_.clear();
+    }
+    
+    state_ = AgentState::STOPPED;
+    std::cout << "[Agent] Stopped" << std::endl;
 }
 
-void Agent::stop() {
-    impl_->stop();
+AgentState PolyVaultAgent::getState() const {
+    return state_;
 }
 
-void Agent::setCredentialCallback(CredentialCallback callback) {
-    impl_->setCredentialCallback(std::move(callback));
+AgentMetrics PolyVaultAgent::getMetrics() const {
+    std::lock_guard<std::mutex> lock(metrics_mutex_);
+    
+    AgentMetrics m = metrics_;
+    m.uptime_ms = bus::Message::currentTimestamp() - start_time_;
+    
+    if (bus_) {
+        m.messages_sent = bus_->getMessagesSent();
+        m.messages_received = bus_->getMessagesReceived();
+    }
+    
+    return m;
 }
 
-bool Agent::isRunning() const {
-    return impl_->isRunning();
+bus::DataBus* PolyVaultAgent::getDataBus() {
+    return bus_.get();
 }
 
-void Agent::setMessageHandlerManager(MessageHandlerManager* manager) {
-    impl_->setMessageHandlerManager(manager);
+bool PolyVaultAgent::loadPlugin(const std::string& path) {
+    // 简化实现：从路径提取插件类型和ID
+    // 实际应动态加载共享库
+    
+    std::cout << "[Agent] Loading plugin from: " << path << std::endl;
+    
+    // 模拟加载
+    std::string plugin_id = "plugin_" + std::to_string(plugins_.size() + 1);
+    
+    // 创建插件实例（示例）
+    // auto plugin = plugin::PluginFactory::create(type, id);
+    
+    std::cout << "[Agent] Plugin loaded: " << plugin_id << std::endl;
+    return true;
 }
 
+bool PolyVaultAgent::unloadPlugin(const std::string& plugin_id) {
+    std::lock_guard<std::mutex> lock(plugins_mutex_);
+    
+    auto it = plugins_.find(plugin_id);
+    if (it == plugins_.end()) {
+        return false;
+    }
+    
+    it->second->stop();
+    plugins_.erase(it);
+    
+    std::cout << "[Agent] Plugin unloaded: " << plugin_id << std::endl;
+    return true;
+}
+
+std::vector<plugin::PluginMetadata> PolyVaultAgent::getLoadedPlugins() const {
+    std::lock_guard<std::mutex> lock(plugins_mutex_);
+    
+    std::vector<plugin::PluginMetadata> result;
+    for (const auto& [id, plugin] : plugins_) {
+        result.push_back(plugin->getMetadata());
+    }
+    return result;
+}
+
+void PolyVaultAgent::sendMessage(const bus::Message& msg) {
+    if (bus_ && state_ == AgentState::RUNNING) {
+        bus_->publish(msg.topic, msg);
+        metrics_.messages_sent++;
+    }
+}
+
+void PolyVaultAgent::broadcastEvent(const std::string& event_type, const std::string& data) {
+    bus::Message msg;
+    msg.kind = bus::MessageKind::EVENT;
+    msg.topic = "events/" + event_type;
+    msg.source_id = config_.agent_id;
+    msg.payload.assign(data.begin(), data.end());
+    
+    sendMessage(msg);
+}
+
+bool PolyVaultAgent::connectToOpenClaw() {
+    if (openclaw_adapter_) {
+        return openclaw_adapter_->start();
+    }
+    return false;
+}
+
+void PolyVaultAgent::disconnectFromOpenClaw() {
+    if (openclaw_adapter_) {
+        openclaw_adapter_->stop();
+    }
+}
+
+bool PolyVaultAgent::isOpenClawConnected() const {
+    return openclaw_adapter_ && openclaw_adapter_->isRunning();
+}
+
+bool PolyVaultAgent::healthCheck() const {
+    return state_ == AgentState::RUNNING && 
+           bus_ && 
+           bus_->isRunning();
+}
+
+void PolyVaultAgent::metricsLoop() {
+    std::cout << "[Agent] Metrics thread started" << std::endl;
+    
+    while (running_) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(config_.metrics_interval_ms));
+        
+        if (!running_) break;
+        
+        auto m = getMetrics();
+        
+        std::cout << "[Agent] Metrics:" << std::endl;
+        std::cout << "  - Messages sent: " << m.messages_sent << std::endl;
+        std::cout << "  - Messages received: " << m.messages_received << std::endl;
+        std::cout << "  - Uptime: " << (m.uptime_ms / 1000) << "s" << std::endl;
+        std::cout << "  - Plugins loaded: " << plugins_.size() << std::endl;
+        
+        // 发布指标事件
+        broadcastEvent("metrics", std::to_string(m.messages_processed));
+    }
+    
+    std::cout << "[Agent] Metrics thread stopped" << std::endl;
+}
+
+void PolyVaultAgent::processMessage(const bus::Message& msg) {
+    metrics_.messages_processed++;
+}
+
+void PolyVaultAgent::handleCredentialRequest(const bus::Message& msg) {
+    std::cout << "[Agent] Handling credential request" << std::endl;
+    metrics_.messages_processed++;
+    
+    // 转发到OpenClaw或本地处理
+    if (openclaw_adapter_) {
+        // 已在adapter中处理
+    }
+}
+
+void PolyVaultAgent::handleCredentialResponse(const bus::Message& msg) {
+    std::cout << "[Agent] Received credential response" << std::endl;
+    metrics_.messages_processed++;
+}
+
+void PolyVaultAgent::handleEvent(const bus::Message& msg) {
+    metrics_.messages_processed++;
+    
+    // 分发给插件
+    std::lock_guard<std::mutex> lock(plugins_mutex_);
+    for (auto& [id, plugin] : plugins_) {
+        if (plugin->getState() == plugin::PluginState::RUNNING) {
+            plugin->process(msg);
+        }
+    }
+}
+
+void PolyVaultAgent::handleError(const std::string& error) {
+    std::cerr << "[Agent] Error: " << error << std::endl;
+    metrics_.errors++;
+}
+
+// ============================================================================
+// AgentFactory实现
+// ============================================================================
+
+std::unique_ptr<PolyVaultAgent> AgentFactory::create(const AgentConfig& config) {
+    return std::make_unique<PolyVaultAgent>(config);
+}
+
+std::unique_ptr<PolyVaultAgent> AgentFactory::createFromConfigFile(const std::string& path) {
+    // 读取配置文件（简化实现）
+    // 实际应使用JSON/YAML库
+    
+    AgentConfig config;
+    config.agent_id = "polyvault_agent";
+    config.agent_name = "PolyVault Agent";
+    config.bus_config.node_id = config.agent_id;
+    config.bus_config.bus_name = "polyvault_bus";
+    config.openclaw_config.agent_id = config.agent_id;
+    config.openclaw_config.gateway_url = "http://localhost:8080";
+    
+    std::cout << "[AgentFactory] Created agent from config: " << path << std::endl;
+    
+    return create(config);
+}
+
+} // namespace agent
 } // namespace polyvault
