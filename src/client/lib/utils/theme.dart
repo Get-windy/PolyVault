@@ -5,9 +5,19 @@ class AppTheme {
   // 品牌色
   static const Color primaryColor = Color(0xFF6366F1);
   static const Color secondaryColor = Color(0xFF8B5CF6);
+  static const Color tertiaryColor = Color(0xFF06B6D4);
   static const Color errorColor = Color(0xFFEF4444);
   static const Color successColor = Color(0xFF22C55E);
   static const Color warningColor = Color(0xFFF59E0B);
+  
+  // 自定义颜色
+  static const Color surfaceLight = Color(0xFFF8FAFC);
+  static const Color surfaceDark = Color(0xFF0F172A);
+  static const Color accentGradient = LinearGradient(
+    colors: [primaryColor, secondaryColor],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 
   /// 浅色主题
   static ThemeData lightTheme = ThemeData(
@@ -177,6 +187,19 @@ class AppTheme {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
+    ),
+    // 页面过渡动画
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      },
+    ),
+    // 分割线样式
+    dividerTheme: DividerThemeData(
+      color: Colors.grey.withOpacity(0.2),
+      thickness: 1,
+      space: 1,
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,
