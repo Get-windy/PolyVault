@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../services/secure_storage.dart';
 import '../utils/theme.dart';
 import 'auto_authorization_screen.dart';
+import 'security_settings_screen.dart';
+import 'devices_screen.dart';
 
 /// 设置页面
 class SettingsScreen extends ConsumerStatefulWidget {
@@ -77,6 +79,19 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 // 安全设置
                 _buildSectionHeader('安全设置'),
                 _buildSettingCard(
+                  icon: Icons.security,
+                  title: '安全中心',
+                  subtitle: 'PIN码、剪贴板安全、会话管理',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SecuritySettingsScreen(),
+                      ),
+                    );
+                  },
+                ),
+                _buildSettingCard(
                   icon: Icons.fingerprint,
                   title: '生物识别认证',
                   subtitle: '使用指纹或面容ID解锁',
@@ -126,6 +141,23 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                     ),
                   ),
 
+                const SizedBox(height: 24),
+
+                // 设备管理
+                _buildSectionHeader('设备管理'),
+                _buildSettingCard(
+                  icon: Icons.devices,
+                  title: '已配对设备',
+                  subtitle: '管理连接的设备',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const DevicesScreen(),
+                      ),
+                    );
+                  },
+                ),
                 _buildSettingCard(
                   icon: Icons.auto_fix_high,
                   title: '自动授权规则',
