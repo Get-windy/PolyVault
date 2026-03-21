@@ -241,14 +241,17 @@ std::vector<uint8_t> ZkVault::generateSalt() {
 #ifdef _WIN32
     HCRYPTPROV hProv = 0;
     if (CryptAcquireContext(&hProv, NULL, NULL, PROV_RSA_AES, 0)) {
-        CryptGenRandom(hProv, config_.salt_length, salt.data());
+        if (!CryptGenRandom(hProv, config_.salt_length, salt.data())) {
+            // CR-003: 检查返回值
+            throw std::runtime_error("CryptGenRandom failed");
+        }
         CryptReleaseContext(hProv, 0);
+    } else {
+        throw std::runtime_error("CryptAcquireContext failed");
     }
 #else
-    // 简化实现：使用随机数据
-    for (size_t i = 0; i < salt.size(); i++) {
-        salt[i] = static_cast<uint8_t>(rand() % 256);
-    }
+    // 使用安全的随机数生成
+    crypto::generateRandomBytes(salt.size(), salt.data());
 #endif
     
     return salt;

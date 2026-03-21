@@ -20,11 +20,8 @@ bool KeyManager::initialize() {
 }
 
 std::vector<uint8_t> KeyManager::generateKey(int bits) {
-    std::vector<uint8_t> key(bits / 8);
-    for (size_t i = 0; i < key.size(); i++) {
-        key[i] = static_cast<uint8_t>(i * 17 + 42);
-    }
-    return key;
+    // 使用安全的随机数生成
+    return crypto::generateRandomBytes(bits / 8);
 }
 
 std::string KeyManager::storeKey(const std::vector<uint8_t>& key, const std::string& name) {
