@@ -51,25 +51,23 @@ class BackupSchedule:
     weekly = "weekly"
     monthly = "monthly"
     
-    @property
-    def label(self):
+    def get_label(self, value):
         labels = {
             "hourly": "每小时",
             "daily": "每天",
             "weekly": "每周",
             "monthly": "每月",
         }
-        return labels.get(self, self)
+        return labels.get(value, value)
     
-    @property
-    def description(self):
+    def get_description(self, value):
         descriptions = {
             "hourly": "每小时的指定时间自动备份",
             "daily": "每天凌晨自动备份",
             "weekly": "每周指定日期自动备份",
             "monthly": "每月指定日期自动备份",
         }
-        return descriptions.get(self, "")
+        return descriptions.get(value, "")
 
 
 # ============ 备份项测试 ============
@@ -185,34 +183,30 @@ class TestBackupSchedule:
         """每小时备份"""
         schedule = BackupSchedule()
         schedule.value = "hourly"
-        assert "hourly" in schedule.label
+        # 根据 value 获取对应的 label
+        assert "每小时" in schedule.get_label("hourly")
     
     def test_daily_schedule(self):
         """每天备份"""
         schedule = BackupSchedule()
-        schedule.value = "daily"
-        assert schedule.label == "每天"
+        assert schedule.get_label("daily") == "每天"
     
     def test_weekly_schedule(self):
         """每周备份"""
         schedule = BackupSchedule()
-        schedule.value = "weekly"
-        assert schedule.label == "每周"
+        assert schedule.get_label("weekly") == "每周"
     
     def test_monthly_schedule(self):
         """每月备份"""
         schedule = BackupSchedule()
-        schedule.value = "monthly"
-        assert schedule.label == "每月"
+        assert schedule.get_label("monthly") == "每月"
     
     def test_schedule_descriptions(self):
         """计划描述"""
         schedule = BackupSchedule()
-        
         # 验证每个计划都有描述
         for value in ["hourly", "daily", "weekly", "monthly"]:
-            schedule.value = value
-            assert len(schedule.description) > 0
+            assert len(schedule.get_description(value)) > 0
 
 
 # ============ 备份列表测试 ============

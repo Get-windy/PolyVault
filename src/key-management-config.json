@@ -1,0 +1,86 @@
+{
+  "keyManagement": {
+    "storage": {
+      "path": "./keys",
+      "encryption": {
+        "enabled": true,
+        "algorithm": "AES-256-GCM",
+        "keyDerivation": {
+          "method": "PBKDF2",
+          "iterations": 100000,
+          "hash": "SHA-256"
+        }
+      },
+      "backup": {
+        "enabled": true,
+        "interval": "24h",
+        "retention": 30
+      }
+    },
+    "keyPolicies": {
+      "rotation": {
+        "enabled": true,
+        "interval": "30d",
+        "maxAge": "90d",
+        "algorithmRefresh": {
+          "enabled": true,
+          "schedule": "annually"
+        }
+      },
+      "validation": {
+        "enabled": true,
+        "strengthMinimum": 2048,
+        "algorithmWhitelist": [
+          "RSA",
+          "ECDSA",
+          "EdDSA",
+          "X25519"
+        ]
+      }
+    },
+    "hardwareSecurity": {
+      "zkVaultIntegration": {
+        "enabled": true,
+        "devicePath": "/dev/zk_vault",
+        "timeout": 30000,
+        "sessionManagement": {
+          "enabled": true,
+          "timeout": 3600000
+        }
+      }
+    },
+    "monitoring": {
+      "auditLogging": {
+        "enabled": true,
+        "level": "verbose",
+        "path": "./logs/key-audit.log"
+      },
+      "metrics": {
+        "enabled": true,
+        "collectionInterval": 60000,
+        "exporters": [
+          "prometheus"
+        ]
+      }
+    },
+    "accessControl": {
+      "enabled": true,
+      "rbac": {
+        "enabled": true,
+        "roles": [
+          "key_admin",
+          "key_operator",
+          "key_reader"
+        ]
+      },
+      "authentication": {
+        "requiredForAllOperations": true,
+        "methods": [
+          "certificate",
+          "api_key",
+          "oauth"
+        ]
+      }
+    }
+  }
+}

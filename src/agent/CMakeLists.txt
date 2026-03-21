@@ -24,6 +24,8 @@ if(BUILD_SIMPLE)
     add_library(polyvault_simple_lib STATIC
         src/simple_agent.cpp
         src/crypto_utils.cpp
+        src/plugin_manager.cpp
+        src/permission_manager.cpp
     )
     
     target_include_directories(polyvault_simple_lib
@@ -38,7 +40,7 @@ if(BUILD_SIMPLE)
             _WIN32_WINNT=0x0601
             WIN32_LEAN_AND_MEAN
         )
-        target_link_libraries(polyvault_simple_lib PUBLIC ws2_32)
+        target_link_libraries(polyvault_simple_lib PUBLIC ws2_32 bcrypt)
         if(MSVC)
             target_compile_options(polyvault_simple_lib PRIVATE /W3 /wd4819)
         endif()
@@ -48,7 +50,7 @@ if(BUILD_SIMPLE)
         target_link_libraries(polyvault_simple_lib PUBLIC eCAL::core)
     endif()
     
-    # 简化版可执行文件
+    # 简化版可执行文�?
     add_executable(polyvault_agent_simple src/simple_main.cpp)
     target_link_libraries(polyvault_agent_simple PRIVATE polyvault_simple_lib)
     
@@ -118,8 +120,8 @@ if(USE_ECAL)
     message(STATUS "Data Bus library enabled")
 endif()
 
-# ============ 安全模块库 ============
-# 零知识凭证存储
+# ============ 安全模块�?============
+# 零知识凭证存�?
 add_library(polyvault_zk_vault STATIC
     src/zk_vault.cpp
 )
@@ -186,7 +188,7 @@ target_include_directories(polyvault_audit_logger
 
 target_link_libraries(polyvault_audit_logger PRIVATE polyvault_signature)
 
-# 性能监控 (暂时禁用 - 需要进一步调试)
+# 性能监控 (暂时禁用 - 需要进一步调�?
 # add_library(polyvault_perf_monitor STATIC
 #     src/perf_monitor.cpp
 # )
@@ -212,7 +214,7 @@ target_include_directories(polyvault_data_sync
 
 target_link_libraries(polyvault_data_sync PRIVATE polyvault_simple_lib)
 
-# REST服务器
+# REST服务�?
 add_library(polyvault_rest_server STATIC
     src/rest_server.cpp
 )
@@ -281,6 +283,27 @@ if(BUILD_TESTS)
         PRIVATE
             ${CMAKE_SOURCE_DIR}/src
     )
+    
+    # Protobuf 序列化测试
+    if(EXISTS "${PROTO_SRC_FILE}")
+        add_executable(test_protobuf_serialization 
+            ../../tests/test_protobuf_serialization.cpp
+            ${PROTO_SRC_FILE}
+        )
+        
+        target_link_libraries(test_protobuf_serialization 
+            PRIVATE 
+                polyvault_simple_lib
+        )
+        
+        target_include_directories(test_protobuf_serialization
+            PRIVATE
+                ${CMAKE_SOURCE_DIR}/generated
+                ${CMAKE_SOURCE_DIR}/src
+        )
+        
+        message(STATUS "Protobuf serialization test enabled")
+    endif()
     
     message(STATUS "Tests enabled (including perf_benchmark)")
 endif()

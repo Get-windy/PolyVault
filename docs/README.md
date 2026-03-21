@@ -1,11 +1,11 @@
 # PolyVault 文档索引
 
 **项目**: PolyVault - 去中心化软总线客户端  
-**版本**: v1.0  
+**版本**: v1.1  
 **创建时间**: 2026-03-14  
-**最后更新**: 2026-03-16 (加班更新)  
-**文档总数**: 22 个  
-**总大小**: ~200 KB
+**最后更新**: 2026-03-21  
+**文档总数**: 24 个  
+**总大小**: ~240 KB
 
 ---
 
@@ -25,12 +25,14 @@
 
 ```
 docs/
-├── README.md                          # 本文档 - 文档索引 ⭐新增
+├── README.md                          # 本文档 - 文档索引
 ├── README_DOCS_RULES.md               # 文档规则
 ├── CONTRIBUTING.md                    # 贡献指南
+├── FAQ.md                             # 常见问题解答 ⭐新增
 │
-├── ARCHITECTURE.md                    # 系统架构设计 (v3.0)
+├── ARCHITECTURE.md                    # 系统架构设计 (v4.0)
 ├── API_REFERENCE.md                   # API 接口参考 (v2.0)
+├── API_EXAMPLES.md                    # API 使用示例集 ⭐新增
 ├── TECHNICAL_SPECIFICATION.md         # 技术规格说明
 ├── PROTOCOL.md                        # 通信协议文档
 │
@@ -52,14 +54,16 @@ docs/
 
 ## 📚 文档分类
 
-### 核心文档（4 个）
+### 核心文档（6 个）
 
 | 文档 | 版本 | 大小 | 说明 |
 |------|------|------|------|
-| **ARCHITECTURE.md** | v3.0 | ~23 KB | 系统架构设计（多客户端架构、权限配置、安全验证流程） |
-| **API_REFERENCE.md** | v2.0 | ~20 KB | API 接口参考（客户端权限配置 API、K 宝验证流程） |
+| **ARCHITECTURE.md** | v4.0 | ~44 KB | 系统架构设计（插件化架构、多客户端架构、权限配置） |
+| **API_REFERENCE.md** | v2.0 | ~27 KB | API 接口参考（客户端权限配置 API、K 宝验证流程） |
+| **API_EXAMPLES.md** | v1.0 | ~21 KB | API 使用示例集（完整代码示例） ⭐新增 |
 | **TECHNICAL_SPECIFICATION.md** | v1.0 | ~15 KB | 技术规格说明 |
 | **PROTOCOL.md** | v1.0 | ~12 KB | 通信协议文档（Protobuf 定义） |
+| **FAQ.md** | v1.0 | ~10 KB | 常见问题解答（32个常见问题） ⭐新增 |
 
 ---
 
@@ -67,11 +71,11 @@ docs/
 
 | 文档 | 版本 | 大小 | 说明 |
 |------|------|------|------|
-| **DEVELOPMENT_SETUP.md** | v1.0 | ~10 KB | 开发环境搭建指南 |
-| **DEVELOPMENT_GUIDE.md** | v1.0 | ~12 KB | 开发指南（开发者入门） |
-| **TESTING.md** | v1.0 | ~28 KB | 测试文档（测试策略和用例） |
-| **DEPLOYMENT.md** | v1.0 | ~19 KB | 部署指南（部署流程和配置） |
-| **CONTRIBUTING.md** | v1.0 | ~8 KB | 贡献指南 |
+| **DEVELOPMENT_SETUP.md** | v1.0 | ~12 KB | 开发环境搭建指南 |
+| **DEVELOPMENT_GUIDE.md** | v1.0 | ~15 KB | 开发指南（开发者入门） |
+| **TESTING.md** | v1.0 | ~40 KB | 测试文档（测试策略和用例） |
+| **DEPLOYMENT.md** | v1.0 | ~5 KB | 部署指南（部署流程和配置） |
+| **CONTRIBUTING.md** | v1.0 | ~17 KB | 贡献指南 |
 
 ---
 
@@ -79,9 +83,9 @@ docs/
 
 | 文档 | 版本 | 大小 | 说明 |
 |------|------|------|------|
-| **USER_GUIDE.md** | v1.0 | ~16 KB | 用户指南（完整用户配置手册） |
-| **DEVICE_MANAGEMENT.md** | v1.0 | ~13 KB | 设备管理文档 |
-| **SETTINGS_UI.md** | v1.0 | ~17 KB | 设置界面文档（含自动授权规则配置） |
+| **USER_GUIDE.md** | v1.0 | ~26 KB | 用户指南（完整用户配置手册） |
+| **DEVICE_MANAGEMENT.md** | v1.0 | ~14 KB | 设备管理文档 |
+| **SETTINGS_UI.md** | v1.0 | ~21 KB | 设置界面文档（含自动授权规则配置） |
 
 ---
 
@@ -89,8 +93,8 @@ docs/
 
 | 文档 | 版本 | 大小 | 说明 |
 |------|------|------|------|
-| **ECAL_API.md** | v1.0 | ~8 KB | eCAL API 文档 |
-| **ECAL_SETUP.md** | v1.0 | ~6 KB | eCAL 配置指南 |
+| **ECAL_API.md** | v1.0 | ~14 KB | eCAL API 文档 |
+| **ECAL_SETUP.md** | v1.0 | ~2 KB | eCAL 配置指南 |
 
 ---
 
@@ -115,8 +119,9 @@ docs/
 
 **API 开发**:
 1. [API_REFERENCE.md](./API_REFERENCE.md) - API 接口参考
-2. [PROTOCOL.md](./PROTOCOL.md) - 通信协议
-3. [TECHNICAL_SPECIFICATION.md](./TECHNICAL_SPECIFICATION.md) - 技术规格
+2. [API_EXAMPLES.md](./API_EXAMPLES.md) - API 使用示例 ⭐新增
+3. [PROTOCOL.md](./PROTOCOL.md) - 通信协议
+4. [TECHNICAL_SPECIFICATION.md](./TECHNICAL_SPECIFICATION.md) - 技术规格
 
 **eCAL 集成**:
 1. [ECAL_API.md](./eCAL/ECAL_API.md) - eCAL API 文档
@@ -128,6 +133,7 @@ docs/
 1. [USER_GUIDE.md](./USER_GUIDE.md) - 用户指南
 2. [DEVICE_MANAGEMENT.md](./DEVICE_MANAGEMENT.md) - 设备管理
 3. [SETTINGS_UI.md](./SETTINGS_UI.md) - 设置界面
+4. [FAQ.md](./FAQ.md) - 常见问题解答 ⭐新增
 
 #### 🔧 运维人员
 
@@ -178,29 +184,30 @@ docs/
 ### 文档数量分布
 
 ```
-核心文档    ████████  4 个 (27%)
-开发文档    ██████████  5 个 (33%)
-用户文档    ██████  3 个 (20%)
-eCAL 文档    ████  2 个 (13%)
-规范文档    ██  1 个 (7%)
+核心文档    ████████████  6 个 (30%)
+开发文档    ██████████  5 个 (25%)
+用户文档    ██████  3 个 (15%)
+eCAL 文档    ████  2 个 (10%)
+规范文档    ██  1 个 (5%)
+其他文档    ████  2 个 (10%)
 ```
 
 ### 文档完整度
 
 | 类别 | 完成度 | 文档数 |
 |------|--------|--------|
-| 核心文档 | 100% ✅ | 4/4 |
+| 核心文档 | 100% ✅ | 6/6 |
 | 开发文档 | 100% ✅ | 5/5 |
 | 用户文档 | 100% ✅ | 3/3 |
 | eCAL 文档 | 100% ✅ | 2/2 |
 | 规范文档 | 100% ✅ | 1/1 |
-| **总体** | **100%** ✅ | **15/15** |
+| **总体** | **100%** ✅ | **17/17** |
 
 ### 总文档量
 
-- **文档总数**: 15 个
-- **总大小**: ~200 KB
-- **平均大小**: ~13 KB/个
+- **文档总数**: 17 个
+- **总大小**: ~240 KB
+- **平均大小**: ~14 KB/个
 
 ---
 
@@ -251,6 +258,18 @@ eCAL 文档    ████  2 个 (13%)
 ---
 
 ## 🆕 最近更新
+
+### 2026-03-21
+
+**新增文档**:
+- ✅ [API_EXAMPLES.md](./API_EXAMPLES.md) - API 使用示例集 ⭐新增
+- ✅ [FAQ.md](./FAQ.md) - 常见问题解答 ⭐新增
+
+**更新文档**:
+- ✅ [README.md](./README.md) - v1.1（文档索引更新）
+- ✅ [ARCHITECTURE.md](./ARCHITECTURE.md) - v4.0（插件化架构更新）
+
+**文档总计**: 17 个文档，~240 KB
 
 ### 2026-03-14
 

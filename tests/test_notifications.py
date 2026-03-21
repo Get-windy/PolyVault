@@ -227,28 +227,28 @@ class TestNotificationTimestamp:
         timestamp = now - timedelta(minutes=30)
         
         diff = now - timestamp
-        assert diff.in_minutes == 30
+        assert diff.total_seconds() / 60 == 30
 
     def test_format_relative_hours(self):
         now = datetime.now()
         timestamp = now - timedelta(hours=5)
         
         diff = now - timestamp
-        assert diff.in_hours == 5
+        assert diff.total_seconds() / 3600 == 5
 
     def test_format_relative_days(self):
         now = datetime.now()
         timestamp = now - timedelta(days=3)
         
         diff = now - timestamp
-        assert diff.in_days == 3
+        assert diff.days == 3
 
     def test_format_relative_weeks(self):
         now = datetime.now()
         timestamp = now - timedelta(weeks=2)
         
         diff = now - timestamp
-        assert diff.in_days >= 14
+        assert diff.days >= 14
 
 
 class TestNotificationActions:

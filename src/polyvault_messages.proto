@@ -1,0 +1,286 @@
+/**
+ * PolyVault Protobuf Message Definitions
+ * Supports cross-language communication between PolyVault nodes
+ */
+
+syntax = "proto3";
+
+package polyvault;
+
+option go_package = "github.com/polyvault/pb";
+option java_package = "com.polyvault.proto";
+option csharp_namespace = "PolyVault.Proto";
+
+// Message types enumeration
+enum MessageType {
+    MESSAGE_TYPE_UNSPECIFIED = 0;
+    MESSAGE_TYPE_KEY_GENERATE = 1;
+    MESSAGE_TYPE_KEY_STORE = 2;
+    MESSAGE_TYPE_KEY_RETRIEVE = 3;
+    MESSAGE_TYPE_KEY_DELETE = 4;
+    MESSAGE_TYPE_SIGN_REQUEST = 5;
+    MESSAGE_TYPE_SIGN_RESPONSE = 6;
+    MESSAGE_TYPE_VERIFY_REQUEST = 7;
+    MESSAGE_TYPE_VERIFY_RESPONSE = 8;
+    MESSAGE_TYPE_KEY_EXCHANGE = 9;
+    MESSAGE_TYPE_HEARTBEAT = 10;
+    MESSAGE_TYPE_CONFIG_SYNC = 11;
+    MESSAGE_TYPE_KEY_ROTATION = 12;
+}
+
+// Key algorithms
+enum KeyAlgorithm {
+    KEY_ALGORITHM_UNSPECIFIED = 0;
+    KEY_ALGORITHM_RSA_2048 = 1;
+    KEY_ALGORITHM_RSA_4096 = 2;
+    KEY_ALGORITHM_ECDSA_P256 = 3;
+    KEY_ALGORITHM_ECDSA_P384 = 4;
+    KEY_ALGORITHM_ED25519 = 5;
+    KEY_ALGORITHM_X25519 = 6;
+}
+
+// Key purpose
+enum KeyPurpose {
+    KEY_PURPOSE_UNSPECIFIED = 0;
+    KEY_PURPOSE_SIGNING = 1;
+    KEY_PURPOSE_ENCRYPTION = 2;
+    KEY_PURPOSE_KEY_EXCHANGE = 3;
+    KEY_PURPOSE_AUTHENTICATION = 4;
+}
+
+// Key status
+enum KeyStatus {
+    KEY_STATUS_UNSPECIFIED = 0;
+    KEY_STATUS_ACTIVE = 1;
+    KEY_STATUS_DEPRECATED = 2;
+    KEY_STATUS_REVOKED = 3;
+    KEY_STATUS_EXPIRED = 4;
+}
+
+// Operation status
+enum OperationStatus {
+    OPERATION_STATUS_UNSPECIFIED = 0;
+    OPERATION_STATUS_SUCCESS = 1;
+    OPERATION_STATUS_FAILURE = 2;
+    OPERATION_STATUS_PENDING = 3;
+    OPERATION_STATUS_TIMEOUT = 4;
+}
+
+// Key metadata
+message KeyMetadata {
+    string key_id = 1;
+    KeyAlgorithm algorithm = 2;
+    KeyPurpose purpose = 3;
+    KeyStatus status = 4;
+    int64 created_at = 5;
+    int64 expires_at = 6;
+    map<string, string> attributes = 7;
+}
+
+// Public key data
+message PublicKey {
+    string key_id = 1;
+    KeyAlgorithm algorithm = 2;
+    bytes key_data = 3;
+    KeyMetadata metadata = 4;
+}
+
+// Private key data (wrapped/encrypted)
+message PrivateKey {
+    string key_id = 1;
+    KeyAlgorithm algorithm = 2;
+    bytes encrypted_key_data = 3;
+    bytes initialization_vector = 4;
+    KeyMetadata metadata = 5;
+}
+
+// Key generation request
+message KeyGenerateRequest {
+    string request_id = 1;
+    KeyAlgorithm algorithm = 2;
+    KeyPurpose purpose = 3;
+    map<string, string> options = 4;
+    int64 timestamp = 5;
+}
+
+// Key generation response
+message KeyGenerateResponse {
+    string request_id = 1;
+    OperationStatus status = 2;
+    string error_message = 3;
+    PublicKey public_key = 4;
+    // Private key is returned wrapped with session key
+    PrivateKey encrypted_private_key = 5;
+    int64 timestamp = 6;
+}
+
+// Key store request
+message KeyStoreRequest {
+    string request_id = 1;
+    PrivateKey private_key = 2;
+    int64 timestamp = 5;
+}
+
+// Key store response
+message KeyStoreResponse {
+    string request_id = 1;
+    OperationStatus status = 2;
+    string error_message = 3;
+    int64 timestamp = 4;
+}
+
+// Key retrieval request
+message KeyRetrieveRequest {
+    string request_id = 1;
+    string key_id = 2;
+    bool include_private_key = 3;
+    int64 timestamp = 4;
+}
+
+// Key retrieval response
+message KeyRetrieveResponse {
+    string request_id = 1;
+    OperationStatus status = 2;
+    string error_message = 3;
+    PublicKey public_key = 4;
+    PrivateKey encrypted_private_key = 5;
+    int64 timestamp = 6;
+}
+
+// Key deletion request
+message KeyDeleteRequest {
+    string request_id = 1;
+    string key_id = 2;
+    bool hard_delete = 3;  // If false, key is marked as revoked
+    int64 timestamp = 4;
+}
+
+// Key deletion response
+message KeyDeleteResponse {
+    string request_id = 1;
+    OperationStatus status = 2;
+    string error_message = 3;
+    int64 timestamp = 4;
+}
+
+// Signature request
+message SignRequest {
+    string request_id = 1;
+    string key_id = 2;
+    bytes data = 3;
+    string hash_algorithm = 4;  // SHA256, SHA384, SHA512
+    int64 timestamp = 5;
+}
+
+// Signature response
+message SignResponse {
+    string request_id = 1;
+    OperationStatus status = 2;
+    string error_message = 3;
+    bytes signature = 4;
+    int64 timestamp = 5;
+}
+
+// Verification request
+message VerifyRequest {
+    string request_id = 1;
+    string key_id = 2;
+    bytes data = 3;
+    bytes signature = 4;
+    string hash_algorithm = 5;
+    int64 timestamp = 6;
+}
+
+// Verification response
+message VerifyResponse {
+    string request_id = 1;
+    OperationStatus status = 2;
+    string error_message = 3;
+    bool is_valid = 4;
+    int64 timestamp = 5;
+}
+
+// Key exchange message
+message KeyExchangeMessage {
+    string request_id = 1;
+    string sender_id = 2;
+    string receiver_id = 3;
+    KeyAlgorithm algorithm = 4;
+    bytes ephemeral_public_key = 5;
+    bytes encrypted_nonce = 6;
+    int64 timestamp = 7;
+}
+
+// Heartbeat message
+message HeartbeatMessage {
+    string node_id = 1;
+    int64 timestamp = 2;
+    int64 uptime_seconds = 3;
+    map<string, string> status = 4;
+}
+
+// Configuration sync message
+message ConfigSyncMessage {
+    string node_id = 1;
+    string config_version = 2;
+    bytes config_hash = 3;
+    map<string, string> config = 4;
+    int64 timestamp = 5;
+}
+
+// Key rotation message
+message KeyRotationMessage {
+    string request_id = 1;
+    string old_key_id = 2;
+    string new_key_id = 3;
+    KeyAlgorithm algorithm = 4;
+    OperationStatus status = 5;
+    string error_message = 6;
+    int64 timestamp = 7;
+}
+
+// Generic envelope message for transportation
+message Envelope {
+    MessageType message_type = 1;
+    string message_id = 2;
+    string sender_id = 3;
+    string receiver_id = 4;
+    int64 timestamp = 5;
+    uint32 sequence_number = 6;
+    
+    oneof payload {
+        KeyGenerateRequest key_generate_request = 10;
+        KeyGenerateResponse key_generate_response = 11;
+        KeyStoreRequest key_store_request = 12;
+        KeyStoreResponse key_store_response = 13;
+        KeyRetrieveRequest key_retrieve_request = 14;
+        KeyRetrieveResponse key_retrieve_response = 15;
+        KeyDeleteRequest key_delete_request = 16;
+        KeyDeleteResponse key_delete_response = 17;
+        SignRequest sign_request = 18;
+        SignResponse sign_response = 19;
+        VerifyRequest verify_request = 20;
+        VerifyResponse verify_response = 21;
+        KeyExchangeMessage key_exchange = 22;
+        HeartbeatMessage heartbeat = 23;
+        ConfigSyncMessage config_sync = 24;
+        KeyRotationMessage key_rotation = 25;
+    }
+    
+    // Digital signature of the entire envelope (excluding this field)
+    bytes signature = 100;
+}
+
+// Batch request/response for multiple operations
+message BatchRequest {
+    string batch_id = 1;
+    repeated Envelope messages = 2;
+    int64 timestamp = 3;
+}
+
+message BatchResponse {
+    string batch_id = 1;
+    OperationStatus status = 2;
+    repeated Envelope messages = 3;
+    int64 timestamp = 4;
+}
