@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../services/secure_storage.dart';
 import '../utils/theme.dart';
+import 'auto_authorization_screen.dart';
 
 /// 设置页面
 class SettingsScreen extends ConsumerStatefulWidget {
@@ -124,6 +125,20 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                       },
                     ),
                   ),
+
+                _buildSettingCard(
+                  icon: Icons.auto_fix_high,
+                  title: '自动授权规则',
+                  subtitle: '配置自动化的凭证访问授权',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AutoAuthorizationScreen(),
+                      ),
+                    );
+                  },
+                ),
 
                 const SizedBox(height: 24),
 
