@@ -216,7 +216,6 @@ class AutoAuthorizationScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final rules = ref.watch(autoAuthRulesProvider);
-    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -279,12 +278,6 @@ class AutoAuthorizationScreen extends ConsumerWidget {
               color: Colors.grey[500],
             ),
           ),
-          const SizedBox(height: 24),
-          ElevatedButton.icon(
-            onPressed: () {},
-            icon: const Icon(Icons.add),
-            label: const Text('添加第一条规则'),
-          ),
         ],
       ),
     );
@@ -295,3 +288,492 @@ class AutoAuthorizationScreen extends ConsumerWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Card(
+      margin: const EdgeInsets.only(bottom: 12),
+      child: Column(
+        children: [
+          // 规则头部
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: rule.isEnabled ? colorScheme.primaryContainer : Colors.grey[200],
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  rule.action.icon,
+                  color: rule.isEnabled ? colorScheme.onPrimaryContainer : Colors.grey,
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        rule.name,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: rule.isEnabled ? colorScheme.onPrimaryContainer : Colors.grey[700],
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        rule.description,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: rule.isEnabled ? colorScheme.onPrimaryContainer.withOpacity(0.7) : Colors.grey[500],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Switch(
+                  value: rule.isEnabled,
+                  onChanged: (_) => ref.read(autoAuthRulesProvider.notifier).toggleRule(rule.id),
+                ),
+              ],
+            ),
+          ),
+          // 规则详情
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                _buildDetailRow(
+                  icon: Icons.rule,
+                  label: '条件',
+                  value: rule.condition.displayText,
+                ),
+                const SizedBox(height: 8),
+                _buildDetailRow(
+                  icon: rule.action.icon,
+                  label: '动作',
+                  value: rule.action.displayText,
+                  valueColor: rule.action.color,
+                ),
+                const SizedBox(height: 8),
+                _buildDetailRow(
+                  icon: Icons.bar_chart,
+                  label: '触发次数',
+                  value: '${rule.triggerCount} 次',
+                ),
+                if (rule.lastTriggeredAt != null) ...[
+                  const SizedBox(height: 8),
+                  _buildDetailRow(
+                    icon: Icons.schedule,
+                    label: '上次触发',
+                    value: _formatDateTime(rule.lastTriggeredAt!),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          // 操作按钮
+          ButtonBar(
+            children: [
+              TextButton.icon(
+                icon: const Icon(Icons.edit, size: 18),
+                label: const Text('编辑'),
+                onPressed: () => _showEditRuleDialog(context, ref, rule),
+              ),
+              TextButton.icon(
+                icon: const Icon(Icons.delete, size: 18),
+                label: const Text('删除'),
+                style: TextButton.styleFrom(foregroundColor: Colors.red),
+                onPressed: () => _showDeleteConfirmDialog(context, ref, rule),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDetailRow({
+    required IconData icon,
+    required String label,
+    required String value,
+    Color? valueColor,
+  }) {
+    return Row(
+      children: [
+        Icon(icon, size: 16, color: Colors.grey[600]),
+        const SizedBox(width: 8),
+        Text(
+          '$label: ',
+          style: TextStyle(
+            fontSize: 13,
+            color: Colors.grey[600],
+          ),
+        ),
+        Expanded(
+          child: Text(
+            value,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
+              color: valueColor ?? Colors.black87,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  String _formatDateTime(DateTime dt) {
+    final now = DateTime.now();
+    final diff = now.difference(dt);
+
+    if (diff.inMinutes < 60) {
+      return '${diff.inMinutes} 分钟前';
+    } else if (diff.inHours < 24) {
+      return '${diff.inHours} 小时前';
+    } else if (diff.inDays < 7) {
+      return '${diff.inDays} 天前';
+    } else {
+      return '${dt.month}/${dt.day} ${dt.hour}:${dt.minute.toString().padLeft(2, '0')}';
+    }
+  }
+
+  /// 显示添加规则对话框
+  void _showAddRuleDialog(BuildContext context, WidgetRef ref) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) => const AddRuleSheet(),
+    );
+  }
+
+  /// 显示编辑规则对话框
+  void _showEditRuleDialog(BuildContext context, WidgetRef ref, AutoAuthRule rule) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) => AddRuleSheet(existingRule: rule),
+    );
+  }
+
+  /// 显示删除确认对话框
+  void _showDeleteConfirmDialog(BuildContext context, WidgetRef ref, AutoAuthRule rule) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('确认删除'),
+        content: Text('确定要删除规则 "${rule.name}" 吗？此操作无法撤销。'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('取消'),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            onPressed: () {
+              ref.read(autoAuthRulesProvider.notifier).deleteRule(rule.id);
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('规则已删除')),
+              );
+            },
+            child: const Text('删除'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// 添加/编辑规则底部表单
+class AddRuleSheet extends ConsumerStatefulWidget {
+  final AutoAuthRule? existingRule;
+
+  const AddRuleSheet({super.key, this.existingRule});
+
+  @override
+  ConsumerState<AddRuleSheet> createState() => _AddRuleSheetState();
+}
+
+class _AddRuleSheetState extends ConsumerState<AddRuleSheet> {
+  final _nameController = TextEditingController();
+  final _descController = TextEditingController();
+  String _conditionType = 'trusted_device';
+  String _actionType = 'allow';
+  Map<String, dynamic> _conditionParams = {};
+  Map<String, dynamic> _actionParams = {};
+
+  // 时间范围控制器
+  final _startTimeController = TextEditingController(text: '09:00');
+  final _endTimeController = TextEditingController(text: '18:00');
+  final _locationController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.existingRule != null) {
+      _nameController.text = widget.existingRule!.name;
+      _descController.text = widget.existingRule!.description;
+      _conditionType = widget.existingRule!.condition.type;
+      _conditionParams = Map.from(widget.existingRule!.condition.params);
+      _actionType = widget.existingRule!.action.type;
+      _actionParams = Map.from(widget.existingRule!.action.params);
+
+      if (_conditionType == 'time_range') {
+        _startTimeController.text = _conditionParams['start_time'] ?? '09:00';
+        _endTimeController.text = _conditionParams['end_time'] ?? '18:00';
+      } else if (_conditionType == 'location') {
+        _locationController.text = _conditionParams['location_name'] ?? '';
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _descController.dispose();
+    _startTimeController.dispose();
+    _endTimeController.dispose();
+    _locationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(
+        left: 24,
+        right: 24,
+        top: 24,
+        bottom: MediaQuery.of(context).viewInsets.bottom + 24,
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                width: 40,
+                height: 4,
+                margin: const EdgeInsets.only(bottom: 20),
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+            ),
+            Text(
+              widget.existingRule != null ? '编辑规则' : '添加新规则',
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            // 规则名称
+            TextField(
+              controller: _nameController,
+              decoration: const InputDecoration(
+                labelText: '规则名称',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+
+            // 规则描述
+            TextField(
+              controller: _descController,
+              decoration: const InputDecoration(
+                labelText: '规则描述',
+                border: OutlineInputBorder(),
+              ),
+              maxLines: 2,
+            ),
+            const SizedBox(height: 20),
+
+            // 条件类型选择
+            const Text('触发条件', style: TextStyle(fontWeight: FontWeight.w600)),
+            const SizedBox(height: 8),
+            Wrap(
+              spacing: 8,
+              children: [
+                ChoiceChip(
+                  label: const Text('可信设备'),
+                  selected: _conditionType == 'trusted_device',
+                  onSelected: (s) => setState(() => _conditionType = 'trusted_device'),
+                ),
+                ChoiceChip(
+                  label: const Text('时间段'),
+                  selected: _conditionType == 'time_range',
+                  onSelected: (s) => setState(() => _conditionType = 'time_range'),
+                ),
+                ChoiceChip(
+                  label: const Text('安全地点'),
+                  selected: _conditionType == 'location',
+                  onSelected: (s) => setState(() => _conditionType = 'location'),
+                ),
+                ChoiceChip(
+                  label: const Text('凭证类型'),
+                  selected: _conditionType == 'credential_type',
+                  onSelected: (s) => setState(() => _conditionType = 'credential_type'),
+                ),
+              ],
+            ),
+
+            // 条件参数
+            if (_conditionType == 'time_range') ...[
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _startTimeController,
+                      decoration: const InputDecoration(
+                        labelText: '开始时间',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: TextField(
+                      controller: _endTimeController,
+                      decoration: const InputDecoration(
+                        labelText: '结束时间',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+
+            if (_conditionType == 'location') ...[
+              const SizedBox(height: 16),
+              TextField(
+                controller: _locationController,
+                decoration: const InputDecoration(
+                  labelText: '地点名称',
+                  border: OutlineInputBorder(),
+                  suffixIcon: Icon(Icons.location_on),
+                ),
+              ),
+            ],
+
+            const SizedBox(height: 20),
+
+            // 动作类型选择
+            const Text('执行动作', style: TextStyle(fontWeight: FontWeight.w600)),
+            const SizedBox(height: 8),
+            Wrap(
+              spacing: 8,
+              children: [
+                ChoiceChip(
+                  label: const Text('自动允许'),
+                  selected: _actionType == 'allow',
+                  onSelected: (s) => setState(() => _actionType = 'allow'),
+                ),
+                ChoiceChip(
+                  label: const Text('生物识别后允许'),
+                  selected: _actionType == 'allow_with_biometric',
+                  onSelected: (s) => setState(() => _actionType = 'allow_with_biometric'),
+                ),
+                ChoiceChip(
+                  label: const Text('仅通知'),
+                  selected: _actionType == 'notify',
+                  onSelected: (s) => setState(() => _actionType = 'notify'),
+                ),
+                ChoiceChip(
+                  label: const Text('需要确认'),
+                  selected: _actionType == 'require_confirmation',
+                  onSelected: (s) => setState(() => _actionType = 'require_confirmation'),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 24),
+
+            // 保存按钮
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: _saveRule,
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                ),
+                child: Text(widget.existingRule != null ? '保存修改' : '创建规则'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _saveRule() {
+    final name = _nameController.text.trim();
+    final desc = _descController.text.trim();
+
+    if (name.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('请输入规则名称')),
+      );
+      return;
+    }
+
+    // 构建条件参数
+    Map<String, dynamic> conditionParams = {};
+    switch (_conditionType) {
+      case 'time_range':
+        conditionParams = {
+          'start_time': _startTimeController.text,
+          'end_time': _endTimeController.text,
+        };
+        break;
+      case 'location':
+        conditionParams = {'location_name': _locationController.text};
+        break;
+      case 'trusted_device':
+        conditionParams = {'trusted': true};
+        break;
+      default:
+        conditionParams = {};
+    }
+
+    final rule = AutoAuthRule(
+      id: widget.existingRule?.id ?? 'rule_${DateTime.now().millisecondsSinceEpoch}',
+      name: name,
+      description: desc,
+      condition: AutoAuthCondition(
+        type: _conditionType,
+        params: conditionParams,
+      ),
+      action: AutoAuthAction(
+        type: _actionType,
+        params: _actionParams,
+      ),
+      createdAt: widget.existingRule?.createdAt ?? DateTime.now(),
+      lastTriggeredAt: widget.existingRule?.lastTriggeredAt,
+      triggerCount: widget.existingRule?.triggerCount ?? 0,
+    );
+
+    if (widget.existingRule != null) {
+      ref.read(autoAuthRulesProvider.notifier).updateRule(rule);
+    } else {
+      ref.read(autoAuthRulesProvider.notifier).addRule(rule);
+    }
+
+    Navigator.pop(context);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(widget.existingRule != null ? '规则已更新' : '规则已创建'),
+      ),
+    );
+  }
+}
