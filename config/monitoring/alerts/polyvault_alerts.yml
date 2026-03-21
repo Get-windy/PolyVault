@@ -1,0 +1,124 @@
+# PolyVault 告警规则
+
+groups:
+  - name: polyvault_system_alerts
+    rules:
+      # CPU使用率告警
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 5m
+        labels:
+          severity: warning
+          service: polyvault
+        annotations:
+          summary: "高CPU使用率警告"
+          description: "实例 {{ $labels.instance }} CPU使用率超过80%，当前值: {{ $value }}%"
+
+      - alert: CriticalCPUUsage
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 95
+        for: 2m
+        labels:
+          severity: critical
+          service: polyvault
+        annotations:
+          summary: "CPU使用率严重警告"
+          description: "实例 {{ $labels.instance }} CPU使用率超过95%，当前值: {{ $value }}%"
+
+      # 内存使用率告警
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+          service: polyvault
+        annotations:
+          summary: "高内存使用率警告"
+          description: "实例 {{ $labels.instance }} 内存使用率超过85%，当前值: {{ $value }}%"
+
+      - alert: CriticalMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 95
+        for: 2m
+        labels:
+          severity: critical
+          service: polyvault
+        annotations:
+          summary: "内存使用率严重警告"
+          description: "实例 {{ $labels.instance }} 内存使用率超过95%，当前值: {{ $value }}%"
+
+      # 磁盘使用率告警
+      - alert: HighDiskUsage
+        expr: (1 - (node_filesystem_avail_bytes{fstype!~"tmpfs|overlay"} / node_filesystem_size_bytes{fstype!~"tmpfs|overlay"})) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+          service: polyvault
+        annotations:
+          summary: "高磁盘使用率警告"
+          description: "实例 {{ $labels.instance }} 磁盘 {{ $labels.mountpoint }} 使用率超过85%，当前值: {{ $value }}%"
+
+      - alert: CriticalDiskUsage
+        expr: (1 - (node_filesystem_avail_bytes{fstype!~"tmpfs|overlay"} / node_filesystem_size_bytes{fstype!~"tmpfs|overlay"})) * 100 > 95
+        for: 2m
+        labels:
+          severity: critical
+          service: polyvault
+        annotations:
+          summary: "磁盘使用率严重警告"
+          description: "实例 {{ $labels.instance }} 磁盘 {{ $labels.mountpoint }} 使用率超过95%，当前值: {{ $value }}%"
+
+  - name: polyvault_service_alerts
+    rules:
+      # 服务不可用告警
+      - alert: ServiceDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: polyvault
+        annotations:
+          summary: "服务不可用"
+          description: "服务 {{ $labels.job }} 在实例 {{ $labels.instance }} 上不可用"
+
+      # API响应时间告警
+      - alert: HighAPILatency
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 2
+        for: 5m
+        labels:
+          severity: warning
+          service: polyvault
+        annotations:
+          summary: "API响应时间过长"
+          description: "API P95响应时间超过2秒，当前值: {{ $value }}秒"
+
+      # 错误率告警
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) / rate(http_requests_total[5m]) * 100 > 5
+        for: 5m
+        labels:
+          severity: warning
+          service: polyvault
+        annotations:
+          summary: "高错误率警告"
+          description: "API 5xx错误率超过5%，当前值: {{ $value }}%"
+
+      # P2P连接数告警
+      - alert: LowP2PConnections
+        expr: polyvault_p2p_connections_total < 1
+        for: 10m
+        labels:
+          severity: warning
+          service: polyvault
+        annotations:
+          summary: "P2P连接数过低"
+          description: "PolyVault P2P连接数为0，可能存在网络问题"
+
+      # 凭证存储告警
+      - alert: CredentialStorageError
+        expr: rate(polyvault_credential_errors_total[5m]) > 0
+        for: 1m
+        labels:
+          severity: critical
+          service: polyvault
+        annotations:
+          summary: "凭证存储错误"
+          description: "PolyVault凭证存储出现错误，请立即检查"
