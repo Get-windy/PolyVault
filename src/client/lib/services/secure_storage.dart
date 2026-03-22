@@ -143,6 +143,52 @@ class SecureStorageService {
     }
   }
 
+  /// 更新凭证
+  /// 
+  /// [id] - 凭证ID
+  /// [serviceName] - 服务名称
+  /// [username] - 用户名
+  /// [password] - 密码
+  /// [notes] - 可选备注
+  Future<void> updateCredential({
+    required String id,
+    required String serviceName,
+    required String username,
+    required String password,
+    String? notes,
+  }) async {
+    await _ensureInitialized();
+
+    try {
+      // 获取原始凭证以保留创建时间
+      final existingCredential = await getCredential(id);
+      final createdAt = existingCredential?.createdAt ?? DateTime.now();
+
+      final updatedCredential = Credential(
+        id: id,
+        serviceName: serviceName,
+        username: username,
+        password: password,
+        notes: notes,
+        createdAt: createdAt,
+        updatedAt: DateTime.now(),
+      );
+
+      // 加密存储凭证
+      final encryptedData = await _vault.encrypt(
+        utf8.encode(jsonEncode(updatedCredential.toJson())),
+      );
+
+      // 存储到安全存储
+      await _vault.store(
+        key: id,
+        value: base64Encode(encryptedData),
+      );
+    } catch (e) {
+      throw SecureStorageException('更新凭证失败: $e');
+    }
+  }
+
   /// 删除凭证
   Future<void> deleteCredential(String credentialId) async {
     await _ensureInitialized();
@@ -188,6 +234,63 @@ class SecureStorageService {
   Future<bool> isBiometricAvailable() async {
     await _ensureInitialized();
     return await _vault.isBiometricAvailable();
+  }
+
+  /// 使用生物识别验证访问凭证
+  /// 返回验证是否成功
+  Future<bool> authenticateWithBiometric({
+    String reason = '需要验证身份以访问凭证',
+  }) async {
+    await _ensureInitialized();
+    
+    try {
+      return await _vault.authenticate(reason: reason);
+    } catch (e) {
+      throw SecureStorageException('生物识别验证失败: $e');
+    }
+  }
+
+  /// 安全获取凭证（带生物识别验证）
+  /// 如果生物识别不可用，会直接返回凭证
+  Future<Credential?> getCredentialSecure(String credentialId) async {
+    await _ensureInitialized();
+
+    // 检查生物识别是否可用
+    final biometricAvailable = await isBiometricAvailable();
+    
+    if (biometricAvailable) {
+      // 尝试生物识别验证
+      final authenticated = await authenticateWithBiometric(
+        reason: '验证身份以访问 ${credentialId.split('_').first} 凭证',
+      );
+      
+      if (!authenticated) {
+        throw SecureStorageException('生物识别验证失败');
+      }
+    }
+
+    return getCredential(credentialId, requireBiometric: false);
+  }
+
+  /// 检查是否需要生物识别验证
+  Future<bool> shouldRequireBiometric() async {
+    await _ensureInitialized();
+    
+    final available = await isBiometricAvailable();
+    if (!available) return false;
+    
+    // 检查用户设置（从安全存储读取偏好）
+    final setting = await _vault.retrieve(key: '_biometric_required');
+    return setting == 'true';
+  }
+
+  /// 设置是否需要生物识别验证
+  Future<void> setBiometricRequired(bool required) async {
+    await _ensureInitialized();
+    await _vault.store(
+      key: '_biometric_required',
+      value: required ? 'true' : 'false',
+    );
   }
 
   /// 获取存储统计信息
