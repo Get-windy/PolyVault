@@ -135,8 +135,11 @@ target_include_directories(polyvault_zk_vault
 
 if(WIN32)
     target_compile_definitions(polyvault_zk_vault PRIVATE _WIN32_WINNT=0x0601)
-    target_link_libraries(polyvault_zk_vault PUBLIC ws2_32)
+    target_link_libraries(polyvault_zk_vault PUBLIC ws2_32 bcrypt)
 endif()
+
+# 链接 crypto_utils (依赖 polyvault_simple_lib)
+target_link_libraries(polyvault_zk_vault PUBLIC polyvault_simple_lib)
 
 # 密钥管理
 add_library(polyvault_key_manager STATIC

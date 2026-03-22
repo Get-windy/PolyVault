@@ -47,6 +47,10 @@ private:
 std::vector<uint8_t> generateRandomBytes(size_t length) {
     std::vector<uint8_t> bytes(length);
     
+    if (length == 0) {
+        return bytes;
+    }
+    
     // 使用 Windows CNG 生成密码学安全随机数
     CHECK_STATUS(
         BCryptGenRandom(
@@ -59,6 +63,23 @@ std::vector<uint8_t> generateRandomBytes(size_t length) {
     );
     
     return bytes;
+}
+
+void generateRandomBytes(size_t length, uint8_t* buffer) {
+    if (length == 0 || buffer == nullptr) {
+        return;
+    }
+    
+    // 使用 Windows CNG 生成密码学安全随机数
+    CHECK_STATUS(
+        BCryptGenRandom(
+            nullptr,
+            buffer,
+            static_cast<ULONG>(length),
+            BCRYPT_USE_SYSTEM_PREFERRED_RNG
+        ),
+        "BCryptGenRandom failed"
+    );
 }
 
 // ==================== AES-256-GCM 加密 ====================
@@ -170,6 +191,34 @@ std::vector<uint8_t> encryptAesGcm(
         if (hAlg) BCryptCloseAlgorithmProvider(hAlg, 0);
         throw;
     }
+}
+
+/**
+ * @brief AES-256-GCM加密（自动生成IV）
+ * 输出格式：[12字节IV][密文][16字节认证标签]
+ */
+std::vector<uint8_t> encryptAesGcm(
+    const std::vector<uint8_t>& plaintext,
+    const std::vector<uint8_t>& key) {
+    
+    // 验证密钥
+    if (key.size() != 32) {
+        throw std::invalid_argument("AES-256 requires a 32-byte key");
+    }
+    
+    // 生成随机IV（12字节）
+    auto iv = generateRandomBytes(12);
+    
+    // 使用指定IV加密
+    auto ciphertext = encryptAesGcm(plaintext, key, iv);
+    
+    // 组合输出：IV + 密文
+    std::vector<uint8_t> output;
+    output.reserve(12 + ciphertext.size());
+    output.insert(output.end(), iv.begin(), iv.end());
+    output.insert(output.end(), ciphertext.begin(), ciphertext.end());
+    
+    return output;
 }
 
 // ==================== AES-256-GCM 解密 ====================
@@ -288,6 +337,42 @@ std::vector<uint8_t> decryptAesGcm(
     }
 }
 
+/**
+ * @brief AES-256-GCM解密（IV在密文前）
+ * 输入格式：[12字节IV][密文][16字节认证标签]
+ * @return 解密成功返回明文，失败返回nullopt
+ */
+std::optional<std::vector<uint8_t>> decryptAesGcm(
+    const std::vector<uint8_t>& ciphertext,
+    const std::vector<uint8_t>& key) {
+    
+    // 验证密钥
+    if (key.size() != 32) {
+        return std::nullopt;
+    }
+    
+    // 检查密文长度（至少12字节IV + 16字节认证标签）
+    if (ciphertext.size() < 28) {
+        return std::nullopt;
+    }
+    
+    try {
+        // 提取IV（前12字节）
+        std::vector<uint8_t> iv(ciphertext.begin(), ciphertext.begin() + 12);
+        
+        // 提取实际密文
+        std::vector<uint8_t> actual_ciphertext(ciphertext.begin() + 12, ciphertext.end());
+        
+        // 解密
+        auto plaintext = decryptAesGcm(actual_ciphertext, key, iv);
+        return plaintext;
+        
+    } catch (const std::exception& e) {
+        std::cerr << "[Crypto] decryptAesGcm failed: " << e.what() << std::endl;
+        return std::nullopt;
+    }
+}
+
 // ==================== SHA256 哈希 ====================
 
 std::vector<uint8_t> sha256(const std::vector<uint8_t>& data) {
@@ -383,6 +468,194 @@ std::vector<uint8_t> sha256(const std::vector<uint8_t>& data) {
         
     } catch (...) {
         if (hHash) BCryptDestroyHash(hHash);
+        if (hAlg) BCryptCloseAlgorithmProvider(hAlg, 0);
+        throw;
+    }
+}
+
+std::vector<uint8_t> sha256(const std::string& data) {
+    std::vector<uint8_t> vec(data.begin(), data.end());
+    return sha256(vec);
+}
+
+// ==================== PBKDF2 密钥派生 ====================
+
+std::vector<uint8_t> pbkdf2_sha256(
+    const std::string& password,
+    const std::vector<uint8_t>& salt,
+    int iterations,
+    size_t key_length) {
+    
+    // 验证参数
+    if (password.empty()) {
+        throw std::invalid_argument("Password cannot be empty");
+    }
+    if (salt.empty()) {
+        throw std::invalid_argument("Salt cannot be empty");
+    }
+    if (iterations < 1) {
+        throw std::invalid_argument("Iterations must be at least 1");
+    }
+    if (key_length == 0) {
+        throw std::invalid_argument("Key length must be greater than 0");
+    }
+    
+    BCRYPT_ALG_HANDLE hAlg = nullptr;
+    
+    try {
+        // 打开 SHA256 算法提供程序（支持PBKDF2）
+        CHECK_STATUS(
+            BCryptOpenAlgorithmProvider(
+                &hAlg,
+                BCRYPT_SHA256_ALGORITHM,
+                nullptr,
+                BCRYPT_ALG_HANDLE_HMAC_FLAG
+            ),
+            "BCryptOpenAlgorithmProvider failed"
+        );
+        
+        // 获取哈希长度
+        DWORD hashLen = 0;
+        ULONG resultLen = 0;
+        
+        CHECK_STATUS(
+            BCryptGetProperty(
+                hAlg,
+                BCRYPT_HASH_LENGTH,
+                reinterpret_cast<PUCHAR>(&hashLen),
+                sizeof(hashLen),
+                &resultLen,
+                0
+            ),
+            "BCryptGetProperty (hash length) failed"
+        );
+        
+        // 计算需要的块数
+        size_t blocks = (key_length + hashLen - 1) / hashLen;
+        std::vector<uint8_t> derived_key(key_length);
+        
+        for (size_t block = 1; block <= blocks; ++block) {
+            // 创建 HMAC 哈希对象
+            BCRYPT_HASH_HANDLE hHash = nullptr;
+            DWORD hashObjLen = 0;
+            
+            CHECK_STATUS(
+                BCryptGetProperty(
+                    hAlg,
+                    BCRYPT_OBJECT_LENGTH,
+                    reinterpret_cast<PUCHAR>(&hashObjLen),
+                    sizeof(hashObjLen),
+                    &resultLen,
+                    0
+                ),
+                "BCryptGetProperty (object length) failed"
+            );
+            
+            std::vector<uint8_t> hashObj(hashObjLen);
+            
+            // 使用密码作为HMAC密钥
+            std::vector<uint8_t> password_vec(password.begin(), password.end());
+            
+            CHECK_STATUS(
+                BCryptCreateHash(
+                    hAlg,
+                    &hHash,
+                    hashObj.data(),
+                    static_cast<ULONG>(hashObj.size()),
+                    password_vec.data(),
+                    static_cast<ULONG>(password_vec.size()),
+                    0
+                ),
+                "BCryptCreateHash failed"
+            );
+            
+            // 第一次迭代：salt || block_index (大端序)
+            std::vector<uint8_t> u(salt.size() + 4);
+            std::copy(salt.begin(), salt.end(), u.begin());
+            u[salt.size()] = static_cast<uint8_t>((block >> 24) & 0xFF);
+            u[salt.size() + 1] = static_cast<uint8_t>((block >> 16) & 0xFF);
+            u[salt.size() + 2] = static_cast<uint8_t>((block >> 8) & 0xFF);
+            u[salt.size() + 3] = static_cast<uint8_t>(block & 0xFF);
+            
+            CHECK_STATUS(
+                BCryptHashData(
+                    hHash,
+                    u.data(),
+                    static_cast<ULONG>(u.size()),
+                    0
+                ),
+                "BCryptHashData failed"
+            );
+            
+            // 获取第一次迭代结果
+            std::vector<uint8_t> f(hashLen);
+            CHECK_STATUS(
+                BCryptFinishHash(
+                    hHash,
+                    f.data(),
+                    static_cast<ULONG>(f.size()),
+                    0
+                ),
+                "BCryptFinishHash failed"
+            );
+            
+            BCryptDestroyHash(hHash);
+            
+            // 复制到输出
+            size_t offset = (block - 1) * hashLen;
+            size_t copy_len = std::min(static_cast<size_t>(hashLen), key_length - offset);
+            std::copy(f.begin(), f.begin() + copy_len, derived_key.begin() + offset);
+            
+            // 后续迭代
+            u = f;
+            for (int i = 1; i < iterations; ++i) {
+                // 创建新的 HMAC 哈希对象
+                CHECK_STATUS(
+                    BCryptCreateHash(
+                        hAlg,
+                        &hHash,
+                        hashObj.data(),
+                        static_cast<ULONG>(hashObj.size()),
+                        password_vec.data(),
+                        static_cast<ULONG>(password_vec.size()),
+                        0
+                    ),
+                    "BCryptCreateHash failed"
+                );
+                
+                CHECK_STATUS(
+                    BCryptHashData(
+                        hHash,
+                        u.data(),
+                        static_cast<ULONG>(u.size()),
+                        0
+                    ),
+                    "BCryptHashData failed"
+                );
+                
+                CHECK_STATUS(
+                    BCryptFinishHash(
+                        hHash,
+                        u.data(),
+                        static_cast<ULONG>(u.size()),
+                        0
+                    ),
+                    "BCryptFinishHash failed"
+                );
+                
+                BCryptDestroyHash(hHash);
+                
+                // XOR 到结果
+                for (size_t j = 0; j < copy_len; ++j) {
+                    derived_key[offset + j] ^= u[j];
+                }
+            }
+        }
+        
+        BCryptCloseAlgorithmProvider(hAlg, 0);
+        return derived_key;
+        
+    } catch (...) {
         if (hAlg) BCryptCloseAlgorithmProvider(hAlg, 0);
         throw;
     }
