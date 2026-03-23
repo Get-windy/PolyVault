@@ -15,11 +15,14 @@ class HomeScreen extends ConsumerStatefulWidget {
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> with AutomaticKeepAliveClientMixin {
   List<DeviceConnectionStatus> _connectedDevices = [];
   List<ActivityRecord> _recentActivities = [];
   StorageStats? _storageStats;
   bool _isLoading = true;
+  
+  // 性能优化: 骨架屏显示
+  bool _showSkeleton = true;
 
   @override
   void initState() {
@@ -110,6 +113,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final theme = Theme.of(context);
     
     return Scaffold(
@@ -129,18 +133,60 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           padding: const EdgeInsets.all(16),
           children: [
             // 连接状态卡片
-            ConnectionStatusCard(
-              devices: _connectedDevices,
-              isLoading: _isLoading,
-              onTap: () => context.push('/devices'),
+            FutureBuilder<List<DeviceConnectionStatus>>(
+              future: _loadDeviceConnections(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return ConnectionStatusCard(
+                    devices: _connectedDevices,
+                    isLoading: true,
+                    onTap: () => context.push('/devices'),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return ConnectionStatusCard(
+                    devices: [],
+                    isLoading: false,
+                    error: snapshot.error?.toString(),
+                    onTap: () => context.push('/devices'),
+                  );
+                }
+                if (!snapshot.hasData) {
+                  return ConnectionStatusCard(
+                    devices: _connectedDevices,
+                    isLoading: false,
+                    onTap: () => context.push('/devices'),
+                  );
+                }
+                final devices = snapshot.data!;
+                return ConnectionStatusCard(
+                  devices: devices,
+                  isLoading: false,
+                  onTap: () => context.push('/devices'),
+                );
+              },
             ),
             const SizedBox(height: 16),
             
             // 统计卡片
-            if (_storageStats != null) ...[
-              _buildStatsRow(),
-              const SizedBox(height: 16),
-            ],
+            FutureBuilder<StorageStats?>(
+              future: _storageStatsFuture(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return _buildStatsSkeleton();
+                }
+                if (!snapshot.hasData) {
+                  return const SizedBox();
+                }
+                final stats = snapshot.data;
+                return Column(
+                  children: [
+                    _buildStatsRow(stats),
+                    const SizedBox(height: 16),
+                  ],
+                );
+              },
+            ),
             
             // 快捷操作
             Text(
@@ -173,10 +219,26 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ],
             ),
             const SizedBox(height: 12),
-            RecentActivityList(
-              activities: _recentActivities,
-              isLoading: _isLoading,
-              onActivityTap: (activity) => _showActivityDetail(activity),
+            FutureBuilder<List<ActivityRecord>>(
+              future: _loadRecentActivities(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return _buildActivitySkeleton();
+                }
+                if (!snapshot.hasData) {
+                  return RecentActivityList(
+                    activities: _recentActivities,
+                    isLoading: false,
+                    onActivityTap: (activity) => _showActivityDetail(activity),
+                  );
+                }
+                final activities = snapshot.data!;
+                return RecentActivityList(
+                  activities: activities,
+                  isLoading: false,
+                  onActivityTap: (activity) => _showActivityDetail(activity),
+                );
+              },
             ),
           ],
         ),
@@ -184,14 +246,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _buildStatsRow() {
+  Future<StorageStats?> _storageStatsFuture() async {
+    if (_storageStats != null) return _storageStats;
+    final storage = SecureStorageService();
+    final stats = await storage.getStorageStats();
+    return stats;
+  }
+
+  Widget _buildStatsRow(StorageStats? stats) {
     return Row(
       children: [
         Expanded(
           child: _StatCard(
             icon: Icons.vpn_key,
             label: '凭证总数',
-            value: '${_storageStats?.totalCredentials ?? 0}',
+            value: '${stats?.totalCredentials ?? 0}',
             color: Colors.blue,
           ),
         ),
@@ -209,13 +278,36 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           child: _StatCard(
             icon: Icons.backup,
             label: '最近备份',
-            value: _storageStats?.lastBackup != null
-                ? _formatBackupTime(_storageStats!.lastBackup!)
+            value: stats?.lastBackup != null
+                ? _formatBackupTime(stats!.lastBackup!)
                 : '从未',
             color: Colors.orange,
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildStatsSkeleton() {
+    return Row(
+      children: [
+        Expanded(child: _SkeletonStat()),
+        const SizedBox(width: 12),
+        Expanded(child: _SkeletonStat()),
+        const SizedBox(width: 12),
+        Expanded(child: _SkeletonStat()),
+      ],
+    );
+  }
+
+  Widget _buildActivitySkeleton() {
+    return Container(
+      height: 200,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: const SkeletonLoader(itemCount: 3, height: 60),
     );
   }
 
@@ -233,6 +325,97 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       builder: (context) => ActivityDetailCard(
         activity: activity,
         onClose: () => Navigator.pop(context),
+      ),
+    );
+  }
+}
+
+/// 骨架屏统计卡片
+class _SkeletonStat extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        children: [
+          Container(
+            width: 24,
+            height: 24,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              shape: BoxShape.circle,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Container(
+            width: 40,
+            height: 18,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+          const SizedBox(height: 4),
+          Container(
+            width: 60,
+            height: 12,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// 骨架屏列表项
+class SkeletonListTile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        children: [
+          Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 16,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Container(
+                  width: 150,
+                  height: 12,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
