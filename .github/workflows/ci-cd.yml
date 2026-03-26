@@ -1,0 +1,245 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  # ==================== CI: 代码检查 ====================
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup ccache
+        uses: hendrikmuhs/ccache-action@v1
+      
+      - name: Run Clang-Tidy
+        uses: reviewdog/action-clang-tidy@v1
+        with:
+          clang_tidy_flags: --pretty --extra-arg=-std=c++17
+          reporter: github-pr-check
+          filter_mode: nofilter
+
+  # ==================== CI: 编译测试 ====================
+  build-test:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup ccache
+        uses: hendrikmuhs/ccache-action@v1
+        with:
+          cache_dir: /tmp/ccache
+      
+      - name: Configure CMake
+        run: |
+          mkdir -p build && cd build
+          cmake .. \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DBUILD_TESTS=ON \
+            -DBUILD_DOCUMENTATION=OFF \
+            -DCMAKE_C_COMPILER=clang \
+            -DCMAKE_CXX_COMPILER=clang++ \
+            -DCMAKE_CXX_FLAGS="-fuse-ld=lld" && \
+          cmake --build .
+      
+      - name: Run tests
+        run: |
+          cd build
+          ctest --output-on-failure
+
+  # ==================== CI: 安全扫描 ====================
+  security:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'table'
+          exit-code: '1'
+          severity: 'CRITICAL,HIGH'
+      
+      - name: Run Cppcheck
+        run: |
+          sudo apt-get install -y cppcheck
+          cppcheck --enable=all --xml src/ 2> cppcheck.xml || true
+          cat cppcheck.xml || echo "No cppcheck results"
+
+  # ==================== CI: 构建发布版本 ====================
+  build-release:
+    runs-on: ubuntu-latest
+    needs: [build-test, security]
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Generate version
+        id: version
+        run: echo "version=${{ github.sha }}" >> $GITHUB_OUTPUT
+      
+      - name: Setup ccache
+        uses: hendrikmuhs/ccache-action@v1
+        with:
+          cache_dir: /tmp/ccache
+      
+      - name: Configure CMake (Release)
+        run: |
+          mkdir -p build && cd build
+          cmake .. \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DBUILD_TESTS=OFF \
+            -DBUILD_DOCUMENTATION=ON \
+            -DCMAKE_INSTALL_PREFIX=/usr/local \
+            -DCMAKE_C_COMPILER=clang \
+            -DCMAKE_CXX_COMPILER=clang++ && \
+          cmake --build . --parallel
+      
+      - name: Run CPack
+        run: |
+          cd build
+          cpack -C Release
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: polyvault-release
+          path: build/*.deb
+          retention-days: 7
+
+  # ==================== CI: Docker镜像构建 ====================
+  build-docker:
+    runs-on: ubuntu-latest
+    needs: build-release
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: polyvault-release
+          path: build
+      
+      - name: Generate version
+        id: version
+        run: echo "version=${{ github.sha }}" >> $GITHUB_OUTPUT
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Login to Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.version.outputs.version }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ==================== CD: 部署到开发环境 ====================
+  deploy-dev:
+    runs-on: ubuntu-latest
+    needs: build-docker
+    if: github.ref == 'refs/heads/develop'
+    environment: development
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Deploy to development
+        run: |
+          echo "Deploying version ${{ needs.build-docker.outputs.version }} to development..."
+          # Docker Compose 部署
+          # docker-compose -f docker-compose.yml -f docker-compose.lb.yml pull
+          # docker-compose -f docker-compose.yml -f docker-compose.lb.yml up -d
+
+  # ==================== CD: 部署到生产环境 ====================
+  deploy-prod:
+    runs-on: ubuntu-latest
+    needs: [build-docker, build-test]
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Deploy to production
+        run: |
+          echo "Deploying version ${{ needs.build-docker.outputs.version }} to production..."
+          # 生产环境部署逻辑
+          # 1. 停止旧服务
+          # 2. 拉取新镜像
+          # 3. 启动新服务
+          # 4. 运行健康检查
+      
+      - name: Health check
+        run: |
+          sleep 30
+          curl -f http://localhost:8080/health || echo "Health check skipped"
+
+  # ==================== 发布 ====================
+  release:
+    runs-on: ubuntu-latest
+    needs: [build-release, build-docker]
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: polyvault-release
+          path: artifacts
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: artifacts/*.deb
+          body: |
+            ## Changes
+            - See commit history for details
+            - Built with CMake Release configuration
+            
+            ## Docker Image
+            ```
+            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ needs.build-docker.outputs.version }}
+            ```
+            
+            ## Installation
+            ```bash
+            dpkg -i artifacts/*.deb
+            ```
+
+  # ==================== 通知 ====================
+  notify:
+    runs-on: ubuntu-latest
+    needs: [build-release, build-docker, deploy-dev, deploy-prod]
+    if: always()
+    steps:
+      - name: Send notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}

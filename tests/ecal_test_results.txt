@@ -1,0 +1,76 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0
+rootdir: I:\PolyVault
+plugins: locust-2.43.3, asyncio-1.3.0, cov-7.0.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 16 items
+
+tests\test_ecal_performance.py ................                          [100%]
+
+============================== warnings summary ===============================
+tests\test_ecal_performance.py:259
+  I:\PolyVault\tests\test_ecal_performance.py:259: PytestUnknownMarkWarning: Unknown pytest.mark.ecal - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.ecal
+
+tests\test_ecal_performance.py:278
+  I:\PolyVault\tests\test_ecal_performance.py:278: PytestUnknownMarkWarning: Unknown pytest.mark.ecal - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.ecal
+
+tests\test_ecal_performance.py:304
+  I:\PolyVault\tests\test_ecal_performance.py:304: PytestUnknownMarkWarning: Unknown pytest.mark.ecal - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.ecal
+
+tests\test_ecal_performance.py:325
+  I:\PolyVault\tests\test_ecal_performance.py:325: PytestUnknownMarkWarning: Unknown pytest.mark.ecal - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.ecal
+
+tests\test_ecal_performance.py:352
+  I:\PolyVault\tests\test_ecal_performance.py:352: PytestUnknownMarkWarning: Unknown pytest.mark.multidevice - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.multidevice
+
+tests\test_ecal_performance.py:371
+  I:\PolyVault\tests\test_ecal_performance.py:371: PytestUnknownMarkWarning: Unknown pytest.mark.multidevice - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.multidevice
+
+tests\test_ecal_performance.py:390
+  I:\PolyVault\tests\test_ecal_performance.py:390: PytestUnknownMarkWarning: Unknown pytest.mark.multidevice - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.multidevice
+
+tests\test_ecal_performance.py:416
+  I:\PolyVault\tests\test_ecal_performance.py:416: PytestUnknownMarkWarning: Unknown pytest.mark.multidevice - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.multidevice
+
+tests\test_ecal_performance.py:447
+  I:\PolyVault\tests\test_ecal_performance.py:447: PytestUnknownMarkWarning: Unknown pytest.mark.bottleneck - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.bottleneck
+
+tests\test_ecal_performance.py:468
+  I:\PolyVault\tests\test_ecal_performance.py:468: PytestUnknownMarkWarning: Unknown pytest.mark.bottleneck - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.bottleneck
+
+tests\test_ecal_performance.py:489
+  I:\PolyVault\tests\test_ecal_performance.py:489: PytestUnknownMarkWarning: Unknown pytest.mark.bottleneck - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.bottleneck
+
+tests\test_ecal_performance.py:508
+  I:\PolyVault\tests\test_ecal_performance.py:508: PytestUnknownMarkWarning: Unknown pytest.mark.bottleneck - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.bottleneck
+
+tests\test_ecal_performance.py:536
+  I:\PolyVault\tests\test_ecal_performance.py:536: PytestUnknownMarkWarning: Unknown pytest.mark.bottleneck - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.bottleneck
+
+tests\test_ecal_performance.py:571
+  I:\PolyVault\tests\test_ecal_performance.py:571: PytestUnknownMarkWarning: Unknown pytest.mark.scenario - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.scenario
+
+tests\test_ecal_performance.py:600
+  I:\PolyVault\tests\test_ecal_performance.py:600: PytestUnknownMarkWarning: Unknown pytest.mark.scenario - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.scenario
+
+tests\test_ecal_performance.py:620
+  I:\PolyVault\tests\test_ecal_performance.py:620: PytestUnknownMarkWarning: Unknown pytest.mark.scenario - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.scenario
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+====================== 16 passed, 16 warnings in 15.62s =======================

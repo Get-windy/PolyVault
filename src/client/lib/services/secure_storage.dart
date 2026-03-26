@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:zk_vault/zk_vault.dart';
+import 'cache_service.dart';
 
 /// 凭证数据模型
 class Credential {
@@ -121,6 +122,12 @@ class SecureStorageService {
   }) async {
     await _ensureInitialized();
 
+    // 首先尝试从缓存获取
+    final cachedCredential = CredentialCacheService().getCredential(credentialId);
+    if (cachedCredential != null) {
+      return cachedCredential;
+    }
+
     try {
       // 从安全存储读取
       final encryptedBase64 = await _vault.retrieve(
@@ -137,7 +144,12 @@ class SecureStorageService {
       );
 
       final json = jsonDecode(utf8.decode(decryptedData));
-      return Credential.fromJson(json);
+      final credential = Credential.fromJson(json);
+      
+      // 保存到缓存
+      CredentialCacheService().saveCredential(credential);
+      
+      return credential;
     } catch (e) {
       throw SecureStorageException('获取凭证失败: $e');
     }

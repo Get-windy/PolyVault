@@ -1,354 +1,378 @@
-# PolyVault 部署指南
+# PolyVault 部署文档
 
-## 概述
-
-PolyVault Agent是一个跨平台的远程授权服务，支持Docker容器化部署。
+**版本**: v1.0.0  
+**更新时间**: 2026-03-24
 
 ---
 
-## 快速开始
+## 系统要求
 
-### 1. 克隆项目
+### 服务端
+
+| 组件 | 最低要求 | 推荐配置 |
+|------|---------|---------|
+| Node.js | v18.0+ | v20.0+ |
+| 内存 | 512MB | 2GB+ |
+| 存储 | 1GB | 10GB+ |
+| 操作系统 | Linux/Windows/macOS | Ubuntu 22.04 |
+
+### 数据库
+
+| 数据库 | 版本要求 |
+|--------|---------|
+| MySQL | 8.0+ |
+| PostgreSQL | 14+ |
+| Redis | 6.0+ |
+
+---
+
+## 快速部署
+
+### Docker 部署（推荐）
 
 ```bash
-git clone https://github.com/openclaw/polyvault.git
+# 1. 克隆仓库
+git clone https://github.com/polyvault/polyvault.git
 cd polyvault
+
+# 2. 配置环境变量
+cp .env.example .env
+# 编辑 .env 文件
+
+# 3. 启动服务
+docker-compose up -d
+
+# 4. 查看日志
+docker-compose logs -f
 ```
 
-### 2. 配置
-
-```bash
-# 复制配置文件
-cp config/config.yaml.example config/config.yaml
-
-# 编辑配置
-vim config/config.yaml
-```
-
-### 3. 部署
-
-```bash
-# 使用部署脚本
-./scripts/deploy.sh development
-
-# 或直接使用Docker Compose
-docker compose up -d
-```
-
-### 4. 验证
-
-```bash
-# 检查服务状态
-curl http://localhost:8080/health
-
-# 查看日志
-docker compose logs -f agent
-```
-
----
-
-## Docker部署
-
-### 构建镜像
-
-```bash
-# 构建运行时镜像
-docker build -t polyvault/agent:latest .
-
-# 构建开发镜像
-docker build -t polyvault/agent:dev --target development .
-```
-
-### 运行容器
-
-```bash
-# 基本运行
-docker run -d \
-  --name polyvault-agent \
-  -p 8080:8080 \
-  -v $(pwd)/config:/app/config:ro \
-  -v $(pwd)/data:/app/data \
-  polyvault/agent:latest
-
-# 带环境变量
-docker run -d \
-  --name polyvault-agent \
-  -p 8080:8080 \
-  -e POLYVAULT_LOG_LEVEL=debug \
-  -v $(pwd)/config:/app/config:ro \
-  polyvault/agent:latest
-```
-
----
-
-## Docker Compose部署
-
-### 服务配置
-
-| 服务 | 端口 | 说明 |
-|------|------|------|
-| `agent` | 8080 | REST API |
-| `agent` | 9090 | Prometheus指标 |
-| `redis` | 6379 | 缓存（可选） |
-| `prometheus` | 9091 | 监控（可选） |
-| `grafana` | 3000 | 可视化（可选） |
-
-### Profile模式
-
-```bash
-# 开发模式
-docker compose --profile dev up -d
-
-# 完整模式（含Redis）
-docker compose --profile full up -d
-
-# 监控模式
-docker compose --profile monitoring up -d
-```
-
----
-
-## 环境变量
-
-### 核心配置
-
-| 变量 | 默认值 | 说明 |
-|------|--------|------|
-| `POLYVAULT_LOG_LEVEL` | `info` | 日志级别 |
-| `POLYVAULT_LOG_DIR` | `/app/logs` | 日志目录 |
-| `POLYVAULT_DATA_DIR` | `/app/data` | 数据目录 |
-| `POLYVAULT_REST_PORT` | `8080` | REST API端口 |
-| `POLYVAULT_METRICS_PORT` | `9090` | 指标端口 |
-
-### 日志级别
-
-- `trace` - 最详细
-- `debug` - 调试信息
-- `info` - 常规信息
-- `warn` - 警告
-- `error` - 错误
-
----
-
-## 配置文件
-
-### config.yaml
+### Docker Compose 配置
 
 ```yaml
-server:
-  rest_port: 8080
-  metrics_port: 9090
-  max_connections: 100
+version: '3.8'
 
-logging:
-  level: info
-  dir: /app/logs
-  console: true
+services:
+  api:
+    image: polyvault/api:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=mysql://user:pass@db:3306/polyvault
+      - REDIS_URL=redis://cache:6379
+      - JWT_SECRET=your-secret-key
+    depends_on:
+      - db
+      - cache
+    restart: unless-stopped
 
-security:
-  encryption: AES-256-GCM
-  session_timeout: 3600
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_DATABASE=polyvault
+      - MYSQL_USER=polyvault
+      - MYSQL_PASSWORD=polyvault
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
 
-storage:
-  type: file
-  file_path: /app/data/vault.dat
+  cache:
+    image: redis:7-alpine
+    volumes:
+      - cache_data:/data
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  cache_data:
 ```
 
 ---
 
-## 本地构建
+## 手动部署
 
-### 前置要求
-
-- CMake 3.16+
-- C++17编译器
-- OpenSSL
-
-### 构建步骤
+### 1. 安装依赖
 
 ```bash
-cd src/agent
-mkdir build && cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SIMPLE=ON
-cmake --build . --parallel
+# Node.js
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# MySQL
+sudo apt-get install -y mysql-server
+
+# Redis
+sudo apt-get install -y redis-server
 ```
 
-### 运行
+### 2. 配置数据库
+
+```sql
+-- 创建数据库
+CREATE DATABASE polyvault CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- 创建用户
+CREATE USER 'polyvault'@'localhost' IDENTIFIED BY 'your_password';
+GRANT ALL PRIVILEGES ON polyvault.* TO 'polyvault'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+### 3. 安装应用
 
 ```bash
-./polyvault_agent_simple --config ../../config/config.yaml
+# 克隆仓库
+git clone https://github.com/polyvault/polyvault.git
+cd polyvault
+
+# 安装依赖
+npm ci
+
+# 配置环境变量
+cp .env.example .env
+nano .env
+```
+
+### 4. 环境变量配置
+
+```bash
+# .env 文件内容
+
+# 应用配置
+NODE_ENV=production
+PORT=3000
+
+# 数据库配置
+DATABASE_URL=mysql://polyvault:password@localhost:3306/polyvault
+
+# Redis配置
+REDIS_URL=redis://localhost:6379
+
+# JWT配置
+JWT_SECRET=your-256-bit-secret-key
+JWT_EXPIRES_IN=15m
+JWT_REFRESH_EXPIRES_IN=7d
+
+# 加密配置
+ENCRYPTION_KEY=your-32-byte-encryption-key
+
+# 邮件配置
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USER=noreply@polyvault.io
+SMTP_PASS=your-smtp-password
+```
+
+### 5. 运行迁移
+
+```bash
+# 运行数据库迁移
+npm run migrate
+
+# （可选）填充种子数据
+npm run seed
+```
+
+### 6. 启动服务
+
+```bash
+# 使用 PM2（推荐）
+npm install -g pm2
+pm2 start npm --name "polyvault-api" -- start
+pm2 save
+pm2 startup
+
+# 或直接运行
+npm start
 ```
 
 ---
 
-## 监控
+## SSL 配置
 
-### Prometheus配置
+### 使用 Nginx 反向代理
 
-`deploy/prometheus.yml`:
+```nginx
+server {
+    listen 443 ssl http2;
+    server_name api.polyvault.io;
 
-```yaml
-global:
-  scrape_interval: 15s
+    ssl_certificate /etc/letsencrypt/live/polyvault.io/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/polyvault.io/privkey.pem;
 
-scrape_configs:
-  - job_name: 'polyvault'
-    static_configs:
-      - targets: ['agent:9090']
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+server {
+    listen 80;
+    server_name api.polyvault.io;
+    return 301 https://$server_name$request_uri;
+}
 ```
 
-### Grafana仪表板
+### 使用 Let's Encrypt
 
-导入 `deploy/grafana/dashboards/polyvault.json`
+```bash
+# 安装 Certbot
+sudo apt-get install -y certbot python3-certbot-nginx
+
+# 获取证书
+sudo certbot --nginx -d api.polyvault.io
+
+# 自动续期
+sudo certbot renew --dry-run
+```
 
 ---
 
-## 健康检查
+## 移动端部署
 
-### 端点
-
-| 端点 | 说明 |
-|------|------|
-| `/health` | 基本健康检查 |
-| `/health/status` | 详细状态 |
-| `/metrics` | Prometheus指标 |
-
-### 示例
+### Flutter 客户端构建
 
 ```bash
-# 基本检查
-curl http://localhost:8080/health
+# Android
+cd src/client
+flutter build apk --release
+flutter build appbundle --release
 
-# 详细状态
-curl http://localhost:8080/health/status
+# iOS
+flutter build ios --release
+```
 
-# 指标
-curl http://localhost:9090/metrics
+### 应用签名
+
+**Android**:
+```bash
+# 创建签名密钥
+keytool -genkey -v -keystore polyvault.keystore -alias polyvault -keyalg RSA -keysize 2048 -validity 10000
+
+# 配置 build.gradle
+android {
+    signingConfigs {
+        release {
+            storeFile file("polyvault.keystore")
+            storePassword "password"
+            keyAlias "polyvault"
+            keyPassword "password"
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+}
+```
+
+---
+
+## 监控与日志
+
+### 日志配置
+
+```javascript
+// 使用 Winston 日志
+const winston = require('winston');
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' }),
+  ],
+});
+```
+
+### 健康检查端点
+
+```
+GET /health
+```
+
+响应：
+```json
+{
+  "status": "healthy",
+  "version": "1.0.0",
+  "uptime": 86400,
+  "database": "connected",
+  "redis": "connected"
+}
+```
+
+---
+
+## 备份策略
+
+### 数据库备份
+
+```bash
+# 每日备份脚本
+#!/bin/bash
+DATE=$(date +%Y%m%d)
+mysqldump -u polyvault -p'password' polyvault > /backup/polyvault_$DATE.sql
+# 保留最近7天
+find /backup -name "polyvault_*.sql" -mtime +7 -delete
+```
+
+### 定时任务
+
+```cron
+# crontab -e
+0 2 * * * /scripts/backup.sh
 ```
 
 ---
 
 ## 故障排查
 
-### 服务无法启动
+### 常见问题
 
-1. 检查端口占用
-```bash
-netstat -tlnp | grep 8080
-```
+1. **数据库连接失败**
+   ```bash
+   # 检查MySQL状态
+   sudo systemctl status mysql
+   # 检查连接配置
+   mysql -u polyvault -p -h localhost polyvault
+   ```
 
-2. 检查配置文件
-```bash
-cat config/config.yaml
-```
+2. **Redis连接失败**
+   ```bash
+   # 检查Redis状态
+   sudo systemctl status redis
+   redis-cli ping
+   ```
 
-3. 查看日志
-```bash
-docker compose logs agent
-```
-
-### 健康检查失败
-
-1. 检查服务状态
-```bash
-docker compose ps
-```
-
-2. 检查网络
-```bash
-docker network ls
-docker network inspect polyvault_polyvault-network
-```
+3. **内存不足**
+   ```bash
+   # 检查内存使用
+   free -h
+   # 重启服务
+   pm2 restart polyvault-api
+   ```
 
 ---
 
-## 升级
-
-### 拉取新版本
+## 更新指南
 
 ```bash
+# 拉取最新代码
 git pull origin main
-```
 
-### 重新构建
+# 安装依赖
+npm ci
 
-```bash
-docker compose build --no-cache agent
-```
-
-### 滚动更新
-
-```bash
-docker compose up -d --no-deps agent
-```
-
----
-
-## 备份与恢复
-
-### 备份数据
-
-```bash
-# 备份数据目录
-tar -czf polyvault-data-$(date +%Y%m%d).tar.gz data/
-
-# 备份配置
-tar -czf polyvault-config-$(date +%Y%m%d).tar.gz config/
-```
-
-### 恢复数据
-
-```bash
-# 解压数据
-tar -xzf polyvault-data-20260314.tar.gz
+# 运行迁移
+npm run migrate
 
 # 重启服务
-docker compose restart agent
-```
-
----
-
-## 安全建议
-
-1. **使用HTTPS**
-   - 配置反向代理（Nginx）
-   - 启用SSL证书
-
-2. **限制网络访问**
-   - 使用防火墙规则
-   - 限制端口暴露
-
-3. **定期备份**
-   - 自动化备份脚本
-   - 异地存储
-
-4. **日志审计**
-   - 启用审计日志
-   - 定期检查异常
-
----
-
-## 部署脚本参考
-
-```bash
-# 开发环境
-./scripts/deploy.sh development
-
-# 测试环境
-./scripts/deploy.sh staging v0.1.0
-
-# 生产环境
-./scripts/deploy.sh production v0.1.0
-
-# 查看状态
-./scripts/deploy.sh --status
-
-# 查看日志
-./scripts/deploy.sh --logs
-
-# 停止服务
-./scripts/deploy.sh --stop
-
-# 清理资源
-./scripts/deploy.sh --clean
+pm2 restart polyvault-api
 ```

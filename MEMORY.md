@@ -65,4 +65,74 @@
 
 ---
 
+## 2026-03-23 负载均衡部署配置
+
+### 完成的工作
+
+#### 1. 负载均衡部署配置
+- **docker-compose.lb.yml** - 负载均衡Docker Compose配置
+  - NGINX负载均衡器（SSL终止）
+  - 可扩展Agent实例（支持 --scale）
+  - Redis共享会话存储
+  - 健康检查配置
+  - 资源限制配置
+
+#### 2. NGINX配置
+- **config/nginx/nginx.conf** - NGINX主配置
+  - least_conn负载均衡策略
+  - HTTP/2支持
+  - Gzip压缩
+  - 速率限制
+  - 安全头配置
+
+- **config/nginx/conf.d/polyvault.conf** - 站点配置
+  - HTTP->HTTPS重定向
+  - SSL配置（TLS 1.2/1.3）
+  - 代理头配置
+  - WebSocket支持
+  - 错误处理
+
+#### 3. 部署脚本
+- **scripts/deploy-lb.sh** - 负载均衡部署脚本
+  - 支持多实例部署
+  - 滚动更新（零停机）
+  - 动态扩缩容
+  - 健康检查
+  - 状态监控
+
+#### 4. 文档
+- **docs/load-balancing.md** - 负载均衡部署指南
+  - 架构图
+  - 快速开始
+  - 配置说明
+  - 故障排查
+  - 性能调优
+
+### 使用方法
+
+```bash
+# 基础部署（2实例）
+./scripts/deploy-lb.sh development
+
+# 生产部署（4实例）
+REPLICAS=4 ./scripts/deploy-lb.sh production latest --deploy
+
+# 扩缩容
+./scripts/deploy-lb.sh --scale 5
+
+# 滚动更新
+./scripts/deploy-lb.sh production v0.2.0 --update
+
+# 查看状态
+./scripts/deploy-lb.sh --status
+```
+
+### 负载均衡架构
+
+```
+Client → NGINX (LB) → [Agent 1, Agent 2, ... Agent N] → Redis
+```
+
+---
 *创建时间: 2026-03-13 20:00*
+*更新时间: 2026-03-23 12:55*

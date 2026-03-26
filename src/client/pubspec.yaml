@@ -33,6 +33,10 @@ dependencies:
   # 加密工具
   cryptography: ^2.7.0
   pointycastle: ^3.7.3
+  
+  # 图片缓存 (性能优化)
+  cached_network_image: ^3.3.0
+  flutter_cache_manager: ^3.3.1
 
 dev_dependencies:
   flutter_test:

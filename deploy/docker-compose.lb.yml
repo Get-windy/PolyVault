@@ -1,0 +1,176 @@
+# PolyVault - 负载均衡部署配置
+# Docker Compose 多实例部署
+#
+# 启动命令:
+#   docker-compose -f docker-compose.lb.yml up -d
+#   docker-compose -f docker-compose.lb.yml scale agent=3
+
+version: '3.8'
+
+services:
+  # ==================== 负载均衡器 ====================
+  nginx-lb:
+    image: nginx:1.25-alpine
+    container_name: polyvault-nginx-lb
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - ../config/nginx/nginx-cluster.conf:/etc/nginx/nginx.conf:ro
+      - ../config/nginx/conf.d:/etc/nginx/conf.d:ro
+      - nginx-ssl:/etc/nginx/ssl
+      - nginx-cache:/var/cache/nginx
+    depends_on:
+      - agent-1
+      - agent-2
+      - agent-3
+    networks:
+      - frontend
+      - backend
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ==================== Agent 实例集群 ====================
+  agent-1:
+    build:
+      context: ../src/agent
+      dockerfile: Dockerfile
+    container_name: polyvault-agent-1
+    restart: unless-stopped
+    environment:
+      - INSTANCE_ID=1
+      - PORT=8080
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=${DATABASE_URL}
+    volumes:
+      - agent-data-1:/data
+      - agent-logs-1:/logs
+    networks:
+      - backend
+      - redis
+      - database
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  agent-2:
+    build:
+      context: ../src/agent
+      dockerfile: Dockerfile
+    container_name: polyvault-agent-2
+    restart: unless-stopped
+    environment:
+      - INSTANCE_ID=2
+      - PORT=8080
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=${DATABASE_URL}
+    volumes:
+      - agent-data-2:/data
+      - agent-logs-2:/logs
+    networks:
+      - backend
+      - redis
+      - database
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  agent-3:
+    build:
+      context: ../src/agent
+      dockerfile: Dockerfile
+    container_name: polyvault-agent-3
+    restart: unless-stopped
+    environment:
+      - INSTANCE_ID=3
+      - PORT=8080
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=${DATABASE_URL}
+    volumes:
+      - agent-data-3:/data
+      - agent-logs-3:/logs
+    networks:
+      - backend
+      - redis
+      - database
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ==================== 缓存层 ====================
+  redis:
+    image: redis:7-alpine
+    container_name: polyvault-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 256mb
+    volumes:
+      - redis-data:/data
+    networks:
+      - redis
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==================== 监控 ====================
+  prometheus:
+    image: prom/prometheus:v2.48.0
+    container_name: polyvault-prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../config/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    networks:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:10.2.0
+    container_name: polyvault-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+    volumes:
+      - grafana-data:/var/lib/grafana
+    networks:
+      - monitoring
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+  redis:
+    driver: bridge
+  database:
+    external: true
+  monitoring:
+    driver: bridge
+
+volumes:
+  nginx-ssl:
+  nginx-cache:
+  agent-data-1:
+  agent-data-2:
+  agent-data-3:
+  agent-logs-1:
+  agent-logs-2:
+  agent-logs-3:
+  redis-data:
+  prometheus-data:
+  grafana-data:

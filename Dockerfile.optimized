@@ -1,0 +1,120 @@
+# syntax=docker/dockerfile:1.4
+# ============================================
+# PolyVault Agent - Optimized Dockerfile
+# BuildKit enabled, multi-stage, cache-optimized
+# Version: 0.2.0
+# ============================================
+
+# ==================== 基础镜像 ====================
+FROM ubuntu:22.04 AS base
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Shanghai
+
+# 最小化运行时依赖
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libssl3 \
+    ca-certificates \
+    curl \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+# ==================== 构建阶段 ====================
+FROM base AS builder
+
+# 安装构建依赖 (可缓存层)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    cmake \
+    ninja-build \
+    git \
+    pkg-config \
+    libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /build
+
+# 复制 CMakeLists.txt 先于源代码 (利用缓存)
+COPY src/agent/CMakeLists.txt ./agent/
+COPY protos/ ./protos/
+
+# 预配置 CMake (依赖缓存点)
+WORKDIR /build/agent
+RUN mkdir -p build && cd build && \
+    cmake .. \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_SIMPLE=ON \
+        -DBUILD_TESTS=OFF \
+        -G Ninja || true
+
+# 复制源代码 (变更频率高，放最后)
+COPY src/agent/src/ ./src/
+COPY src/agent/include/ ./include/
+
+# 构建
+RUN cd build && \
+    cmake --build . --parallel $(nproc)
+
+# ==================== 测试阶段 ====================
+FROM builder AS test
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-pip \
+    && pip3 install --no-cache-dir pytest pytest-cov
+
+COPY tests/ /tests/
+WORKDIR /tests
+RUN pytest --cov=/build/agent/src -v --ignore=performance || true
+
+# ==================== 运行时镜像 ====================
+FROM base AS runtime
+
+# 创建非root用户
+RUN useradd -m -s /bin/bash -U polyvault
+
+WORKDIR /app
+
+# 复制构建产物
+COPY --from=builder /build/agent/build/polyvault_agent_simple /app/bin/
+COPY --from=builder /build/agent/include/ /app/include/
+
+# 创建必要目录
+RUN mkdir -p /app/config /app/logs /app/data && \
+    chown -R polyvault:polyvault /app
+
+# 安全加固
+RUN chmod -R 755 /app/bin && \
+    chmod -R 750 /app/config /app/logs /app/data
+
+USER polyvault
+
+ENV POLYVAULT_LOG_LEVEL=info
+ENV POLYVAULT_LOG_DIR=/app/logs
+ENV POLYVAULT_DATA_DIR=/app/data
+
+EXPOSE 8080
+
+# 健康检查
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -sf http://localhost:8080/health || exit 1
+
+ENTRYPOINT ["/app/bin/polyvault_agent_simple"]
+CMD ["--config", "/app/config/config.yaml"]
+
+# ==================== 开发镜像 ====================
+FROM builder AS development
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gdb valgrind vim \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /build/agent
+CMD ["/bin/bash"]
+
+# ==================== 元数据 ====================
+LABEL org.opencontainers.image.title="PolyVault Agent"
+LABEL org.opencontainers.image.description="PolyVault Remote Authorization Agent - Optimized Build"
+LABEL org.opencontainers.image.version="0.2.0"
+LABEL org.opencontainers.image.vendor="OpenClaw"
+LABEL org.opencontainers.image.source="https://github.com/openclaw/polyvault"
+LABEL org.opencontainers.image.authors="OpenClaw Team"

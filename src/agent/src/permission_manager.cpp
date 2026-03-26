@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file permission_manager.cpp
- * @brief 权限验证模块实现
+ * @brief 鏉冮檺楠岃瘉妯″潡瀹炵幇
  */
 
 #include "permission_manager.hpp"
@@ -13,8 +13,7 @@ namespace polyvault {
 namespace security {
 
 // ============================================================================
-// 权限字符串转换
-// ============================================================================
+// 鏉冮檺瀛楃涓茶浆鎹?// ============================================================================
 
 std::string permissionToString(Permission perm) {
     std::vector<std::string> parts;
@@ -79,8 +78,7 @@ ResourceType stringToResourceType(const std::string& str) {
 std::vector<Role> createDefaultRoles() {
     std::vector<Role> roles;
     
-    // 管理员角色
-    Role admin;
+    // 绠＄悊鍛樿鑹?    Role admin;
     admin.id = "admin";
     admin.name = "Administrator";
     admin.description = "Full system access";
@@ -89,8 +87,7 @@ std::vector<Role> createDefaultRoles() {
     admin.resource_patterns = {"*"};
     roles.push_back(admin);
     
-    // 操作员角色
-    Role operator_role;
+    // 鎿嶄綔鍛樿鑹?    Role operator_role;
     operator_role.id = "operator";
     operator_role.name = "Operator";
     operator_role.description = "Read and execute access";
@@ -98,7 +95,7 @@ std::vector<Role> createDefaultRoles() {
     operator_role.resource_patterns = {"credential:*", "device:*", "plugin:*"};
     roles.push_back(operator_role);
     
-    // 只读角色
+    // 鍙瑙掕壊
     Role viewer;
     viewer.id = "viewer";
     viewer.name = "Viewer";
@@ -107,7 +104,7 @@ std::vector<Role> createDefaultRoles() {
     viewer.resource_patterns = {"credential:*", "device:*"};
     roles.push_back(viewer);
     
-    // 设备角色
+    // 璁惧瑙掕壊
     Role device_role;
     device_role.id = "device";
     device_role.name = "Device";
@@ -130,12 +127,12 @@ Identity createAdminIdentity(const std::string& admin_id) {
             std::chrono::system_clock::now().time_since_epoch()
         ).count()
     );
-    admin.expires_at = 0;  // 永不过期
+    admin.expires_at = 0;  // 姘镐笉杩囨湡
     return admin;
 }
 
 // ============================================================================
-// PermissionManager实现
+// PermissionManager瀹炵幇
 // ============================================================================
 
 PermissionManager::PermissionManager(const PermissionManagerConfig& config)
@@ -154,14 +151,13 @@ bool PermissionManager::initialize() {
     
     std::cout << "[PermissionManager] Initializing..." << std::endl;
     
-    // 创建默认角色
+    // 鍒涘缓榛樿瑙掕壊
     auto default_roles = createDefaultRoles();
     for (const auto& role : default_roles) {
         roles_[role.id] = role;
     }
     
-    // 创建管理员身份
-    identities_[config_.admin_role_id] = createAdminIdentity(config_.admin_role_id);
+    // 鍒涘缓绠＄悊鍛樿韩浠?    identities_[config_.admin_role_id] = createAdminIdentity(config_.admin_role_id);
     
     initialized_ = true;
     std::cout << "[PermissionManager] Initialized with " << roles_.size() << " roles" << std::endl;
@@ -190,9 +186,8 @@ bool PermissionManager::updateRole(const std::string& role_id, const Role& role)
     }
     
     it->second = role;
-    it->second.id = role_id;  // 保持ID一致
-    
-    // 清除相关缓存
+    it->second.id = role_id;  // 淇濇寔ID涓€鑷?    
+    // 娓呴櫎鐩稿叧缂撳瓨
     clearCache();
     
     std::cout << "[PermissionManager] Role updated: " << role_id << std::endl;
@@ -308,8 +303,7 @@ bool PermissionManager::assignRole(const std::string& identity_id, const std::st
         return false;
     }
     
-    // 检查角色是否存在
-    {
+    // 妫€鏌ヨ鑹叉槸鍚﹀瓨鍦?    {
         std::lock_guard<std::mutex> role_lock(roles_mutex_);
         if (roles_.find(role_id) == roles_.end()) {
             std::cerr << "[PermissionManager] Role not found: " << role_id << std::endl;
@@ -350,8 +344,7 @@ std::vector<std::string> PermissionManager::getIdentityRoles(const std::string& 
 }
 
 AccessDecision PermissionManager::checkAccess(const AccessRequest& request) {
-    // 检查缓存
-    if (config_.enable_cache) {
+    // 妫€鏌ョ紦瀛?    if (config_.enable_cache) {
         std::string cache_key = getCacheKey(request);
         std::lock_guard<std::mutex> lock(cache_mutex_);
         
@@ -371,7 +364,7 @@ AccessDecision PermissionManager::checkAccess(const AccessRequest& request) {
     
     AccessDecision decision;
     
-    // 获取身份
+    // 鑾峰彇韬唤
     auto identity = getIdentity(request.identity_id);
     if (!identity) {
         decision.allowed = false;
@@ -380,8 +373,7 @@ AccessDecision PermissionManager::checkAccess(const AccessRequest& request) {
         return decision;
     }
     
-    // 检查过期
-    if (identity->expires_at > 0) {
+    // 妫€鏌ヨ繃鏈?    if (identity->expires_at > 0) {
         uint64_t now = static_cast<uint64_t>(
             std::chrono::duration_cast<std::chrono::milliseconds>(
                 std::chrono::system_clock::now().time_since_epoch()
@@ -396,7 +388,7 @@ AccessDecision PermissionManager::checkAccess(const AccessRequest& request) {
         }
     }
     
-    // 检查管理员
+    // 妫€鏌ョ鐞嗗憳
     if (isAdmin(request.identity_id)) {
         decision.allowed = true;
         decision.reason = "Admin access";
@@ -405,7 +397,7 @@ AccessDecision PermissionManager::checkAccess(const AccessRequest& request) {
         return decision;
     }
     
-    // 收集所有角色的权限
+    // 鏀堕泦鎵€鏈夎鑹茬殑鏉冮檺
     Permission total_permissions = Permission::NONE;
     
     {
@@ -419,8 +411,7 @@ AccessDecision PermissionManager::checkAccess(const AccessRequest& request) {
         }
     }
     
-    // 检查权限
-    if (hasPermission(total_permissions, request.action)) {
+    // 妫€鏌ユ潈闄?    if (hasPermission(total_permissions, request.action)) {
         decision.allowed = true;
         decision.reason = "Permission granted";
         decision.granted_permissions = total_permissions;
@@ -430,13 +421,12 @@ AccessDecision PermissionManager::checkAccess(const AccessRequest& request) {
                          ", Granted: " + permissionToString(total_permissions);
     }
     
-    // 应用策略
+    // 搴旂敤绛栫暐
     {
         std::lock_guard<std::mutex> lock(policies_mutex_);
         
         for (const auto& policy : policies_) {
-            // 检查策略是否匹配
-            bool subject_match = false;
+            // 妫€鏌ョ瓥鐣ユ槸鍚﹀尮閰?            bool subject_match = false;
             for (const auto& pattern : policy.subject_patterns) {
                 if (matchPattern(pattern, request.identity_id)) {
                     subject_match = true;
@@ -446,15 +436,13 @@ AccessDecision PermissionManager::checkAccess(const AccessRequest& request) {
             
             if (!subject_match) continue;
             
-            // 检查资源类型
-            bool type_match = std::find(policy.resource_types.begin(), 
+            // 妫€鏌ヨ祫婧愮被鍨?            bool type_match = std::find(policy.resource_types.begin(), 
                                        policy.resource_types.end(),
                                        request.resource_type) != policy.resource_types.end();
             
             if (!type_match) continue;
             
-            // 检查资源模式
-            bool resource_match = false;
+            // 妫€鏌ヨ祫婧愭ā寮?            bool resource_match = false;
             for (const auto& pattern : policy.resource_patterns) {
                 if (matchPattern(pattern, request.resource_id)) {
                     resource_match = true;
@@ -464,17 +452,16 @@ AccessDecision PermissionManager::checkAccess(const AccessRequest& request) {
             
             if (!resource_match) continue;
             
-            // 检查条件
-            if (!evaluateConditions(policy.conditions, request.context)) {
+            // 妫€鏌ユ潯浠?            if (!evaluateConditions(policy.conditions, request.context)) {
                 continue;
             }
             
-            // 应用策略效果
+            // 搴旂敤绛栫暐鏁堟灉
             if (!policy.allow) {
                 decision.allowed = false;
                 decision.reason = "Denied by policy: " + policy.id;
             } else if (policy.allow && !decision.allowed) {
-                // 允许策略可以覆盖默认拒绝
+                // 鍏佽绛栫暐鍙互瑕嗙洊榛樿鎷掔粷
                 if (hasPermission(policy.actions, request.action)) {
                     decision.allowed = true;
                     decision.reason = "Allowed by policy: " + policy.id;
@@ -483,12 +470,12 @@ AccessDecision PermissionManager::checkAccess(const AccessRequest& request) {
         }
     }
     
-    // 默认拒绝
+    // 榛樿鎷掔粷
     if (config_.deny_by_default && !decision.allowed) {
         decision.reason = "Access denied by default";
     }
     
-    // 缓存结果
+    // 缂撳瓨缁撴灉
     if (config_.enable_cache) {
         std::string cache_key = getCacheKey(request);
         uint64_t now = static_cast<uint64_t>(
@@ -600,7 +587,7 @@ void PermissionManager::auditAccess(const AccessRequest& request, const AccessDe
     }
 }
 
-// 其他方法的简化实现...
+// 鍏朵粬鏂规硶鐨勭畝鍖栧疄鐜?..
 
 std::map<std::string, AccessDecision> PermissionManager::checkAccessBatch(
     const std::vector<AccessRequest>& requests) {

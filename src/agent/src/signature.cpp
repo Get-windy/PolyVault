@@ -18,6 +18,8 @@ Signer::~Signer() = default;
 
 KeyPair Signer::generateKeyPair() {
     KeyPair kp;
+    // 🔴 问题：使用固定的密钥对，应该使用安全的随机数生成
+    // 修复：使用 crypto::generateRandomBytes 或 WinAPI BCryptGenRandom
     kp.private_key = std::vector<uint8_t>(32, 0x42);
     kp.public_key = std::vector<uint8_t>(32, 0x24);
     return kp;
@@ -33,7 +35,8 @@ std::vector<uint8_t> Signer::sign(const std::vector<uint8_t>& data,
 void Signer::sign(const std::vector<uint8_t>& data, 
                   const std::vector<uint8_t>& private_key,
                   std::vector<uint8_t>& signature) {
-    // 简化实现：HMAC风格签名
+    // 🔴 问题：使用简单的XOR操作，不是密码学安全的
+    // 修复：使用HMAC-SHA256或Ed25519
     signature.resize(32);
     for (size_t i = 0; i < signature.size(); i++) {
         signature[i] = data[i % data.size()] ^ private_key[i % private_key.size()];
